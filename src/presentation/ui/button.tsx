@@ -170,10 +170,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             <span
               className={cn(
                 effect === 'expandText' &&
-                  'block max-w-0 overflow-hidden whitespace-nowrap opacity-0 duration-300 group-hover:max-w-[200px] group-hover:opacity-100',
+                  'block max-w-0 overflow-hidden whitespace-nowrap opacity-0 duration-300 group-hover:max-w-50 group-hover:opacity-100',
 
                 effect === 'hoverUnderlineExpandText' &&
-                  'block max-w-0 overflow-hidden whitespace-nowrap opacity-0 duration-300 group-hover:max-w-[200px] group-hover:opacity-100',
+                  'block max-w-0 overflow-hidden whitespace-nowrap opacity-0 duration-300 group-hover:max-w-50 group-hover:opacity-100',
               )}
             >
               {children}

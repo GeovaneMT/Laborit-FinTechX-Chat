@@ -7,7 +7,7 @@ function hasSession(request: NextRequest) {
   return Boolean(request.cookies.get(SESSION_COOKIE)?.value);
 }
 
-export function applyProxy(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isPrivate = pathname.startsWith("/dashboard") || pathname.startsWith("/items") || pathname.startsWith("/settings");
   const isAuth = pathname === "/login" || pathname === "/register";
