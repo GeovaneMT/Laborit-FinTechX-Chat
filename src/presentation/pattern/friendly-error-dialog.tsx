@@ -7,7 +7,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@ui/dialog";
+} from "@ui/shadcn/dialog";
 import { Button } from "@ui/button";
 
 type Props = {

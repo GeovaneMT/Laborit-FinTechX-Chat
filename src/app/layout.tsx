@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import "./globals.css";
+import "@/presentation/styles/globals.css";
 import { APP_NAME } from "@core/constants";
 import { readSessionFromCookies } from "@infra/auth-session";
 import { getMessages, resolveLocale } from "@infra/i18n";
 import { AuthProvider } from "@infra/auth-provider";
 import { ClientBootstrap } from "@/presentation/providers/client-bootstrap";
 import { QueryProvider } from "@/presentation/providers/query-provider";
-import { Toaster } from "@ui/toaster";
-import { TooltipProvider } from "@ui/tooltip";
+import { Toaster } from "@ui/shadcn/sonner";
+import { TooltipProvider } from "@ui/shadcn/tooltip";
 import { Geist } from "next/font/google";
 import { cn } from "@presentation/lib/utils";
 

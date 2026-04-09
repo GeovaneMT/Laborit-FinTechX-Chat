@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/shadcn/card";
 
 export default function OnboardingPage() {
   return (

@@ -1,12 +1,25 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { signOutAction } from "@infra/auth-actions";
-import { Header } from "@ui/header";
 import { Button } from "@ui/button";
+import { cn } from "../lib/utils";
 
 type Props = {
   children: ReactNode;
   nav: { href: string; label: string }[];
+};
+
+type HeaderProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export const Header = ({ children, className }: HeaderProps) => {
+  return (
+    <header className={cn("border-b", className)}>
+      <div className="flex h-16 items-center px-4">Header {children}</div>
+    </header>
+  );
 };
 
 export function PrivateLayout({ children, nav }: Props) {
@@ -18,7 +31,7 @@ export function PrivateLayout({ children, nav }: Props) {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
+              className="text-(--color-muted-foreground) hover:text-(--color-foreground)"
             >
               {item.label}
             </Link>

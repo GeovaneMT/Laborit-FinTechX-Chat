@@ -3,12 +3,12 @@ import { sendMessageAction } from "./actions";
 
 export function useChatScreen() {
   const {
-    messages,
-    isLoading,
     error,
+    messages,
+    setError,
+    isLoading,
     addMessage,
     setLoading,
-    setError,
     clearConversation,
   } = useChatStore();
 
@@ -23,10 +23,15 @@ export function useChatScreen() {
     try {
       const result = await sendMessageAction({ message });
 
+      if (!result.response) {
+        setError("Resposta vazia do servidor.");
+        return;
+      }
+
       if (result.success) {
         addMessage({ role: "assistant", content: result.response });
       } else {
-        setError(result.error);
+        setError(result.error ?? "Erro desconhecido. Tente novamente.");
       }
     } catch (err) {
       setError("Erro inesperado. Tente novamente.");
@@ -36,9 +41,9 @@ export function useChatScreen() {
   };
 
   return {
+    error,
     messages,
     isLoading,
-    error,
     sendMessage,
     clearConversation,
   };

@@ -3,7 +3,7 @@ import { Button } from "@ui/button";
 
 export default function SplashPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
       <div className="text-center space-y-8 p-8">
         <div className="space-y-4">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">

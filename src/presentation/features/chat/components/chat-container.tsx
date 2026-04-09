@@ -1,5 +1,5 @@
-import { Alert, AlertDescription } from "@ui/alert";
-import { Skeleton } from "@ui/skeleton";
+import { Alert, AlertDescription } from "@ui/shadcn/alert";
+import { Skeleton } from "@ui/shadcn/skeleton";
 import { ChatBubble } from "./chat-bubble";
 import { Message } from "../store";
 

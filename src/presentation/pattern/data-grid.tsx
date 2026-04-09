@@ -3,7 +3,7 @@ import { DataGridFooter } from "@pattern/data-grid-footer";
 import { DataGridHeader } from "@pattern/data-grid-header";
 import { DataGridTable } from "@pattern/data-grid-table";
 import { dataGridVariants } from "@pattern/data-grid.variants";
-import { cn } from "@ui/cn";
+import { cn } from "@presentation/lib/utils";
 import type { ColumnDef } from "@tanstack/react-table";
 
 type Props<TData> = {
@@ -16,7 +16,7 @@ type Props<TData> = {
 
 export function DataGrid<TData>({ title, data, columns, footer, density }: Props<TData>) {
   return (
-    <div className={cn("rounded-md border border-[var(--color-border)]", dataGridVariants())}>
+    <div className={cn("rounded-md border border-(--color-border)", dataGridVariants())}>
       {title ? <DataGridHeader>{title}</DataGridHeader> : null}
       <DataGridTable data={data} columns={columns} density={density} />
       {footer ? <DataGridFooter>{footer}</DataGridFooter> : null}

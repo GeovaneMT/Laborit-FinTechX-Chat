@@ -1,7 +1,7 @@
 "use client";
 
 import { GenericFormContext } from "@pattern/form.contexts";
-import { Label } from "@ui/label";
+import { Label } from "@ui/shadcn/label";
 import { createId } from "@core/ids";
 import type { ReactNode } from "react";
 

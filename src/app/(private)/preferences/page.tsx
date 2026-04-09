@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@ui/button";
-import { Switch } from "@ui/switch";
-import { Label } from "@ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { Switch } from "@ui/shadcn/switch";
+import { Label } from "@ui/shadcn/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/shadcn/card";
 
 export default function PreferencesPage() {
   const [darkMode, setDarkMode] = useState(false);

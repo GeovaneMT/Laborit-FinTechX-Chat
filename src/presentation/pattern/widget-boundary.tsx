@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, AlertDescription, AlertTitle } from "@ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@ui/shadcn/alert";
 import type { ReactNode } from "react";
 import { Component, type ErrorInfo } from "react";
 

@@ -6,7 +6,7 @@ import {
   useReactTable,
   type ColumnDef,
 } from "@tanstack/react-table";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui/shadcn/table";
 import { dataGridVariants } from "@pattern/data-grid.variants";
 
 type Props<TData> = {

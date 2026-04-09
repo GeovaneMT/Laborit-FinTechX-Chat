@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@ui/button";
-import { Input } from "@ui/input";
-import { Label } from "@ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { Input } from "@ui/shadcn/input";
+import { Label } from "@ui/shadcn/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/shadcn/card";
 
 export default function EditInformationPage() {
   const router = useRouter();

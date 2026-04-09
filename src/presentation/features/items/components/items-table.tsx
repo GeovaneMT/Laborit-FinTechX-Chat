@@ -6,8 +6,8 @@ import { useMemo } from "react";
 import type { Item } from "@core/entities/item";
 import { useItemsScreen } from "@features/items/view-models/use-items-screen";
 import { DataGrid } from "@pattern/data-grid";
-import { Alert, AlertDescription, AlertTitle } from "@ui/alert";
-import { Skeleton } from "@ui/skeleton";
+import { Alert, AlertDescription, AlertTitle } from "@ui/shadcn/alert";
+import { Skeleton } from "@ui/shadcn/skeleton";
 
 export function ItemsTable() {
   const vm = useItemsScreen();

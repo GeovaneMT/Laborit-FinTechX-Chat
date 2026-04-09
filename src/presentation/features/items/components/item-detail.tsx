@@ -1,8 +1,8 @@
 "use client";
 
 import { useItemDetailScreen } from "@features/items/view-models/use-item-detail-screen";
-import { Alert, AlertDescription, AlertTitle } from "@ui/alert";
-import { Skeleton } from "@ui/skeleton";
+import { Alert, AlertDescription, AlertTitle } from "@ui/shadcn/alert";
+import { Skeleton } from "@ui/shadcn/skeleton";
 
 type Props = {
   itemId: string;
@@ -27,7 +27,7 @@ export function ItemDetail({ itemId }: Props) {
   return (
     <div className="space-y-2">
       <h2 className="text-xl font-semibold">{vm.item.title}</h2>
-      <p className="text-sm text-[var(--color-muted-foreground)]">Updated {vm.item.updatedAt}</p>
+      <p className="text-sm text-(--color-muted-foreground)">Updated {vm.item.updatedAt}</p>
     </div>
   );
 }

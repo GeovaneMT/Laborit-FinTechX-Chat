@@ -4,14 +4,14 @@ import { Suspense } from "react";
 import { readSessionFromCookies } from "@infra/auth-session";
 import { getMessages, resolveLocale } from "@infra/i18n";
 import { PrivateLayout } from "@layouts/private-layout";
-import { Loading } from "@ui/loading";
+import { LoadingMessage } from "@ui/loading-message";
 
 export default function PrivateRouteLayout({ children }: { children: React.ReactNode }) {
   return (
     <Suspense
       fallback={
         <div className="flex min-h-[40vh] items-center justify-center">
-          <Loading />
+          <LoadingMessage />
         </div>
       }
     >
@@ -46,7 +46,7 @@ async function PrivateRouteShell({ children }: { children: React.ReactNode }) {
       <Suspense
         fallback={
           <div className="flex min-h-[30vh] items-center justify-center">
-            <Loading />
+            <LoadingMessage />
           </div>
         }
       >

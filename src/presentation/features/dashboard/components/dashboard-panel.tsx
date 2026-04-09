@@ -1,9 +1,9 @@
 "use client";
 
 import { useDashboardScreen } from "@features/dashboard/view-models/use-dashboard-screen";
-import { Alert, AlertDescription, AlertTitle } from "@ui/alert";
-import { Badge } from "@ui/badge";
-import { Skeleton } from "@ui/skeleton";
+import { Alert, AlertDescription, AlertTitle } from "@ui/shadcn/alert";
+import { Badge } from "@ui/shadcn/badge";
+import { Skeleton } from "@ui/shadcn/skeleton";
 
 export function DashboardPanel() {
   const vm = useDashboardScreen();
@@ -22,7 +22,7 @@ export function DashboardPanel() {
   }
 
   return (
-    <div className="space-y-2 rounded-lg border border-[var(--color-border)] p-4">
+    <div className="space-y-2 rounded-lg border border-(--color-border) p-4">
       <div className="flex items-center justify-between gap-2">
         <h2 className="text-lg font-semibold">{vm.headline}</h2>
         <Badge>{vm.count} items</Badge>

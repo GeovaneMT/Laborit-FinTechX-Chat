@@ -1,9 +1,9 @@
-import { Loading } from "@ui/loading";
+import { LoadingMessage } from "@ui/loading-message";
 
 export default function LoadingPage() {
   return (
     <div className="flex min-h-[40vh] items-center justify-center">
-      <Loading />
+      <LoadingMessage />
     </div>
   );
 }
