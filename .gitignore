@@ -1,0 +1,33 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# build
+.next
+out
+build
+dist
+
+# env
+.env
+.env*.local
+
+# debug
+npm-debug.log*
+pnpm-debug.log*
+
+# ide
+.idea
+.vscode
+*.swp
+
+# test
+coverage
+test-results
+playwright-report
+
+# misc
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
