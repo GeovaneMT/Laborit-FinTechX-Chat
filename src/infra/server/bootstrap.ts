@@ -1,3 +1,3 @@
 export async function runServerBootstrap() {
-  return { ok: true as const };
+  return { ok: true as const }
 }

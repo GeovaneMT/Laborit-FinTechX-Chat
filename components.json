@@ -12,6 +12,8 @@
   },
   "iconLibrary": "lucide",
   "rtl": false,
+  "menuColor": "default",
+  "menuAccent": "subtle",
   "aliases": {
     "components": "@ui",
     "utils": "@presentation/lib/utils",
@@ -19,8 +21,6 @@
     "lib": "@presentation/lib",
     "hooks": "@pattern/hooks"
   },
-  "menuColor": "default",
-  "menuAccent": "subtle",
   "registries": {
     "@magicui": "https://magicui.design/r/{name}.json",
     "@diceui": "https://diceui.com/r/{name}.json"

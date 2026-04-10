@@ -9,8 +9,7 @@ import { flushSync } from 'react-dom'
 
 import { cn } from '@utils/cn'
 
-interface AnimatedThemeTogglerProps
-  extends React.ComponentPropsWithoutRef<'button'> {
+interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'button'> {
   duration?: number
 }
 

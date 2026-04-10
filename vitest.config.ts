@@ -1,9 +1,16 @@
 import path from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vitest/config";
+import tsConfigPaths from 'vite-tsconfig-paths'
+import tailwindcss from '@tailwindcss/vite'
+
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),    
+    tailwindcss(),
+    tsConfigPaths(),
+],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -21,6 +28,7 @@ export default defineConfig({
   },
   test: {
     globals: true,
+    root: './',
     environment: "jsdom",
     setupFiles: ["./src/mocks/setup-specs.ts"],
     include: [

@@ -1,7 +1,7 @@
 export type ConsentState = {
-  analytics: boolean;
-};
+  analytics: boolean
+}
 
 export function readConsent(): ConsentState {
-  return { analytics: false };
+  return { analytics: false }
 }

@@ -1,9 +1,9 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react'
 
 type Props = {
-  children: ReactNode;
-  title: string;
-};
+  children: ReactNode
+  title: string
+}
 
 export function OnboardingLayout({ children, title }: Props) {
   return (
@@ -11,5 +11,5 @@ export function OnboardingLayout({ children, title }: Props) {
       <h1 className="text-2xl font-semibold">{title}</h1>
       {children}
     </div>
-  );
+  )
 }

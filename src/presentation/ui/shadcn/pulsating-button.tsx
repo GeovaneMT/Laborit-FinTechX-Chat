@@ -2,8 +2,7 @@ import React from 'react'
 
 import { cn } from '@utils/cn'
 
-interface PulsatingButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface PulsatingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   pulseColor?: string
   duration?: string
 }

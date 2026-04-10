@@ -4,8 +4,7 @@ import React, { MouseEvent, useEffect, useState } from 'react'
 
 import { cn } from '@utils/cn'
 
-interface RippleButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   rippleColor?: string
   duration?: string
 }

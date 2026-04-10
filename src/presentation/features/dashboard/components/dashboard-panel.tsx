@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import { useDashboardScreen } from "@features/dashboard/view-models/use-dashboard-screen";
-import { Alert, AlertDescription, AlertTitle } from "@ui/shadcn/alert";
-import { Badge } from "@ui/shadcn/badge";
-import { Skeleton } from "@ui/shadcn/skeleton";
+import { useDashboardScreen } from '@features/dashboard/view-models/use-dashboard-screen'
+import { Alert, AlertDescription, AlertTitle } from '@ui/shadcn/alert'
+import { Badge } from '@ui/shadcn/badge'
+import { Skeleton } from '@ui/shadcn/skeleton'
 
 export function DashboardPanel() {
-  const vm = useDashboardScreen();
+  const vm = useDashboardScreen()
 
   if (vm.error) {
     return (
@@ -14,11 +14,11 @@ export function DashboardPanel() {
         <AlertTitle>Unable to load</AlertTitle>
         <AlertDescription>{vm.error.message}</AlertDescription>
       </Alert>
-    );
+    )
   }
 
   if (vm.isLoading) {
-    return <Skeleton className="h-24 w-full" />;
+    return <Skeleton className="h-24 w-full" />
   }
 
   return (
@@ -28,5 +28,5 @@ export function DashboardPanel() {
         <Badge>{vm.count} items</Badge>
       </div>
     </div>
-  );
+  )
 }

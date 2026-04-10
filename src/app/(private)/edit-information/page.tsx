@@ -1,23 +1,23 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Button } from "@ui/button";
-import { Input } from "@ui/shadcn/input";
-import { Label } from "@ui/shadcn/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/shadcn/card";
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { Button } from '@ui/button'
+import { Input } from '@ui/shadcn/input'
+import { Label } from '@ui/shadcn/label'
+import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 
 export default function EditInformationPage() {
-  const router = useRouter();
-  const [name, setName] = useState("João Silva");
-  const [email, setEmail] = useState("joao@example.com");
+  const router = useRouter()
+  const [name, setName] = useState('João Silva')
+  const [email, setEmail] = useState('joao@example.com')
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     // Mock save
-    alert("Informações salvas!");
-    router.push("/profile");
-  };
+    alert('Informações salvas!')
+    router.push('/profile')
+  }
 
   return (
     <div className="space-y-6">
@@ -49,7 +49,11 @@ export default function EditInformationPage() {
             </div>
             <div className="flex gap-2">
               <Button type="submit">Salvar</Button>
-              <Button type="button" variant="outline" onClick={() => router.back()}>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => router.back()}
+              >
                 Cancelar
               </Button>
             </div>
@@ -57,5 +61,5 @@ export default function EditInformationPage() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

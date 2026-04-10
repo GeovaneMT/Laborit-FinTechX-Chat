@@ -1,18 +1,20 @@
-"use client";
+'use client'
 
-import { useEffect } from "react";
-import { initClientInstrumentation } from "../../instrumentation-client";
+import { useEffect } from 'react'
+import { initClientInstrumentation } from '../../instrumentation-client'
 
 type Props = {
-  enableMsw: boolean;
-};
+  enableMsw: boolean
+}
 
 export function ClientBootstrap({ enableMsw }: Props) {
   useEffect(() => {
-    initClientInstrumentation();
-    if (!enableMsw) return;
-    void import("@mocks/browser").then(({ startBrowserMocks }) => startBrowserMocks());
-  }, [enableMsw]);
+    initClientInstrumentation()
+    if (!enableMsw) return
+    void import('@mocks/browser').then(({ startBrowserMocks }) =>
+      startBrowserMocks(),
+    )
+  }, [enableMsw])
 
-  return null;
+  return null
 }

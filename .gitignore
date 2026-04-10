@@ -1,33 +1,84 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # dependencies
-node_modules
-.pnp
-.pnp.js
+/dist
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# build
-.next
-out
-build
-dist
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# env
-.env
-.env*.local
-
-# debug
+# Logs
+logs
+*.log
 npm-debug.log*
 pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 
-# ide
-.idea
-.vscode
-*.swp
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# test
-coverage
-test-results
-playwright-report
+# testing
+/coverage
+/.nyc_output
+
+# OS
+.DS_Store
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
 
 # misc
 .DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env
+.env/*
+.env.local
+.env.development
+.env.production
+.env.development.local
+.env.production.local
+.env.test
+
+# vercel
+.vercel
+
+# typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# package
+.npmrc
+# Sentry Config File
+.env.sentry-build-plugin

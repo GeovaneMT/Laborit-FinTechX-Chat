@@ -1,13 +1,33 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "types": [
+      "node",
+      "vitest",
+      "vitest/globals",
+      "@types/react",
+      "@types/react-dom"
+    ],
     "target": "ES2017",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
     "allowJs": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": false,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
@@ -16,7 +36,6 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -24,11 +43,14 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
       "@app/*": [
         "./src/app/*"
+      ],
+      "@mocks/*": [
+        "./src/mocks/*"
+      ],
+      "@/*": [
+        "./src/*"
       ],
       "@core/*": [
         "./src/core/*"
@@ -39,20 +61,32 @@
       "@infra/*": [
         "./src/infra/*"
       ],
+      "@env/*": [
+        "./src/infra/env/*"
+      ],
+      "@actions/*": [
+        "./src/infra/server/actions/*"
+      ],
       "@http/*": [
         "./src/http/*"
       ],
+      "@errors/*": [
+        "./src/infra/errors/*"
+      ],
+      "@tanstack/*": [
+        "./src/infra/data/tanstack/*"
+      ],
+      "@queries/*": [
+        "./src/infra/data/tanstack/react-query/queries/*"
+      ],
+      "@queryFn/*": [
+        "./src/infra/data/query-functions/*"
+      ],
+      "@mutations/*": [
+        "./src/infra/data/mutations/*"
+      ],
       "@presentation/*": [
         "./src/presentation/*"
-      ],
-      "@ui/*": [
-        "./src/presentation/ui/*"
-      ],
-      "@shadcn/*": [
-        "./src/presentation/ui/shadcn/*"
-      ],
-      "@pattern/*": [
-        "./src/presentation/pattern/*"
       ],
       "@features/*": [
         "./src/presentation/features/*"
@@ -60,15 +94,40 @@
       "@layouts/*": [
         "./src/presentation/layouts/*"
       ],
-      "@mocks/*": [
-        "./src/mocks/*"
+      "@pattern/*": [
+        "./src/presentation/pattern/*"
+      ],
+      "@contexts/*": [
+        "./src/presentation/pattern/contexts/*"
+      ],
+      "@models/*": [
+        "./src/presentation/models/*"
+      ],
+      "@styles/*": [
+        "./src/presentation/styles/*"
+      ],
+      "@schemas/*": [
+        "./src/presentation/schemas/*"
+      ],
+      "@providers/*": [
+        "./src/presentation/providers/*"
+      ],
+      "@zustand/*": [
+        "./src/infra/stores/*"
+      ],
+      "@ui/*": [
+        "./src/presentation/ui/*"
+      ],
+      "@shadcn/*": [
+        "./src/presentation/ui/shadcn/*"
       ]
     }
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "vitest.config.mts",
+    "tsconfig.json",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],

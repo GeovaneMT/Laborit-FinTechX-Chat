@@ -374,8 +374,6 @@ Rules:
 
 Include example routes:
 
-- `/login`
-- `/register`
 - `/dashboard`
 - `/settings`
 - `/items`

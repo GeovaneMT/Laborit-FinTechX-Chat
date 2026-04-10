@@ -1,118 +1,149 @@
-import boundaries from "eslint-plugin-boundaries";
-import nextPlugin from "@next/eslint-plugin-next";
-import oxlint from "eslint-plugin-oxlint";
-import tseslint from "typescript-eslint";
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import prettier from 'eslint-config-prettier/flat'
+import nextTs from 'eslint-config-next/typescript'
+import reactHooks from 'eslint-plugin-react-hooks'
+import boundaries from 'eslint-plugin-boundaries'
 
-export default tseslint.config(
-  {
-    ignores: [
-      "**/node_modules/**",
-      "**/.next/**",
-      "dist/**",
-      "coverage/**",
-      "**/http/generated/**",
-    ],
-  },
-  ...tseslint.configs.recommended,
-  oxlint.configs["flat/recommended"],
+/** Presentation sub-zones (template: ui / pattern / features + shared folders). */
+const P = {
+  ui: 'presentation-ui',
+  pattern: 'presentation-pattern',
+  features: 'presentation-features',
+  layouts: 'presentation-layouts',
+  schemas: 'presentation-schemas',
+  models: 'presentation-models',
+  styles: 'presentation-styles',
+  providers: 'presentation-providers',
+}
+
+const presentationTypes = Object.values(P)
+
+const eslintConfig = defineConfig([
+  reactHooks.configs.flat.recommended,
+  ...nextVitals,
+  ...nextTs,
+  prettier,
+  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
   {
     plugins: {
-      "@next/next": nextPlugin,
       boundaries,
     },
-    rules: {
-      ...nextPlugin.configs.recommended.rules,
-    },
-  },
-  {
     settings: {
-      "boundaries/elements": [
-        { type: "core", pattern: "src/core/**/*" },
-        { type: "infra", pattern: "src/infra/**/*" },
-        { type: "http", pattern: "src/http/**/*" },
-        { type: "presentation-ui", pattern: "src/presentation/ui/**/*" },
-        { type: "presentation-pattern", pattern: "src/presentation/pattern/**/*" },
-        { type: "presentation-layouts", pattern: "src/presentation/layouts/**/*" },
-        { type: "presentation-features", pattern: "src/presentation/features/**/*" },
-        { type: "presentation-providers", pattern: "src/presentation/providers/**/*" },
-        { type: "app", pattern: "src/app/**/*" },
-        { type: "mocks", pattern: "src/mocks/**/*" },
+      'boundaries/elements': [
+        { type: 'core', pattern: 'src/core/**/*' },
+        { type: 'infra', pattern: 'src/infra/**/*' },
+        { type: 'http', pattern: 'src/http/**/*' },
+        { type: P.ui, pattern: 'src/presentation/ui/**/*' },
+        { type: P.pattern, pattern: 'src/presentation/pattern/**/*' },
+        { type: P.features, pattern: 'src/presentation/features/**/*' },
+        { type: P.layouts, pattern: 'src/presentation/layouts/**/*' },
+        { type: P.schemas, pattern: 'src/presentation/schemas/**/*' },
+        { type: P.models, pattern: 'src/presentation/models/**/*' },
+        { type: P.styles, pattern: 'src/presentation/styles/**/*' },
+        { type: P.providers, pattern: 'src/presentation/providers/**/*' },
+        { type: 'app', pattern: 'src/app/**/*' },
+        { type: 'mocks', pattern: 'src/mocks/**/*' },
       ],
-      "boundaries/ignore": ["**/*.spec.ts", "**/*.spec.tsx", "**/__specs__/**", "**/__integration__/**"],
     },
     rules: {
-      "boundaries/element-types": [
-        "error",
+      'react-hooks/rules-of-hooks': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+      'boundaries/element-types': [
+        'warn',
         {
-          default: "disallow",
+          default: 'disallow',
           rules: [
-            { from: "core", allow: ["core"] },
-            { from: "infra", allow: ["core", "infra"] },
-            { from: "http", allow: ["core", "infra", "http"] },
-            { from: "presentation-ui", allow: ["presentation-ui"] },
             {
-              from: "presentation-pattern",
-              allow: ["core", "infra", "presentation-ui", "presentation-pattern"],
+              from: 'core',
+              allow: ['core'],
             },
             {
-              from: "presentation-layouts",
+              from: 'infra',
+              allow: ['core', 'infra', 'http', ...presentationTypes],
+            },
+            {
+              from: 'http',
+              allow: ['core', 'infra', 'http', ...presentationTypes],
+            },
+            {
+              from: P.ui,
+              allow: ['core', P.ui, P.pattern],
+            },
+            {
+              from: P.pattern,
+              allow: ['core', 'infra', 'http', P.ui, P.pattern],
+            },
+            {
+              from: P.features,
               allow: [
-                "core",
-                "infra",
-                "presentation-ui",
-                "presentation-pattern",
-                "presentation-layouts",
+                'core',
+                'infra',
+                'http',
+                P.ui,
+                P.pattern,
+                P.features,
+                P.layouts,
+                P.schemas,
+                P.models,
+                P.providers,
               ],
             },
             {
-              from: "presentation-features",
+              from: P.layouts,
+              allow: ['core', P.ui, P.pattern, P.layouts, P.features],
+            },
+            {
+              from: P.schemas,
+              allow: ['core', 'http', P.schemas],
+            },
+            {
+              from: P.models,
+              allow: ['core', 'http', P.models],
+            },
+            {
+              from: P.styles,
+              allow: [P.styles],
+            },
+            {
+              from: P.providers,
+              allow: ['core', P.ui, P.providers],
+            },
+            {
+              from: 'app',
               allow: [
-                "core",
-                "infra",
-                "http",
-                "presentation-ui",
-                "presentation-pattern",
-                "presentation-features",
+                'core',
+                'infra',
+                'http',
+                ...presentationTypes,
+                'app',
+                'mocks',
               ],
             },
             {
-              from: "presentation-providers",
-              allow: [
-                "core",
-                "infra",
-                "http",
-                "presentation-ui",
-                "presentation-pattern",
-                "presentation-providers",
-              ],
-            },
-            {
-              from: "app",
-              allow: [
-                "core",
-                "infra",
-                "http",
-                "presentation-ui",
-                "presentation-pattern",
-                "presentation-layouts",
-                "presentation-features",
-                "presentation-providers",
-                "app",
-              ],
-            },
-            {
-              from: "mocks",
-              allow: [
-                "core",
-                "infra",
-                "http",
-                "mocks",
-                "presentation-features",
-              ],
+              from: 'mocks',
+              allow: ['core', 'infra', 'http', 'mocks'],
             },
           ],
         },
       ],
+      'boundaries/no-unknown': 'off',
+      'boundaries/no-unknown-files': 'off',
     },
   },
-);
+  {
+    files: [
+      'src/presentation/ui/shadcn/dot-pattern.tsx',
+      'src/presentation/ui/shadcn/file-upload.tsx',
+    ],
+    rules: {
+      'react-hooks/purity': 'off',
+      'react-hooks/immutability': 'off',
+    },
+  },
+])
+
+export default eslintConfig

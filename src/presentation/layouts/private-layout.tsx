@@ -1,26 +1,24 @@
-import Link from "next/link";
-import type { ReactNode } from "react";
-import { signOutAction } from "@infra/auth-actions";
-import { Button } from "@ui/button";
-import { cn } from "../lib/utils";
+import Link from 'next/link'
+import type { ReactNode } from 'react'
+import { cn } from '@utils/cn'
 
 type Props = {
-  children: ReactNode;
-  nav: { href: string; label: string }[];
-};
+  children: ReactNode
+  nav: { href: string; label: string }[]
+}
 
 type HeaderProps = {
-  children: ReactNode;
-  className?: string;
-};
+  children: ReactNode
+  className?: string
+}
 
 export const Header = ({ children, className }: HeaderProps) => {
   return (
-    <header className={cn("border-b", className)}>
+    <header className={cn('border-b', className)}>
       <div className="flex h-16 items-center px-4">Header {children}</div>
     </header>
-  );
-};
+  )
+}
 
 export function PrivateLayout({ children, nav }: Props) {
   return (
@@ -37,13 +35,8 @@ export function PrivateLayout({ children, nav }: Props) {
             </Link>
           ))}
         </nav>
-        <form action={signOutAction}>
-          <Button type="submit" variant="ghost" size="sm">
-            Sign out
-          </Button>
-        </form>
       </Header>
       <main className="flex-1 px-4 py-6">{children}</main>
     </div>
-  );
+  )
 }

@@ -55,7 +55,7 @@ Considere:
 Antes de propor qualquer mudanca, parta do fato de que o repositorio ja contem uma arquitetura alinhada ao blueprint, com exemplos neutros como:
 
 - grupos de rota `(public)` e `(private)`;
-- rotas como `/login`, `/register`, `/dashboard`, `/items`, `/items/[itemId]` e `/settings`;
+- rotas como `/dashboard`, `/items`, `/items/[itemId]` e `/settings`;
 - features de exemplo em `presentation/features/dashboard`, `presentation/features/items` e `presentation/features/settings`;
 - APIs de exemplo em `src/app/api/v1/dashboard`, `src/app/api/v1/items` e `src/app/api/v1/profile`;
 - layouts, providers, store, cache helpers, query keys, mocks, testes e componentes de UI reutilizaveis.

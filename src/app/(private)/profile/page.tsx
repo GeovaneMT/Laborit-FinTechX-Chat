@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { Button } from "@ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/shadcn/card";
+import Link from 'next/link'
+import { Button } from '@ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 
 export default function ProfilePage() {
   // Mock data
   const profile = {
-    name: "João Silva",
-    email: "joao@example.com",
+    name: 'João Silva',
+    email: 'joao@example.com',
     avatar: null,
-  };
+  }
 
   return (
     <div className="space-y-6">
@@ -27,12 +27,10 @@ export default function ProfilePage() {
             <p className="text-gray-600 dark:text-gray-300">{profile.email}</p>
           </div>
           <Link href="/edit-information">
-            <Button variant="outline">
-              Editar Informações
-            </Button>
+            <Button variant="outline">Editar Informações</Button>
           </Link>
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

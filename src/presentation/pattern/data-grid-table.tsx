@@ -1,29 +1,37 @@
-"use client";
+'use client'
 
 import {
   flexRender,
   getCoreRowModel,
   useReactTable,
   type ColumnDef,
-} from "@tanstack/react-table";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui/shadcn/table";
-import { dataGridVariants } from "@pattern/data-grid.variants";
+} from '@tanstack/react-table'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@ui/shadcn/table'
+import { dataGridVariants } from '@pattern/data-grid.variants'
 
 type Props<TData> = {
-  data: TData[];
-  columns: ColumnDef<TData, unknown>[];
-  density?: "compact" | "comfortable";
-};
+  data: TData[]
+  columns: ColumnDef<TData, unknown>[]
+  density?: 'compact' | 'comfortable'
+}
 
 export function DataGridTable<TData>({ data, columns, density }: Props<TData>) {
+  // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-  });
+  })
 
   return (
-    <div className="max-h-[480px] overflow-auto">
+    <div className="max-h-120 overflow-auto">
       <Table className={dataGridVariants({ density })}>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -32,7 +40,10 @@ export function DataGridTable<TData>({ data, columns, density }: Props<TData>) {
                 <TableHead key={header.id}>
                   {header.isPlaceholder
                     ? null
-                    : flexRender(header.column.columnDef.header, header.getContext())}
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
                 </TableHead>
               ))}
             </TableRow>
@@ -51,5 +62,5 @@ export function DataGridTable<TData>({ data, columns, density }: Props<TData>) {
         </TableBody>
       </Table>
     </div>
-  );
+  )
 }

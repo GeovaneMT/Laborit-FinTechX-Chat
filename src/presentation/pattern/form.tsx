@@ -1,29 +1,29 @@
-"use client";
+'use client'
 
-import { GenericFormContext } from "@pattern/form.contexts";
-import { Label } from "@ui/shadcn/label";
-import { createId } from "@core/ids";
-import type { ReactNode } from "react";
+import { GenericFormContext } from '@pattern/form.contexts'
+import { Label } from '@ui/shadcn/label'
+import { createId } from '@core/ids'
+import type { ReactNode } from 'react'
 
 type FormRootProps = {
-  children: ReactNode;
-  id?: string;
-};
+  children: ReactNode
+  id?: string
+}
 
 export function FormRoot({ children, id }: FormRootProps) {
-  const formId = id ?? createId("form");
+  const formId = id ?? createId('form')
   return (
     <GenericFormContext.Provider value={{ formId }}>
       <div className="space-y-4">{children}</div>
     </GenericFormContext.Provider>
-  );
+  )
 }
 
 type FieldProps = {
-  label: string;
-  htmlFor: string;
-  children: ReactNode;
-};
+  label: string
+  htmlFor: string
+  children: ReactNode
+}
 
 export function FormField({ label, htmlFor, children }: FieldProps) {
   return (
@@ -31,5 +31,5 @@ export function FormField({ label, htmlFor, children }: FieldProps) {
       <Label htmlFor={htmlFor}>{label}</Label>
       {children}
     </div>
-  );
+  )
 }

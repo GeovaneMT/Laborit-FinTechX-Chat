@@ -1,28 +1,29 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+// import { NextResponse } from 'next/server'
+// import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-const SESSION_COOKIE = "session";
+// const isPublicRoute = createRouteMatcher(['/', '/entrar(.*)'])
 
-function hasSession(request: NextRequest) {
-  return Boolean(request.cookies.get(SESSION_COOKIE)?.value);
-}
+// export default clerkMiddleware(async (auth, req) => {
+//   if (!isPublicRoute(req)) await auth.protect()
 
-export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const isPrivate = pathname.startsWith("/dashboard") || pathname.startsWith("/items") || pathname.startsWith("/settings");
-  const isAuth = pathname === "/login" || pathname === "/register";
+//   const isSignInRoute = req.nextUrl.pathname.startsWith(
+//     process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL ?? '/entrar',
+//   )
 
-  if (isPrivate && !hasSession(request)) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    return NextResponse.redirect(url);
-  }
+//   if (isSignInRoute) {
+//     const session = await auth()
 
-  if (isAuth && hasSession(request)) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/dashboard";
-    return NextResponse.redirect(url);
-  }
+//     if (session.userId) {
+//       return NextResponse.redirect(new URL('/', req.url))
+//     }
+//   }
+// })
 
-  return NextResponse.next();
+export const config = {
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 }

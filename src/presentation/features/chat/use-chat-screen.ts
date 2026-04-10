@@ -1,5 +1,5 @@
-import { useChatStore } from "./store";
-import { sendMessageAction } from "./actions";
+import { useChatStore } from './store'
+import { sendMessageAction } from './actions'
 
 export function useChatScreen() {
   const {
@@ -10,35 +10,36 @@ export function useChatScreen() {
     addMessage,
     setLoading,
     clearConversation,
-  } = useChatStore();
+  } = useChatStore()
 
   const sendMessage = async (message: string) => {
     // Add user message immediately
-    addMessage({ role: "user", content: message });
+    addMessage({ role: 'user', content: message })
 
     // Start loading
-    setLoading(true);
-    setError(null);
+    setLoading(true)
+    setError(null)
 
     try {
-      const result = await sendMessageAction({ message });
+      const result = await sendMessageAction({ message })
 
       if (!result.response) {
-        setError("Resposta vazia do servidor.");
-        return;
+        setError('Resposta vazia do servidor.')
+        return
       }
 
       if (result.success) {
-        addMessage({ role: "assistant", content: result.response });
+        addMessage({ role: 'assistant', content: result.response })
       } else {
-        setError(result.error ?? "Erro desconhecido. Tente novamente.");
+        setError(result.error ?? 'Erro desconhecido. Tente novamente.')
       }
     } catch (err) {
-      setError("Erro inesperado. Tente novamente.");
+      console.error('Erro ao enviar mensagem:', err)
+      setError('Erro inesperado. Tente novamente.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return {
     error,
@@ -46,5 +47,5 @@ export function useChatScreen() {
     isLoading,
     sendMessage,
     clearConversation,
-  };
+  }
 }

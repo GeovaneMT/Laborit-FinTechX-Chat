@@ -1,26 +1,26 @@
-import { useState } from "react";
-import { Button } from "@ui/button";
-import { Textarea } from "@ui/shadcn/textarea";
-import { Send } from "lucide-react";
+import { useState } from 'react'
+import { Button } from '@ui/button'
+import { Textarea } from '@ui/shadcn/textarea'
+import { Send } from 'lucide-react'
 
 interface ChatInputProps {
-  onSendMessage: (message: string) => void;
-  disabled?: boolean;
+  onSendMessage: (message: string) => void
+  disabled?: boolean
 }
 
 export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (message.trim() && !disabled) {
-      onSendMessage(message.trim());
-      setMessage("");
+      onSendMessage(message.trim())
+      setMessage('')
     }
-  };
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 p-4 border-t">
+    <form onSubmit={handleSubmit} className="flex gap-2 border-t p-4">
       <Textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
@@ -29,9 +29,9 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
         rows={1}
         disabled={disabled}
         onKeyDown={(e) => {
-          if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault();
-            handleSubmit(e);
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault()
+            handleSubmit(e)
           }
         }}
       />
@@ -39,5 +39,5 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
         <Send className="h-4 w-4" />
       </Button>
     </form>
-  );
+  )
 }

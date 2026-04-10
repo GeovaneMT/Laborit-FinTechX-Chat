@@ -1,31 +1,31 @@
-import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 export interface Message {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-  timestamp: Date;
+  id: string
+  role: 'user' | 'assistant'
+  content: string
+  timestamp: Date
 }
 
 interface ChatState {
-  messages: Message[];
-  isLoading: boolean;
-  error: string | null;
+  messages: Message[]
+  isLoading: boolean
+  error: string | null
 }
 
 interface ChatActions {
-  addMessage: (message: Omit<Message, "id" | "timestamp">) => void;
-  setLoading: (loading: boolean) => void;
-  setError: (error: string | null) => void;
-  clearConversation: () => void;
+  addMessage: (message: Omit<Message, 'id' | 'timestamp'>) => void
+  setLoading: (loading: boolean) => void
+  setError: (error: string | null) => void
+  clearConversation: () => void
 }
 
-type ChatStore = ChatState & ChatActions;
+type ChatStore = ChatState & ChatActions
 
 export const useChatStore = create<ChatStore>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       messages: [],
       isLoading: false,
       error: null,
@@ -45,9 +45,9 @@ export const useChatStore = create<ChatStore>()(
       clearConversation: () => set({ messages: [], error: null }),
     }),
     {
-      name: "chat-storage",
+      name: 'chat-storage',
       storage: createJSONStorage(() => sessionStorage),
       partialize: (state) => ({ messages: state.messages }),
-    }
-  )
-);
+    },
+  ),
+)

@@ -1,17 +1,18 @@
-"use client";
+'use client'
 
-import { Button } from "@ui/button";
-import { Trash2 } from "lucide-react";
-import { ChatContainer } from "./chat-container";
-import { ChatInput } from "./chat-input";
-import { useChatScreen } from "../use-chat-screen";
+import { Button } from '@ui/button'
+import { Trash2 } from 'lucide-react'
+import { ChatContainer } from './chat-container'
+import { ChatInput } from './chat-input'
+import { useChatScreen } from '../use-chat-screen'
 
 export function ChatScreen() {
-  const { messages, isLoading, error, sendMessage, clearConversation } = useChatScreen();
+  const { messages, isLoading, error, sendMessage, clearConversation } =
+    useChatScreen()
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex justify-between items-center p-4 border-b">
+    <div className="flex h-full flex-col">
+      <div className="flex items-center justify-between border-b p-4">
         <h1 className="text-lg font-semibold">Chat</h1>
         <Button
           variant="outline"
@@ -19,7 +20,7 @@ export function ChatScreen() {
           onClick={clearConversation}
           disabled={messages.length === 0}
         >
-          <Trash2 className="h-4 w-4 mr-2" />
+          <Trash2 className="mr-2 h-4 w-4" />
           Limpar Conversa
         </Button>
       </div>
@@ -28,5 +29,5 @@ export function ChatScreen() {
 
       <ChatInput onSendMessage={sendMessage} disabled={isLoading} />
     </div>
-  );
+  )
 }

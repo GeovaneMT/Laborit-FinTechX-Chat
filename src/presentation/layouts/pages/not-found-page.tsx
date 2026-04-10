@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Button } from "@ui/button";
+import Link from 'next/link'
+import { Button } from '@ui/button'
 
 export function NotFoundPage() {
   return (
@@ -9,5 +9,5 @@ export function NotFoundPage() {
         <Link href="/">Go home</Link>
       </Button>
     </div>
-  );
+  )
 }

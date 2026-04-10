@@ -23,7 +23,7 @@ Keep the generated product domain neutral. Preserve architecture and engineering
    - stack and tooling;
    - directory structure;
    - dependency boundaries;
-   - routing and auth boundaries;
+   - routing boundaries;
    - cache and data-fetching strategy;
    - form architecture;
    - UI system conventions;
