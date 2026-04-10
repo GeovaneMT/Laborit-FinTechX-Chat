@@ -6,5 +6,5 @@ export default async function PreferencesPage() {
   const locale = resolveLocale((await cookies()).get('locale')?.value)
   const messages = getMessages(locale)
 
-  return <PreferencesPageClient messages={messages} />
+  return <PreferencesPageClient locale={locale} messages={messages} />
 }

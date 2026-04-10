@@ -1,0 +1,7 @@
+export { useCustomerDetails } from '@features/customers/view-models/use-customer-details'
+export { useCustomerIndex } from '@features/customers/view-models/index/use-customer-index'
+export { useNameUpdateForm } from '@features/customers/view-models/name/use-name-update-form'
+export { useCustomerCreate } from '@features/customers/view-models/create/use-customer-create'
+export { useDeleteCustomer } from '@features/customers/view-models/delete/use-delete-customer'
+export { useCustomerCreateForm } from '@features/customers/view-models/create/use-customer-create-form'
+export { useCustomerIndexInifiniteQuery } from '@features/customers/view-models/index/use-customer-index-infinite-query'
