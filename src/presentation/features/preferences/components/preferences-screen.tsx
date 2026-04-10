@@ -2,7 +2,6 @@
 
 import { usePreferencesScreen } from '../view-models/use-preferences-screen'
 import type { Locale, PreferencesMessages } from '../i18n'
-import { Button } from '@ui/button'
 import { Switch } from '@ui/shadcn/switch'
 import { Label } from '@ui/shadcn/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'

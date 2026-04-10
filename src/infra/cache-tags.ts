@@ -8,6 +8,12 @@ export const cacheTags = {
   itemDetail: (id: string) => `tag:item:${id}`,
 } as const
 
+export const serverResourceCacheTags = {
+  profile: cacheTags.profile,
+  dashboard: cacheTags.dashboard,
+  items: cacheTags.itemsList(),
+} as const
+
 export function allItemTags() {
   return [cacheTags.itemsList(), cacheTags.profile] as const
 }

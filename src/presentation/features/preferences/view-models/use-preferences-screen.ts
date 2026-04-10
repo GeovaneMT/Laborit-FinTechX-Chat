@@ -1,33 +1,31 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Locale } from '../i18n'
 
-export function usePreferencesScreen(locale: Locale) {
+export function usePreferencesScreen(_locale: Locale) {
   const router = useRouter()
-  const [darkMode, setDarkMode] = useState(false)
-  const [selectedLocale, setSelectedLocale] = useState(locale)
-
-  useEffect(() => {
-    const stored = localStorage.getItem('theme')
-    if (stored) {
-      setDarkMode(stored === 'dark')
-    } else {
-      setDarkMode(document.documentElement.classList.contains('dark'))
+  const [darkMode, _setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('theme')
+      if (stored) {
+        return stored === 'dark'
+      }
+      return document.documentElement.classList.contains('dark')
     }
-  }, [])
-
-  useEffect(() => {
-    const cookieValue = document.cookie
-      .split('; ')
-      .find((cookie) => cookie.startsWith('locale='))
-      ?.split('=')[1]
-
-    if (cookieValue && cookieValue !== selectedLocale) {
-      setSelectedLocale(cookieValue as Locale)
+    return false
+  })
+  const [selectedLocale, setSelectedLocale] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const cookieValue = document.cookie
+        .split('; ')
+        .find((cookie) => cookie.startsWith('locale='))
+        ?.split('=')[1]
+      return (cookieValue as Locale) || _locale
     }
-  }, [selectedLocale])
+    return _locale
+  })
 
   const changeLanguage = (value: string) => {
     setSelectedLocale(value as Locale)
