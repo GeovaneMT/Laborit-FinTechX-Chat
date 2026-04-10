@@ -15,11 +15,10 @@ import { ScrollArea } from '@ui/scroll-area'
 // import { ScrollContextProvider } from '@contexts/scroll-virtualization-context'
 
 interface ContentShellProps {
-  sheet: React.ReactNode
   children: React.ReactNode
 }
 
-export function ContentShell({ sheet, children }: Readonly<ContentShellProps>) {
+export function ContentShell({ children }: Readonly<ContentShellProps>) {
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
   return (
@@ -49,7 +48,6 @@ export function ContentShell({ sheet, children }: Readonly<ContentShellProps>) {
         {/* <ScrollContextProvider value={scrollRef}> */}
         <ScrollArea ref={scrollRef} type="scroll" className="h-full">
           {children}
-          {sheet}
           {/* <Footer /> */}
         </ScrollArea>
         {/* </ScrollContextProvider> */}
