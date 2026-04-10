@@ -1,56 +1,30 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { usePreferencesScreen } from '../view-models/use-preferences-screen'
+import type { Locale, PreferencesMessages } from '../i18n'
+import { Button } from '@ui/button'
 import { Switch } from '@ui/shadcn/switch'
 import { Label } from '@ui/shadcn/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 
-type PreferencesPageClientProps = {
-  locale: string
-  messages: Record<string, string>
+type PreferencesScreenProps = {
+  locale: Locale
+  messages: PreferencesMessages
 }
 
-const localeOptions = [
-  { value: 'en', labelKey: 'preferences.languageOption.en' },
-  { value: 'pt', labelKey: 'preferences.languageOption.pt' },
-]
-
-export function PreferencesPageClient({
+export function PreferencesScreen({
   locale,
   messages,
-}: PreferencesPageClientProps) {
-  const router = useRouter()
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window === 'undefined') return false
-
-    const stored = localStorage.getItem('theme')
-    if (stored) return stored === 'dark'
-
-    return document.documentElement.classList.contains('dark')
-  })
-  const [selectedLocale, setSelectedLocale] = useState(locale)
-
-  useEffect(() => {
-    const cookieValue = document.cookie
-      .split('; ')
-      .find((cookie) => cookie.startsWith('locale='))
-      ?.split('=')[1]
-
-    if (cookieValue && cookieValue !== selectedLocale) {
-      setSelectedLocale(cookieValue)
-    }
-  }, [selectedLocale])
-
-  const changeLanguage = (value: string) => {
-    setSelectedLocale(value)
-    document.cookie = `locale=${value}; Path=/; Max-Age=${60 * 60 * 24 * 365}`
-    router.refresh()
-  }
+}: PreferencesScreenProps) {
+  const { darkMode, selectedLocale, changeLanguage } =
+    usePreferencesScreen(locale)
 
   const currentLanguageLabel =
-    localeOptions.find((option) => option.value === selectedLocale)?.labelKey ??
-    localeOptions[0].labelKey
+    messages[
+      selectedLocale === 'pt'
+        ? 'preferences.languageOption.pt'
+        : 'preferences.languageOption.en'
+    ]
 
   return (
     <div className="space-y-6">
@@ -71,7 +45,6 @@ export function PreferencesPageClient({
               checked={darkMode}
               onCheckedChange={() => {
                 const newDark = !darkMode
-                setDarkMode(newDark)
                 if (newDark) {
                   document.documentElement.classList.add('dark')
                 } else {
@@ -97,15 +70,14 @@ export function PreferencesPageClient({
               onChange={(event) => changeLanguage(event.target.value)}
               className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:focus:border-indigo-400"
             >
-              {localeOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {messages[option.labelKey]}
-                </option>
-              ))}
+              <option value="en">
+                {messages['preferences.languageOption.en']}
+              </option>
+              <option value="pt">
+                {messages['preferences.languageOption.pt']}
+              </option>
             </select>
-            <p className="text-sm text-gray-500">
-              {messages[currentLanguageLabel]}
-            </p>
+            <p className="text-sm text-gray-500">{currentLanguageLabel}</p>
           </div>
         </CardContent>
       </Card>

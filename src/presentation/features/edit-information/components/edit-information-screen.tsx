@@ -1,28 +1,21 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { Button } from '@ui/button'
 import { Input } from '@ui/shadcn/input'
 import { Label } from '@ui/shadcn/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
+import type { EditInformationMessages } from '../i18n'
+import { useEditInformationScreen } from '../view-models/use-edit-information-screen'
 
-type EditInformationPageClientProps = {
-  messages: Record<string, string>
+type EditInformationScreenProps = {
+  messages: EditInformationMessages
 }
 
-export function EditInformationPageClient({
+export function EditInformationScreen({
   messages,
-}: EditInformationPageClientProps) {
-  const router = useRouter()
-  const [name, setName] = useState('João Silva')
-  const [email, setEmail] = useState('joao@example.com')
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert(messages['editInformation.savedAlert'])
-    router.push('/profile')
-  }
+}: EditInformationScreenProps) {
+  const { name, email, setName, setEmail, handleSubmit } =
+    useEditInformationScreen()
 
   return (
     <div className="space-y-6">
@@ -34,13 +27,20 @@ export function EditInformationPageClient({
           <CardTitle>{messages['editInformation.updateProfile']}</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form
+            onSubmit={(event) =>
+              handleSubmit(event, () =>
+                alert(messages['editInformation.savedAlert']),
+              )
+            }
+            className="space-y-4"
+          >
             <div>
               <Label htmlFor="name">{messages['editInformation.name']}</Label>
               <Input
                 id="name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(event) => setName(event.target.value)}
                 required
               />
             </div>
@@ -50,7 +50,7 @@ export function EditInformationPageClient({
                 id="email"
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
                 required
               />
             </div>
@@ -59,7 +59,7 @@ export function EditInformationPageClient({
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => router.back()}
+                onClick={() => window.history.back()}
               >
                 {messages['editInformation.cancel']}
               </Button>

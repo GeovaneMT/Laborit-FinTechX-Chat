@@ -2,18 +2,16 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@core/constants'
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
-const messages: Record<Locale, Record<string, string>> = {
+export type DashboardMessages = {
+  'dashboard.title': string
+}
+
+const messages: Record<Locale, DashboardMessages> = {
   en: {
-    'nav.items': 'Items',
-    'nav.signOut': 'Sign out',
-    'nav.settings': 'Settings',
-    'nav.dashboard': 'Dashboard',
+    'dashboard.title': 'Dashboard',
   },
   pt: {
-    'nav.items': 'Itens',
-    'nav.signOut': 'Sair',
-    'nav.settings': 'Configurações',
-    'nav.dashboard': 'Painel',
+    'dashboard.title': 'Painel',
   },
 }
 
@@ -23,6 +21,7 @@ export function isLocale(value: string): value is Locale {
 
 export function resolveLocale(value: string | undefined): Locale {
   if (value && isLocale(value)) return value
+
   return DEFAULT_LOCALE as Locale
 }
 

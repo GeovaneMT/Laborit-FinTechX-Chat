@@ -1,10 +1,11 @@
 import { cookies } from 'next/headers'
-import { getMessages, resolveLocale } from '@infra/i18n'
-import { InvitePageClient } from './client'
+
+import { InviteScreen } from '@features/invite/components/invite-screen'
+import { getMessages, resolveLocale } from '@features/invite/i18n'
 
 export default async function InvitePage() {
   const locale = resolveLocale((await cookies()).get('locale')?.value)
   const messages = getMessages(locale)
 
-  return <InvitePageClient messages={messages} />
+  return <InviteScreen messages={messages} />
 }

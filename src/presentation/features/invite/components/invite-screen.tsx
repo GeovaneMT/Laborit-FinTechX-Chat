@@ -1,24 +1,18 @@
 'use client'
 
-import { useState } from 'react'
 import { Button } from '@ui/button'
+import { Copy, Check } from 'lucide-react'
 import { Input } from '@ui/shadcn/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
-import { Copy, Check } from 'lucide-react'
+import type { InviteMessages } from '../i18n'
+import { useInviteScreen } from '../view-models/use-invite-screen'
 
-type InvitePageClientProps = {
-  messages: Record<string, string>
+type InviteScreenProps = {
+  messages: InviteMessages
 }
 
-export function InvitePageClient({ messages }: InvitePageClientProps) {
-  const inviteCode = 'LABORIT2024'
-  const [copied, setCopied] = useState(false)
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(inviteCode)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+export function InviteScreen({ messages }: InviteScreenProps) {
+  const { copied, handleCopy, inviteCode } = useInviteScreen()
 
   return (
     <div className="space-y-6">
@@ -32,7 +26,7 @@ export function InvitePageClient({ messages }: InvitePageClientProps) {
             {messages['invite.description']}
           </p>
           <div className="flex gap-2">
-            <Input value={inviteCode} readOnly className="flex-1" />
+            <Input readOnly value={inviteCode} className="flex-1" />
             <Button onClick={handleCopy} variant="outline">
               {copied ? (
                 <Check className="h-4 w-4" />
