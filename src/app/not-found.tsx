@@ -19,9 +19,5 @@ export const metadata: Metadata = {
 }
 
 export default async function NotFoundPage() {
-  'use cache'
-  cacheLife('max')
-  cacheTag('NotFound')
-
   return <NotFound />
 }

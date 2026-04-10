@@ -24,10 +24,6 @@ export const metadata: Metadata = {
 }
 
 export default async function GlobalNotFound() {
-  'use cache'
-  cacheLife('max')
-  cacheTag('GlobalNotFound')
-
   return (
     <html lang="pt-BR" data-scroll-behavior="smooth">
       <body
