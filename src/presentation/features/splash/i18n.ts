@@ -1,6 +1,6 @@
 import { SUPPORTED_LOCALES } from '@core/constants'
 
-export type Locale = (typeof SUPPORTED_LOCALES)[number]
+type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 export type SplashMessages = {
   'splash.title': string

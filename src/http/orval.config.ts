@@ -32,7 +32,7 @@ export default defineConfig({
 
         mutator: {
           name: 'http',
-          path: '../mutator/orval-mutator.ts',
+          path: './mutator/orval-mutator.ts',
         },
 
         header: (info) => [

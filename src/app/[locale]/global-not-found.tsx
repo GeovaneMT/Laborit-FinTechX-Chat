@@ -3,7 +3,7 @@ import { Providers } from '@/infra/providers'
 import '@styles/globals.css'
 
 import { geistMono, geistSans } from '@styles/fonts'
-import { NotFound } from '@ui/not-found'
+import { NotFound } from '@/presentation/layouts/not-found'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {

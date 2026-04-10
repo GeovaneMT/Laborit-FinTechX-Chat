@@ -1,6 +1,6 @@
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@core/constants'
 
-export type Locale = (typeof SUPPORTED_LOCALES)[number]
+type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 type GetMessagesProps<T extends Record<string, string>> = {
   locale: Locale
@@ -29,7 +29,7 @@ export const DefaultMessages: Record<Locale, DefaultMessages> = {
   },
 }
 
-export function isLocale(value: string) {
+function isLocale(value: string) {
   return SUPPORTED_LOCALES.toString().includes(value)
 }
 

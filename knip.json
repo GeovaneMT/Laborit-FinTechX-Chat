@@ -1,0 +1,106 @@
+{
+  "entry": [
+    "src/app/**/*.{ts,tsx}",
+    "src/infra/**/*.{ts,tsx}",
+    "src/http/**/*.{ts,tsx}",
+    "src/presentation/**/*.{ts,tsx}"
+  ],
+  "paths": {
+    "@app/*": [
+      "./src/app/*"
+    ],
+    "@mocks/*": [
+      "./src/mocks/*"
+    ],
+    "@/*": [
+      "./src/*"
+    ],
+    "@core/*": [
+      "./src/core/*"
+    ],
+    "@utils/*": [
+      "./src/core/utils/*"
+    ],
+    "@infra/*": [
+      "./src/infra/*"
+    ],
+    "@env/*": [
+      "./src/infra/env/*"
+    ],
+    "@actions/*": [
+      "./src/infra/server/actions/*"
+    ],
+    "@http/*": [
+      "./src/http/*"
+    ],
+    "@errors/*": [
+      "./src/infra/errors/*"
+    ],
+    "@tanstack/*": [
+      "./src/infra/data/tanstack/*"
+    ],
+    "@queries/*": [
+      "./src/infra/data/tanstack/react-query/queries/*"
+    ],
+    "@queryFn/*": [
+      "./src/infra/data/query-functions/*"
+    ],
+    "@mutations/*": [
+      "./src/infra/data/mutations/*"
+    ],
+    "@presentation/*": [
+      "./src/presentation/*"
+    ],
+    "@features/*": [
+      "./src/presentation/features/*"
+    ],
+    "@layouts/*": [
+      "./src/presentation/layouts/*"
+    ],
+    "@pattern/*": [
+      "./src/presentation/pattern/*"
+    ],
+    "@contexts/*": [
+      "./src/presentation/pattern/contexts/*"
+    ],
+    "@models/*": [
+      "./src/presentation/models/*"
+    ],
+    "@styles/*": [
+      "./src/presentation/styles/*"
+    ],
+    "@schemas/*": [
+      "./src/presentation/schemas/*"
+    ],
+    "@providers/*": [
+      "./src/presentation/providers/*"
+    ],
+    "@zustand/*": [
+      "./src/infra/stores/*"
+    ],
+    "@ui/*": [
+      "./src/presentation/ui/*"
+    ],
+    "@shadcn/*": [
+      "./src/presentation/ui/shadcn/*"
+    ]
+  },
+  "project": [
+    "src/**/*.{ts,tsx,js,jsx}"
+  ],
+  "ignore": [
+    ".next",
+    "dist",
+    "coverage",
+    "**/*.d.ts",
+    "**/index.ts",
+    "node_modules",
+    "vitest.config.e2e.ts",
+    "src/presentation/ui/**"
+  ],
+  "ignoreDependencies": [
+    "next",
+    "react",
+    "react-dom"
+  ]
+}

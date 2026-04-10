@@ -1,11 +1,5 @@
 # TODO
 
-## 1. i18n
-
-- [ ] Refactor all i18n files to match @infra/i18n pattern
-- [ ] Refactor all route locations to source from URL (/[locale]) → primary
-      source
-
 ## 2. Validations
 
 - [ ] Use Zod (v4) schemas as the single source of truth

@@ -1,7 +1,7 @@
 import { QueryClient } from '@tanstack/react-query'
 import { cache } from 'react'
 
-export const queryClientOptions = {
+const queryClientOptions = {
   defaultOptions: {
     queries: {
       retry: 1,

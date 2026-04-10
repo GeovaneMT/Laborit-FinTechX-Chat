@@ -1,4 +1,4 @@
-import { NotFound } from '@ui/not-found'
+import { NotFound } from '@/presentation/layouts/not-found'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
