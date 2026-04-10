@@ -2,16 +2,17 @@ import { Providers } from '@/infra/providers'
 import { ClientBootstrap } from '@/presentation/providers/client-bootstrap'
 
 import { APP_NAME } from '@core/constants'
-import { getMessages, resolveLocale } from '@infra/i18n'
+import { DefaultMessages, getLocalMessages, resolveLocale } from '@infra/i18n'
 
 import '@styles/globals.css'
 
 import { geistMono, geistSans } from '@styles/fonts'
 import { cn } from '@utils/cn'
 import type { Metadata, Viewport } from 'next'
-import { JetBrains_Mono,Merriweather, Montserrat } from 'next/font/google'
-import { cookies } from 'next/headers'
-import React from 'react'
+import { JetBrains_Mono, Merriweather, Montserrat } from 'next/font/google'
+import React, { Suspense } from 'react'
+
+export { generateStaticParams } from '@infra/i18n'
 
 const fontSans = Montserrat({
   subsets: ['latin'],
@@ -54,15 +55,27 @@ export const metadata: Metadata = {
   },
 }
 
-interface RootLayoutProps {
+interface LocaleParams {
+  params: Promise<{
+    locale: string
+  }>
+}
+
+interface RootLayoutProps extends LocaleParams {
   children: React.ReactNode
 }
 
-export default async function RootLayout({ children }: RootLayoutProps) {
-  const cookieStore = await cookies()
-  const locale = resolveLocale(cookieStore.get('locale')?.value)
-  const messages = getMessages(locale)
+export default async function RootLayout({
+  params,
+  children,
+}: RootLayoutProps) {
+  const { locale: localeParam } = await params
 
+  const locale = resolveLocale(localeParam)
+  const messages = getLocalMessages<DefaultMessages>({
+    locale,
+    messages: DefaultMessages,
+  })
   const enableMsw = process.env.NEXT_PUBLIC_ENABLE_MSW === 'true'
 
   return (
@@ -79,16 +92,18 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-all duration-200 ease-in-out`}
       >
-        <Providers>
-          <ClientBootstrap enableMsw={enableMsw} />
-          <div
-            data-locale={locale}
-            data-msgs={JSON.stringify(messages)}
-            className="contents"
-          >
-            {children}
-          </div>
-        </Providers>
+        <Suspense fallback={<div>Loading translations...</div>}>
+          <Providers>
+            <ClientBootstrap enableMsw={enableMsw} />
+            <div
+              data-locale={locale}
+              data-msgs={JSON.stringify(messages)}
+              className="contents"
+            >
+              {children}
+            </div>
+          </Providers>
+        </Suspense>
       </body>
     </html>
   )

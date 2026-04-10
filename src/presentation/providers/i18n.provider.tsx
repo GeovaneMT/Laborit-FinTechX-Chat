@@ -1,27 +1,35 @@
 'use client'
 
-import { getMessages, Locale, resolveLocale } from '@infra/i18n'
+import {
+  DefaultMessages,
+  getLocalMessages,
+  type Locale,
+  resolveLocale,
+} from '@infra/i18n'
 
 import { createContext, ReactNode, useContext } from 'react'
 
-interface I18nContextType {
+interface I18nContextType<TMessages extends Record<string, string>> {
   locale: Locale
-  messages: Record<string, string>
-  t: (key: string) => string
+  messages: TMessages
+  t: (key: keyof TMessages) => string
 }
 
-const I18nContext = createContext<I18nContextType | null>(null)
+const I18nContext = createContext<I18nContextType<DefaultMessages> | null>(null)
 
 interface I18nProviderProps {
   children: ReactNode
-  locale?: string
+  locale?: Locale
 }
 
 export function I18nProvider({ children, locale }: I18nProviderProps) {
   const resolvedLocale = resolveLocale(locale)
-  const messages = getMessages(resolvedLocale)
+  const messages = getLocalMessages<DefaultMessages>({
+    locale: resolvedLocale,
+    messages: DefaultMessages,
+  })
 
-  const t = (key: string) => messages[key] || key
+  const t = (key: keyof typeof messages) => messages[key] || key
 
   return (
     <I18nContext.Provider value={{ locale: resolvedLocale, messages, t }}>

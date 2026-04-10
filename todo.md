@@ -1,11 +1,10 @@
 # TODO
 
-## 1. Imports Standardization
+## 1. i18n
 
-- [ ] Refactor all imports to use path aliases
-- [ ] Ensure aliases are short, consistent, and follow project conventions
-- [ ] Group and order imports (external → internal → styles)
-- [ ] Organize test files grouping by import source (module boundaries)
+- [ ] Refactor all i18n files to match @infra/i18n pattern
+- [ ] Refactor all route locations to source from URL (/[locale]) → primary
+      source
 
 ## 2. Validations
 

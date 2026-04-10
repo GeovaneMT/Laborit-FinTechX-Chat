@@ -2,7 +2,19 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@core/constants'
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
-const messages: Record<Locale, Record<string, string>> = {
+type GetMessagesProps<T extends Record<string, string>> = {
+  locale: Locale
+  messages: Record<Locale, T>
+}
+
+export type DefaultMessages = {
+  'nav.items': string
+  'nav.signOut': string
+  'nav.settings': string
+  'nav.dashboard': string
+}
+
+export const DefaultMessages: Record<Locale, DefaultMessages> = {
   en: {
     'nav.items': 'Items',
     'nav.signOut': 'Sign out',
@@ -17,15 +29,26 @@ const messages: Record<Locale, Record<string, string>> = {
   },
 }
 
-export function isLocale(value: string): value is Locale {
-  return (SUPPORTED_LOCALES as readonly string[]).includes(value)
+export function isLocale(value: string) {
+  return SUPPORTED_LOCALES.toString().includes(value)
 }
 
 export function resolveLocale(value: string | undefined): Locale {
-  if (value && isLocale(value)) return value
-  return DEFAULT_LOCALE as Locale
+  const IsLocale = value ? isLocale(value) : false
+
+  if (IsLocale) return value as Locale
+  return DEFAULT_LOCALE
 }
 
-export function getMessages(locale: Locale) {
+export function getLocalMessages<T extends Record<string, string>>({
+  locale,
+  messages,
+}: GetMessagesProps<T>) {
   return messages[locale]
+}
+
+export function generateStaticParams() {
+  return SUPPORTED_LOCALES.map((locale) => ({
+    locale,
+  }))
 }

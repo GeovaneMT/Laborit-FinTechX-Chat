@@ -1,6 +1,10 @@
 // import { NextResponse } from 'next/server'
 // import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
+import { DEFAULT_LOCALE, PUBLIC_FILE, SUPPORTED_LOCALES } from '@core/constants'
+
+import { NextRequest, NextResponse } from 'next/server'
+
 // const isPublicRoute = createRouteMatcher(['/', '/entrar(.*)'])
 
 // export default clerkMiddleware(async (auth, req) => {
@@ -28,7 +32,27 @@ export const config = {
   ],
 }
 
-export const proxy = () => {
-  // This is a placeholder for any future proxy logic.
-  // Currently, it does nothing and simply allows all requests to pass through.
+export const proxy = (request: NextRequest) => {
+  const { pathname } = request.nextUrl
+
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    PUBLIC_FILE.test(pathname)
+  ) {
+    return NextResponse.next()
+  }
+
+  const hasLocale = SUPPORTED_LOCALES.some(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
+  )
+
+  if (hasLocale) {
+    return NextResponse.next()
+  }
+
+  const url = request.nextUrl.clone()
+  url.pathname = `/${DEFAULT_LOCALE}${pathname}`
+
+  return NextResponse.redirect(url)
 }
