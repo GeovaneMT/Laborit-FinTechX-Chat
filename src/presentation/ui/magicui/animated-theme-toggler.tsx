@@ -1,13 +1,11 @@
 'use client'
 
+import { cn } from '@utils/cn'
+import { Moon, Sun } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useTheme } from 'next-themes'
-
 import { useCallback, useRef } from 'react'
-import { Moon, Sun } from 'lucide-react'
 import { flushSync } from 'react-dom'
-
-import { cn } from '@utils/cn'
 
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'button'> {
   duration?: number
@@ -31,8 +29,6 @@ export const AnimatedThemeToggler = ({
       flushSync(() => {
         const toggle = isDark ? 'light' : 'dark'
         setTheme(toggle)
-        document.documentElement.classList.toggle('dark')
-        localStorage.setItem('theme', toggle)
       })
     }).ready
 

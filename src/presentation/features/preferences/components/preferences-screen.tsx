@@ -1,10 +1,10 @@
 'use client'
 
-import { usePreferencesScreen } from '../view-models/use-preferences-screen'
-import type { Locale, PreferencesMessages } from '../i18n'
-import { Switch } from '@ui/shadcn/switch'
-import { Label } from '@ui/shadcn/label'
+import type { Locale, PreferencesMessages } from '@features/preferences/i18n'
+import { usePreferencesScreen } from '@features/preferences/view-models/use-preferences-screen'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
+import { Label } from '@ui/shadcn/label'
+import { Switch } from '@ui/shadcn/switch'
 
 type PreferencesScreenProps = {
   locale: Locale
@@ -15,7 +15,7 @@ export function PreferencesScreen({
   locale,
   messages,
 }: PreferencesScreenProps) {
-  const { darkMode, selectedLocale, changeLanguage } =
+  const { isDark, toggleDarkMode, selectedLocale, changeLanguage } =
     usePreferencesScreen(locale)
 
   const currentLanguageLabel =
@@ -41,16 +41,8 @@ export function PreferencesScreen({
             </Label>
             <Switch
               id="dark-mode"
-              checked={darkMode}
-              onCheckedChange={() => {
-                const newDark = !darkMode
-                if (newDark) {
-                  document.documentElement.classList.add('dark')
-                } else {
-                  document.documentElement.classList.remove('dark')
-                }
-                localStorage.setItem('theme', newDark ? 'dark' : 'light')
-              }}
+              checked={isDark}
+              onCheckedChange={toggleDarkMode}
             />
           </div>
           <div className="space-y-2">

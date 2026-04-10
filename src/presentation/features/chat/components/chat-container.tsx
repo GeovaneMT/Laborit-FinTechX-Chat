@@ -1,7 +1,7 @@
+import { ChatBubble } from '@features/chat/components/chat-bubble'
+import { Message } from '@features/chat/store'
 import { Alert, AlertDescription } from '@ui/shadcn/alert'
 import { Skeleton } from '@ui/shadcn/skeleton'
-import { ChatBubble } from './chat-bubble'
-import { Message } from '../store'
 
 interface ChatContainerProps {
   messages: Message[]

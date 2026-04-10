@@ -1,21 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import type { Locale } from '@features/preferences/i18n'
 import { useRouter } from 'next/navigation'
-import type { Locale } from '../i18n'
+import { useTheme } from 'next-themes'
+import { useState } from 'react'
 
 export function usePreferencesScreen(_locale: Locale) {
   const router = useRouter()
-  const [darkMode, _setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('theme')
-      if (stored) {
-        return stored === 'dark'
-      }
-      return document.documentElement.classList.contains('dark')
-    }
-    return false
-  })
+  const { theme, setTheme } = useTheme()
+
   const [selectedLocale, setSelectedLocale] = useState(() => {
     if (typeof window !== 'undefined') {
       const cookieValue = document.cookie
@@ -33,8 +26,15 @@ export function usePreferencesScreen(_locale: Locale) {
     router.refresh()
   }
 
+  const isDark = theme === 'dark'
+
+  const toggleDarkMode = () => {
+    setTheme(isDark ? 'light' : 'dark')
+  }
+
   return {
-    darkMode,
+    isDark,
+    toggleDarkMode,
     selectedLocale,
     changeLanguage,
   }

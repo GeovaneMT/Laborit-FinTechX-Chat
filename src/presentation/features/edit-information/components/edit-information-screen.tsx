@@ -1,11 +1,11 @@
 'use client'
 
+import type { EditInformationMessages } from '@features/edit-information/i18n'
+import { useEditInformationScreen } from '@features/edit-information/view-models/use-edit-information-screen'
 import { Button } from '@ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 import { Input } from '@ui/shadcn/input'
 import { Label } from '@ui/shadcn/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
-import type { EditInformationMessages } from '../i18n'
-import { useEditInformationScreen } from '../view-models/use-edit-information-screen'
 
 type EditInformationScreenProps = {
   messages: EditInformationMessages

@@ -1,8 +1,9 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
 import { queryKeyRegistry } from '@infra/query-keys'
+
 import { readDashboardSummaryAction } from '@features/dashboard/actions'
+import { useQuery } from '@tanstack/react-query'
 
 export function useDashboardSummary() {
   return useQuery({

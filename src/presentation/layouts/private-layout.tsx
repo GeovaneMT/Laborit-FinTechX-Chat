@@ -1,6 +1,6 @@
+import { cn } from '@utils/cn'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
-import { cn } from '@utils/cn'
 
 type Props = {
   children: ReactNode

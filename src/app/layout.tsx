@@ -1,19 +1,17 @@
-import React from 'react'
-import { geistMono, geistSans } from '@styles/fonts'
-import { Montserrat, Merriweather, JetBrains_Mono } from 'next/font/google'
+import { Providers } from '@/infra/providers'
+import { ClientBootstrap } from '@/presentation/providers/client-bootstrap'
+
+import { APP_NAME } from '@core/constants'
+import { getMessages, resolveLocale } from '@infra/i18n'
 
 import '@styles/globals.css'
 
-import { Providers } from '@/infra/providers'
-
+import { geistMono, geistSans } from '@styles/fonts'
 import { cn } from '@utils/cn'
-
-import { cookies } from 'next/headers'
-import { APP_NAME } from '@core/constants'
-import { getMessages, resolveLocale } from '@infra/i18n'
-import { ClientBootstrap } from '@/presentation/providers/client-bootstrap'
-
 import type { Metadata, Viewport } from 'next'
+import { JetBrains_Mono,Merriweather, Montserrat } from 'next/font/google'
+import { cookies } from 'next/headers'
+import React from 'react'
 
 const fontSans = Montserrat({
   subsets: ['latin'],

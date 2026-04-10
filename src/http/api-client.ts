@@ -1,5 +1,5 @@
-import ky from 'ky'
 import { QueryClient } from '@tanstack/react-query'
+import ky from 'ky'
 
 const queryClient = new QueryClient()
 

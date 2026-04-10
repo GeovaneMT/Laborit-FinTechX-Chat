@@ -1,9 +1,9 @@
 import { defineConfig, globalIgnores } from 'eslint/config'
 import nextVitals from 'eslint-config-next/core-web-vitals'
-import prettier from 'eslint-config-prettier/flat'
 import nextTs from 'eslint-config-next/typescript'
-import reactHooks from 'eslint-plugin-react-hooks'
+import prettier from 'eslint-config-prettier/flat'
 import boundaries from 'eslint-plugin-boundaries'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 /** Presentation sub-zones (template: ui / pattern / features + shared folders). */
 const P = {
@@ -20,14 +20,15 @@ const P = {
 const presentationTypes = Object.values(P)
 
 const eslintConfig = defineConfig([
-  reactHooks.configs.flat.recommended,
   ...nextVitals,
+  ...nextTs,
   ...nextTs,
   prettier,
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
   {
     plugins: {
       boundaries,
+      'simple-import-sort': simpleImportSort,
     },
     settings: {
       'boundaries/elements': [
@@ -132,6 +133,22 @@ const eslintConfig = defineConfig([
       ],
       'boundaries/no-unknown': 'off',
       'boundaries/no-unknown-files': 'off',
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^\u0000'],
+            ['^node:'],
+            ['^@?\w'],
+            ['^@/'],
+            ['^(@core|@infra|@http|@presentation|@mocks)'],
+            ['^\.\./'],
+            ['^\./'],
+            ['^.+\.(css|scss)$'],
+          ],
+        },
+      ],
+      'simple-import-sort/exports': 'error',
     },
   },
   {

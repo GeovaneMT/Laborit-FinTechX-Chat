@@ -1,6 +1,5 @@
-import { ArrowRight } from 'lucide-react'
-
 import { cn } from '@utils/cn'
+import { ArrowRight } from 'lucide-react'
 
 export function InteractiveHoverButton({
   children,

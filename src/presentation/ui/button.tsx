@@ -1,9 +1,9 @@
 'use client'
 
-import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
-import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@utils/cn'
+import { cva, type VariantProps } from 'class-variance-authority'
+import * as React from 'react'
 
 const buttonVariants = cva(
   'group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent ' +

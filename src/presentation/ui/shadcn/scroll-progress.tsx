@@ -1,8 +1,7 @@
 'use client'
 
-import { motion, useScroll, type MotionProps } from 'motion/react'
-
 import { cn } from '@utils/cn'
+import { motion, type MotionProps,useScroll } from 'motion/react'
 
 interface ScrollProgressProps extends Omit<
   React.HTMLAttributes<HTMLElement>,

@@ -1,7 +1,8 @@
 'use server'
 
+import { sendMessageSchema } from '@presentation/features/chat/schemas'
+
 import OpenAI from 'openai'
-import { sendMessageSchema } from './schemas'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,

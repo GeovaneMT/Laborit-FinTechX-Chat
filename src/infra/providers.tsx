@@ -1,13 +1,11 @@
 'use client'
 
-import { ReactNode, Suspense } from 'react'
-
+import { I18nProvider } from '@providers/i18n.provider'
+import { QueryProvider } from '@providers/query-provider'
+import { ThemeProvider } from '@providers/theme.provider'
 import { Toaster } from '@shadcn/sonner'
 import { TooltipProvider } from '@shadcn/tooltip'
-
-import { ThemeProvider } from '@providers/theme.provider'
-import { QueryProvider } from '@providers/query-provider'
-import { I18nProvider } from '@providers/i18n.provider'
+import { ReactNode, Suspense } from 'react'
 
 interface ProvidersProps {
   children: ReactNode

@@ -1,5 +1,5 @@
-import { DashboardPanel } from './dashboard-panel'
-import type { DashboardMessages } from '../i18n'
+import { DashboardPanel } from '@features/dashboard/components/dashboard-panel'
+import type { DashboardMessages } from '@features/dashboard/i18n'
 
 type DashboardScreenProps = {
   messages: DashboardMessages

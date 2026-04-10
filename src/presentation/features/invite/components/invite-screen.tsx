@@ -1,11 +1,11 @@
 'use client'
 
+import type { InviteMessages } from '@features/invite/i18n'
+import { useInviteScreen } from '@features/invite/view-models/use-invite-screen'
 import { Button } from '@ui/button'
-import { Copy, Check } from 'lucide-react'
-import { Input } from '@ui/shadcn/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
-import type { InviteMessages } from '../i18n'
-import { useInviteScreen } from '../view-models/use-invite-screen'
+import { Input } from '@ui/shadcn/input'
+import { Check, Copy } from 'lucide-react'
 
 type InviteScreenProps = {
   messages: InviteMessages

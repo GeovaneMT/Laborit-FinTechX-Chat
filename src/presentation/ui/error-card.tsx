@@ -1,13 +1,10 @@
 'use client'
 
-import { AlertCircleIcon, RefreshCcwIcon } from 'lucide-react'
-
+import { Alert, AlertDescription,AlertTitle } from '@shadcn/alert'
 import { Button } from '@ui/button'
 import { TypographyP } from '@ui/typography/p'
-
+import { AlertCircleIcon, RefreshCcwIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
-
-import { Alert, AlertTitle, AlertDescription } from '@shadcn/alert'
 
 interface TipsProps {
   tips?: string[]

@@ -1,15 +1,13 @@
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-
-import { Button } from '@ui/button'
-
 import {
   Empty,
-  EmptyTitle,
-  EmptyHeader,
   EmptyContent,
   EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
 } from '@shadcn/empty'
+import { Button } from '@ui/button'
+import { ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
 export const NotFound = () => (
   <div className="relative flex min-h-[70vh] flex-col items-center justify-center pb-12 text-center">

@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest'
 import { isNonEmptyString } from '@core/utils'
+
+import { describe, expect, it } from 'vitest'
 
 describe('isNonEmptyString', () => {
   it('accepts non-empty strings', () => {

@@ -1,7 +1,6 @@
-import { cookies } from 'next/headers'
-
 import { ProfileScreen } from '@features/profile/components/profile-screen'
 import { getMessages, resolveLocale } from '@features/profile/i18n'
+import { cookies } from 'next/headers'
 
 export default async function ProfilePage() {
   const locale = resolveLocale((await cookies()).get('locale')?.value)

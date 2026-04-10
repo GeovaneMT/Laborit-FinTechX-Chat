@@ -1,5 +1,5 @@
-import { useChatStore } from './store'
-import { sendMessageAction } from './actions'
+import { sendMessageAction } from '@features/chat/actions'
+import { useChatStore } from '@features/chat/store'
 
 export function useChatScreen() {
   const {

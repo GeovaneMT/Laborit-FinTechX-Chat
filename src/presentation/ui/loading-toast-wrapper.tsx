@@ -1,7 +1,7 @@
 'use client'
 
-import { toast } from 'sonner'
 import { useEffect } from 'react'
+import { toast } from 'sonner'
 
 export const LoadingFallback = () => {
   useEffect(() => {

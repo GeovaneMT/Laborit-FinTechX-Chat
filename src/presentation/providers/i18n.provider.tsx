@@ -1,8 +1,8 @@
 'use client'
 
-import { createContext, ReactNode, useContext } from 'react'
-
 import { getMessages, Locale, resolveLocale } from '@infra/i18n'
+
+import { createContext, ReactNode, useContext } from 'react'
 
 interface I18nContextType {
   locale: Locale

@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import type { HomeMessages } from '@features/home/i18n'
 import { Button } from '@ui/button'
 import { TypographyH1 } from '@ui/typography/hx/h1'
-import type { HomeMessages } from '../i18n'
+import Link from 'next/link'
 
 type HomeScreenProps = {
   messages: HomeMessages

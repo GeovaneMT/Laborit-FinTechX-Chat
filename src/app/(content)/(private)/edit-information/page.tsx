@@ -1,7 +1,6 @@
-import { cookies } from 'next/headers'
-
 import { EditInformationScreen } from '@features/edit-information/components/edit-information-screen'
 import { getMessages, resolveLocale } from '@features/edit-information/i18n'
+import { cookies } from 'next/headers'
 
 export default async function EditInformationPage() {
   const locale = resolveLocale((await cookies()).get('locale')?.value)

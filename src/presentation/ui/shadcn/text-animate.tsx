@@ -1,15 +1,14 @@
 'use client'
 
-import { memo } from 'react'
+import { cn } from '@utils/cn'
 import {
   AnimatePresence,
-  motion,
-  Variants,
   type DOMMotionComponents,
+  motion,
   type MotionProps,
+  Variants,
 } from 'motion/react'
-
-import { cn } from '@utils/cn'
+import { memo } from 'react'
 
 type AnimationType = 'text' | 'word' | 'character' | 'line'
 type AnimationVariant =

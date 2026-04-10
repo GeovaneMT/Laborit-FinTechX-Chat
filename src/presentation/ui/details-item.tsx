@@ -1,20 +1,17 @@
 'use client'
 
-import Link from 'next/link'
-import { cn } from '@utils/cn'
-
-import { ArrowRightIcon, AlertCircleIcon } from 'lucide-react'
-
-import { Button } from '@ui/button'
-import { Skeleton } from '@shadcn/skeleton'
-
 import {
   Card,
-  CardTitle,
   CardAction,
   CardContent,
   CardDescription,
+  CardTitle,
 } from '@shadcn/card'
+import { Skeleton } from '@shadcn/skeleton'
+import { Button } from '@ui/button'
+import { cn } from '@utils/cn'
+import { AlertCircleIcon,ArrowRightIcon } from 'lucide-react'
+import Link from 'next/link'
 
 interface DetailsItemSkeletonProps {
   className?: string

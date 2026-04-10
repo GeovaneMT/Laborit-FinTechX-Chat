@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
-
 import { queryKeyRegistry } from '@infra/query-keys'
+
+import { useQuery } from '@tanstack/react-query'
 
 export function useProfileViewModel() {
   const { data: profile, isLoading } = useQuery({

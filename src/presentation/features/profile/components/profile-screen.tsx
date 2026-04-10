@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import type { ProfileMessages } from '@features/profile/i18n'
 import { Button } from '@ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
-import type { ProfileMessages } from '../i18n'
+import Link from 'next/link'
 
 type ProfileScreenProps = {
   messages: ProfileMessages

@@ -1,10 +1,9 @@
-import '@styles/globals.css'
-import { geistMono, geistSans } from '@styles/fonts'
-
 import { Providers } from '@/infra/providers'
 
-import { NotFound } from '@ui/not-found'
+import '@styles/globals.css'
 
+import { geistMono, geistSans } from '@styles/fonts'
+import { NotFound } from '@ui/not-found'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {

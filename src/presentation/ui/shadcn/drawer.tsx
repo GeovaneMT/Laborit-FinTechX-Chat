@@ -1,9 +1,8 @@
 'use client'
 
+import { cn } from '@utils/cn'
 import * as React from 'react'
 import { Drawer as DrawerPrimitive } from 'vaul'
-
-import { cn } from '@utils/cn'
 
 function Drawer({
   ...props
@@ -119,13 +118,13 @@ function DrawerDescription({
 
 export {
   Drawer,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerTrigger,
   DrawerClose,
   DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
-  DrawerTitle,
   DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger,
 }

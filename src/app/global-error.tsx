@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect } from 'react'
+import '@styles/globals.css'
 
 import { ErrorCard } from '@ui/error-card'
-
-import '@styles/globals.css'
+import { useEffect } from 'react'
 
 interface RootGlobalErrorProps {
   error: Error & { digest?: string }
