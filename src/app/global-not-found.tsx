@@ -1,5 +1,3 @@
-import { cacheLife, cacheTag } from 'next/cache'
-
 import '@styles/globals.css'
 import { geistMono, geistSans } from '@styles/fonts'
 

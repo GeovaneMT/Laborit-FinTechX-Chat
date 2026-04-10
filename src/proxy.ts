@@ -27,3 +27,9 @@ export const config = {
     '/(api|trpc)(.*)',
   ],
 }
+
+export const proxy = {
+  target: process.env.NEXT_PUBLIC_PROXY_TARGET,
+  changeOrigin: true,
+  secure: false,
+}

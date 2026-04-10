@@ -1,5 +1,3 @@
-import { cacheLife, cacheTag } from 'next/cache'
-
 import { NotFound } from '@ui/not-found'
 
 import type { Metadata } from 'next'
