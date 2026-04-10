@@ -13,10 +13,16 @@ interface ProvidersProps {
 }
 
 export function Providers({ children }: ProvidersProps) {
+  const scriptProps =
+    typeof window === 'undefined'
+      ? undefined
+      : ({ type: 'application/json' } as const)
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <QueryProvider>
         <ThemeProvider
+          scriptProps={scriptProps}
           attribute="class"
           defaultTheme="system"
           enableSystem

@@ -28,8 +28,7 @@ export const config = {
   ],
 }
 
-export const proxy = {
-  target: process.env.NEXT_PUBLIC_PROXY_TARGET,
-  changeOrigin: true,
-  secure: false,
+export const proxy = () => {
+  // This is a placeholder for any future proxy logic.
+  // Currently, it does nothing and simply allows all requests to pass through.
 }
