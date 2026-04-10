@@ -29,8 +29,13 @@
 - [ ] Ensure responsiveness and accessibility (a11y)
 - [ ] Integrate with routing and layout system
 
-## 5. Storybook, Design System & Documentation
+## 5. Chatbot
 
+- [ ] Create a postgres for chatbot history
+
+## 7. Storybook, Design System & Documentation
+
+- [ ] Remove all docks from docs folder and generate new ones
 - [ ] Set up and configure Storybook
 - [ ] Document all shared UI components
 - [ ] Create stories for different states (loading, error, variants)
@@ -38,7 +43,3 @@
 - [ ] Document usage guidelines and best practices
 - [ ] Align components with accessibility standards (ARIA, keyboard nav)
 - [ ] Keep documentation close to components (colocation or MDX)
-
-## 6. Chatbot
-
-- [ ] Create a postgres for chatbot history

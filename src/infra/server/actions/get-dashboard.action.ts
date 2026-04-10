@@ -18,6 +18,6 @@ export const getDashboardAction =
       count: 42,
       success: true,
       headline: 'Total de cadastros',
-      message: 'Telefone cadastrado com sucesso!',
+      message: 'Cadastrados buscados com sucesso!',
     }
   }
