@@ -1,7 +1,6 @@
 import { type Config } from 'prettier'
 
 const config: Config = {
-  // === Formatting ===
   printWidth: 80,
   tabWidth: 2,
   useTabs: false,
@@ -13,7 +12,6 @@ const config: Config = {
   endOfLine: 'auto',
   proseWrap: 'always',
 
-  // === TailwindCSS support ===
   plugins: ['prettier-plugin-tailwindcss'],
 }
 

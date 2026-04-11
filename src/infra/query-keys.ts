@@ -7,5 +7,3 @@ export const queryKeyRegistry = {
   },
 } as const
 
-// export const customerDetailsByIdQueryKey = (id: string) =>
-//   ['customer', 'details', 'id', id] as const

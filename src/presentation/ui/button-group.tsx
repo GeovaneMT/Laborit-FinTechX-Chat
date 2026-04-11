@@ -9,12 +9,10 @@ const buttonGroupVariants = cva(
     variants: {
       orientation: {
         responsive:
-          // Mobile vertical
           'flex-col ' +
           '[&>*:first-child]:rounded-tl-lg [&>*:first-child]:rounded-tr-lg [&>*:first-child]:rounded-bl-none [&>*:first-child]:rounded-br-none ' +
           '[&>*:last-child]:rounded-tl-none [&>*:last-child]:rounded-tr-none [&>*:last-child]:rounded-bl-lg [&>*:last-child]:rounded-br-lg ' +
           '[&>*:not(:first-child):not(:last-child)]:rounded-none ' +
-          // Desktop horizontal
           'sm:flex-row ' +
           '[&>*:first-child]:sm:rounded-tl-lg [&>*:first-child]:sm:rounded-tr-none [&>*:first-child]:sm:rounded-bl-lg [&>*:first-child]:sm:rounded-br-none ' +
           '[&>*:last-child]:sm:rounded-tl-none [&>*:last-child]:sm:rounded-tr-lg [&>*:last-child]:sm:rounded-bl-none [&>*:last-child]:sm:rounded-br-lg ' +

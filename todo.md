@@ -1,13 +1,6 @@
 # TODO
 
-## 2. Validations
-
-- [ ] Use Zod (v4) schemas as the single source of truth
-- [ ] Centralize schemas following existing architecture
-- [ ] Reuse schemas across client and server
-- [ ] Validate inputs at boundaries (forms, server actions, APIs)
-
-## 3. Server Actions
+## 1. Server Actions
 
 - [ ] Refactor existing server actions to follow project standards
 - [ ] Ensure consistent naming (`*.action.ts`)
@@ -16,18 +9,18 @@
 - [ ] Review examples: `create-phone.action.ts`, `fetch-customers.action.ts`,
       `validate-phone.action.ts`
 
-## 4. UI Structure (Navigation & Footer)
+## 2. UI Structure (Navigation & Footer)
 
 - [ ] Implement a reusable navigation menu component
 - [ ] Implement a reusable footer component
 - [ ] Ensure responsiveness and accessibility (a11y)
 - [ ] Integrate with routing and layout system
 
-## 5. Chatbot
+## 3. Chatbot
 
 - [ ] Create a postgres for chatbot history
 
-## 7. Storybook, Design System & Documentation
+## 4. Storybook, Design System & Documentation
 
 - [ ] Remove all docs from docs folder and all git branches/commits/history and
       generate new ones

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-import { parseItem } from '../../../../core/schemas/item.schema'
+import { parseItem } from '@core/schemas/item.schema'
 
 const items = [
   { id: 'item_1', title: 'Sample item A', updatedAt: new Date().toISOString() },

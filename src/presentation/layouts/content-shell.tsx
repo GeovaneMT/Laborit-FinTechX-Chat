@@ -2,14 +2,10 @@
 
 import { DotPattern } from '@shadcn/dot-pattern'
 import { LightRays } from '@shadcn/light-rays'
-// import { SectionPages } from '@layouts/pages-section'
-// import { NavigationMenuHeader } from '@layouts/header'
-// import { Footer } from '@layouts/footer'
 import { ScrollArea } from '@ui/scroll-area'
 import { cn } from '@utils/cn'
 import { useRef } from 'react'
 
-// import { ScrollContextProvider } from '@contexts/scroll-virtualization-context'
 
 interface ContentShellProps {
   children: React.ReactNode

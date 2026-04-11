@@ -10,4 +10,12 @@ export const dashboardQueryFn: QueryFunction<
   DashboardSummary,
   DashboardQueryKey,
   pageParam
-> = async () => await getDashboardAction()
+> = async () => {
+  const result = await getDashboardAction()
+
+  if (!result.success) {
+    throw new Error(result.error.message)
+  }
+
+  return result.data
+}

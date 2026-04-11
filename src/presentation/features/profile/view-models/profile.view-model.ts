@@ -8,7 +8,6 @@ export function useProfileViewModel() {
   const { data: profile, isLoading } = useQuery({
     queryKey: queryKeyRegistry.profile.current,
     queryFn: async () => {
-      // Fetch profile logic
       return { displayName: 'John Doe', email: 'john@example.com' }
     },
   })

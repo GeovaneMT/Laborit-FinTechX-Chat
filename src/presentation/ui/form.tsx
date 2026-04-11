@@ -182,7 +182,6 @@ const FormMessage = React.forwardRef<
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.25, ease: 'easeInOut' }}
           className={cn(
-            // 'flex space-x-2 text-sm leading-none font-medium text-red-500 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 dark:text-red-900',
             'flex space-x-2 text-red-500 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 dark:text-red-900',
             className,
           )}

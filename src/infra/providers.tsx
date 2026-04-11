@@ -24,7 +24,6 @@ export function Providers({ children }: ProvidersProps) {
           attribute="class"
           defaultTheme="system"
           enableSystem
-          // disableTransitionOnChange
         >
           <TooltipProvider>{children}</TooltipProvider>
           <Toaster position="top-right" />

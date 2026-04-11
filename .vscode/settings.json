@@ -1,6 +1,18 @@
 {
   "chat.tools.terminal.autoApprove": {
     "command": true,
-    "mkdir": true
+    "mkdir": true,
+    "/^cd \"G:/Documentos/Documentos Personalizados/Projetos/Dev/Teste técnico Laborit - Frontend\" && python - <<'PY'\nimport os, re\nroot='\\.'\nkeep_re = re\\.compile\\(r'\\\\s\\*//\\\\s\\*\\(\\?:@\\|eslint\\|prettier\\|ts-ignore\\|ts-expect-error\\|c8\\|istanbul\\|global\\|jsx\\|ts\\|flow\\|sourceMappingURL\\|#\\|!\\)', re\\.I\\)\nfiles=\\[\\]\ncount=0\nfor dirpath, dirnames, filenames in os\\.walk\\(root\\):\n    if any\\(p in dirpath\\.split\\(os\\.sep\\) for p in \\('node_modules', '\\.next', '\\.git', 'coverage'\\)\\):\n        continue\n    for fn in filenames:\n        if fn\\.endswith\\(\\('\\.ts','\\.tsx','\\.js','\\.jsx'\\)\\):\n            path = os\\.path\\.join\\(dirpath, fn\\)\n            with open\\(path, 'r', encoding='utf-8', errors='ignore'\\) as f:\n                for line in f:\n                    if re\\.match\\(r'\\\\s\\*//', line\\) and not keep_re\\.match\\(line\\.lstrip\\(\\)\\):\n                        count \\+= 1\n                    elif re\\.match\\(r'\\\\s\\*/\\\\\\*', line\\):\n                        count \\+= 1\nprint\\('remaining comment-only lines approx', count\\)\nPY$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^cd \"G:/Documentos/Documentos Personalizados/Projetos/Dev/Teste técnico Laborit - Frontend\" && python - <<'PY'\nimport os, re\nkeep_re = re\\.compile\\(r'\\\\s\\*//\\\\s\\*\\(\\?:@\\|eslint\\|prettier\\|ts-ignore\\|ts-expect-error\\|c8\\|istanbul\\|global\\|jsx\\|ts\\|flow\\|sourceMappingURL\\|#\\|!\\)', re\\.I\\)\nfor dirpath, dirnames, filenames in os\\.walk\\('\\.'\\):\n    if any\\(p in dirpath\\.split\\(os\\.sep\\) for p in \\('node_modules', '\\.next', '\\.git', 'coverage'\\)\\):\n        continue\n    for fn in filenames:\n        if fn\\.endswith\\(\\('\\.ts','\\.tsx','\\.js','\\.jsx'\\)\\):\n            path = os\\.path\\.join\\(dirpath, fn\\)\n            with open\\(path, 'r', encoding='utf-8', errors='ignore'\\) as f:\n                for i,line in enumerate\\(f,1\\):\n                    if re\\.match\\(r'\\\\s\\*//', line\\) and not keep_re\\.match\\(line\\.lstrip\\(\\)\\):\n                        print\\(path, i, line\\.rstrip\\(\\)\\)\n                    elif re\\.match\\(r'\\\\s\\*/\\\\\\*', line\\):\n                        print\\(path, i, line\\.rstrip\\(\\)\\)\nPY$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^cd \"G:/Documentos/Documentos Personalizados/Projetos/Dev/Teste técnico Laborit - Frontend\" && python - <<'PY'\nimport os, re\nkeep_re = re\\.compile\\(r'\\\\s\\*//\\\\s\\*\\(\\?:@\\|eslint\\|prettier\\|ts-ignore\\|ts-expect-error\\|c8\\|istanbul\\|global\\|jsx\\|ts\\|flow\\|sourceMappingURL\\|#\\|!\\|/\\\\s\\*<reference\\)', re\\.I\\)\ncount=0\nfor dirpath, dirnames, filenames in os\\.walk\\('\\.'\\):\n    if any\\(p in dirpath\\.split\\(os\\.sep\\) for p in \\('node_modules', '\\.next', '\\.git', 'coverage'\\)\\):\n        continue\n    for fn in filenames:\n        if fn\\.endswith\\(\\('\\.ts','\\.tsx','\\.js','\\.jsx'\\)\\):\n            with open\\(os\\.path\\.join\\(dirpath, fn\\), 'r', encoding='utf-8', errors='ignore'\\) as f:\n                for line in f:\n                    if re\\.match\\(r'\\\\s\\*//', line\\) and not keep_re\\.match\\(line\\.lstrip\\(\\)\\):\n                        count \\+= 1\n                    elif re\\.match\\(r'\\\\s\\*/\\\\\\*', line\\):\n                        count \\+= 1\nprint\\('remaining comment-only lines approx', count\\)\nPY$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
   }
 }

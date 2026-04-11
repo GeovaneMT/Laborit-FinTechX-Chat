@@ -11,7 +11,6 @@ export const useDashboardQuery = () => {
     queryKey: queryKeyRegistry.dashboard.summary as DashboardQueryKey,
     queryFn: dashboardQueryFn,
 
-    // initialData,
 
     gcTime: Infinity,
     staleTime: Infinity,

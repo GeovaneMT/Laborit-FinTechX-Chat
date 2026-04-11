@@ -13,10 +13,8 @@ export function useChatScreen() {
   } = useChatStore()
 
   const sendMessage = async (message: string) => {
-    // Add user message immediately
     addMessage({ role: 'user', content: message })
 
-    // Start loading
     setLoading(true)
     setError(null)
 
