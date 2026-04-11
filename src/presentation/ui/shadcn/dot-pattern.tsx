@@ -17,7 +17,6 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   [key: string]: unknown
 }
 
-
 export function DotPattern({
   width = 16,
   height = 16,

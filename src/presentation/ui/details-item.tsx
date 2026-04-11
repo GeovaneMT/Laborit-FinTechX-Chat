@@ -10,7 +10,7 @@ import {
 import { Skeleton } from '@shadcn/skeleton'
 import { Button } from '@ui/button'
 import { cn } from '@utils/cn'
-import { AlertCircleIcon,ArrowRightIcon } from 'lucide-react'
+import { AlertCircleIcon, ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 
 interface DetailsItemSkeletonProps {

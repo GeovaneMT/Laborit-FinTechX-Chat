@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, AlertDescription,AlertTitle } from '@shadcn/alert'
+import { Alert, AlertDescription, AlertTitle } from '@shadcn/alert'
 import { Button } from '@ui/button'
 import { TypographyP } from '@ui/typography/p'
 import { AlertCircleIcon, RefreshCcwIcon } from 'lucide-react'

@@ -14,8 +14,7 @@ describe('mocks handlers', () => {
       if (typeof resolver === 'function') {
         try {
           ;(resolver as (...args: unknown[]) => unknown)({}, {}, {})
-        } catch {
-        }
+        } catch {}
       }
     }
 

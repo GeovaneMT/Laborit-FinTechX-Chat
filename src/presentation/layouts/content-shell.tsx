@@ -6,7 +6,6 @@ import { ScrollArea } from '@ui/scroll-area'
 import { cn } from '@utils/cn'
 import { useRef } from 'react'
 
-
 interface ContentShellProps {
   children: React.ReactNode
 }

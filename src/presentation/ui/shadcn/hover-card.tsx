@@ -40,4 +40,4 @@ function HoverCardContent({
   )
 }
 
-export { HoverCard, HoverCardContent,HoverCardTrigger }
+export { HoverCard, HoverCardContent, HoverCardTrigger }

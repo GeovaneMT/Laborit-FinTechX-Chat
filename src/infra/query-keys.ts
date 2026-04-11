@@ -6,4 +6,3 @@ export const queryKeyRegistry = {
     current: ['profile', 'current'] as const,
   },
 } as const
-

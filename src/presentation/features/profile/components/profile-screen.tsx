@@ -14,12 +14,12 @@ type ProfileScreenProps = {
 export function ProfileScreen({ messages }: ProfileScreenProps) {
   const { profile, isLoading, submitForm, isSubmitting } = useProfileViewModel()
 
-  if (!profile) {
-    throw new Error('Profile data is required')
-  }
-
   if (isLoading || isSubmitting) {
     return <LoadingMessage />
+  }
+
+  if (!profile) {
+    throw new Error('Profile data is required')
   }
 
   return (
