@@ -1,0 +1,8 @@
+interface:
+  display_name: 'Next.js 16 Maintenance'
+  short_description:
+    'Maintain and upgrade Next.js 16 apps using the canonical SPA blueprint'
+  default_prompt:
+    'Use $nextjs-16-maintenance to perform maintenance, compatibility updates,
+    or architecture reviews on an existing Next.js 16 application while
+    preserving blueprint integrity.'

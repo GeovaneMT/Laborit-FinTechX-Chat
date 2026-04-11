@@ -4,6 +4,7 @@ import prettier from 'eslint-config-prettier/flat'
 import nextTs from 'eslint-config-next/typescript'
 import reactHooks from 'eslint-plugin-react-hooks'
 import boundaries from 'eslint-plugin-boundaries'
+import unusedImports from 'eslint-plugin-unused-imports'
 
 /** Presentation sub-zones (template: ui / pattern / features + shared folders). */
 const P = {
@@ -28,6 +29,7 @@ const eslintConfig = defineConfig([
   {
     plugins: {
       boundaries,
+      'unused-imports': unusedImports,
     },
     settings: {
       'boundaries/elements': [

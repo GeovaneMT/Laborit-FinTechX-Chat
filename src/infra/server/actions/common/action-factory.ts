@@ -64,7 +64,7 @@ export async function wrapServerActionResult<T>(
     for (const tag of options.revalidateTags) {
       try {
         revalidateTag(tag, 'max')
-      } catch (e) {
+      } catch {
         console.warn(`Failed to revalidate tag: ${tag}`)
       }
     }
@@ -74,7 +74,7 @@ export async function wrapServerActionResult<T>(
     for (const path of options.revalidatePaths) {
       try {
         revalidatePath(path)
-      } catch (e) {
+      } catch {
         console.warn(`Failed to revalidate path: ${path}`)
       }
     }
@@ -109,7 +109,7 @@ export async function wrapServerActionMutation<T>(
     for (const tag of options.revalidateTags) {
       try {
         revalidateTag(tag, 'max')
-      } catch (e) {
+      } catch {
         console.warn(`Failed to revalidate tag: ${tag}`)
       }
     }
@@ -119,7 +119,7 @@ export async function wrapServerActionMutation<T>(
     for (const path of options.revalidatePaths) {
       try {
         revalidatePath(path)
-      } catch (e) {
+      } catch {
         console.warn(`Failed to revalidate path: ${path}`)
       }
     }
