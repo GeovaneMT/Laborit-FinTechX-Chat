@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import type { ProfileMessages } from '@features/profile/i18n'
 import { Button } from '@ui/button'

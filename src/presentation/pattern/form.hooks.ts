@@ -1,5 +1,5 @@
 import { useForm } from '@tanstack/react-form'
-import type { z } from 'zod'
+import type { z } from 'zod/v4'
 import { createStore } from 'zustand/vanilla'
 
 const formMetaStore = createStore<{ lastSubmittedAt: number | null }>(() => ({

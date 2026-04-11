@@ -1,6 +1,6 @@
 'use client'
 
-import type { Locale } from '@features/preferences/i18n'
+import type { Locale } from '@infra/i18n'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'

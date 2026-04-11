@@ -1,6 +1,9 @@
 'use server'
 
-import { sendMessageSchema } from '@presentation/features/chat/schemas'
+import {
+  parseSendMessageInput,
+  type SendMessageInput,
+} from '@core/schemas/chat.schema'
 
 import OpenAI from 'openai'
 
@@ -8,8 +11,8 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
 
-export async function sendMessageAction(input: { message: string }) {
-  const { message } = sendMessageSchema.parse(input)
+export async function sendMessageAction(input: SendMessageInput) {
+  const { message } = parseSendMessageInput(input)
 
   try {
     const completion = await openai.chat.completions.create({

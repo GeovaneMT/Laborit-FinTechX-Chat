@@ -1,10 +1,34 @@
+import { z } from 'zod/v4'
 import type { Profile } from '@core/entities/profile'
+import type { ProfileInput } from '@core/schemas/profile.schema'
+import { ok, err, type Result } from '@core/contracts/result'
+import {
+  profileSchema,
+  safeParseProfileEmail,
+} from '@core/schemas/profile.schema'
 
 export function formatProfileDisplayName(profile: Profile): string {
   return profile.displayName.trim()
 }
 
 export function isValidProfileEmail(profile: Profile): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return emailRegex.test(profile.email)
+  const { success, error } = safeParseProfileEmail(profile.email)
+
+  if (!success || error) {
+    return false
+  }
+
+  return true
+}
+
+export function validateProfilePayload(
+  payload: unknown,
+): Result<Profile, z.ZodError<ProfileInput>> {
+  const result = profileSchema.safeParse(payload)
+
+  if (result.success) {
+    return ok(result.data)
+  }
+
+  return err(result.error)
 }

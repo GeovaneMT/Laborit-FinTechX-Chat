@@ -1,10 +1,5 @@
-import { z } from 'zod'
-
-export const sendMessageSchema = z.object({
-  message: z
-    .string()
-    .min(1, 'Message cannot be empty')
-    .max(1000, 'Message too long'),
-})
-
-export type SendMessageInput = z.infer<typeof sendMessageSchema>
+export {
+  parseSendMessageInput,
+  sendMessageSchema,
+} from '@core/schemas/chat.schema'
+export type { SendMessageInput } from '@core/schemas/chat.schema'

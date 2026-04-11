@@ -29,7 +29,8 @@
 
 ## 7. Storybook, Design System & Documentation
 
-- [ ] Remove all docks from docs folder and generate new ones
+- [ ] Remove all docs from docs folder and all git branches/commits/history and
+      generate new ones
 - [ ] Set up and configure Storybook
 - [ ] Document all shared UI components
 - [ ] Create stories for different states (loading, error, variants)

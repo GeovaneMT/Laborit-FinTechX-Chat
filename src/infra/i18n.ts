@@ -1,6 +1,6 @@
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@core/constants'
 
-type Locale = (typeof SUPPORTED_LOCALES)[number]
+export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 type GetMessagesProps<T extends Record<string, string>> = {
   locale: Locale

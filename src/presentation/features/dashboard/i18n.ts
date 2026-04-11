@@ -1,6 +1,4 @@
-import { SUPPORTED_LOCALES } from '@core/constants'
-
-type Locale = (typeof SUPPORTED_LOCALES)[number]
+import { Locale } from '@/infra/i18n'
 
 export type DashboardMessages = {
   'dashboard.title': string

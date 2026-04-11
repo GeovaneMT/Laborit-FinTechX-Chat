@@ -1,6 +1,7 @@
 'use client'
 
-import type { Locale, PreferencesMessages } from '@features/preferences/i18n'
+import { Locale } from '@/infra/i18n'
+import type { PreferencesMessages } from '@features/preferences/i18n'
 import { usePreferencesScreen } from '@features/preferences/view-models/use-preferences-screen'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 import { Label } from '@ui/shadcn/label'

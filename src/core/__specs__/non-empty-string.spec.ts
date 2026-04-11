@@ -1,4 +1,4 @@
-import { isNonEmptyString } from '@core/utils'
+import { isNonEmptyString } from '@/core/utils/non-empty-string'
 
 import { describe, expect, it } from 'vitest'
 

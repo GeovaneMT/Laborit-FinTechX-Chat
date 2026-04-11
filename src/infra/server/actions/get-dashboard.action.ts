@@ -1,23 +1,14 @@
 'use server'
 
-export interface DashboardSummary {
-  headline: string
-  count: number
-}
+import { parseDashboardSummary } from '@core/schemas/dashboard.schema'
 
-export interface FetchDashboardResultProps extends DashboardSummary {
-  error?: string
-  status?: number
-  success: boolean
-  message: string
-}
-
-export const getDashboardAction =
-  async (): Promise<FetchDashboardResultProps> => {
-    return {
-      count: 42,
-      success: true,
-      headline: 'Total de cadastros',
-      message: 'Cadastrados buscados com sucesso!',
-    }
+export const getDashboardAction = async () => {
+  const dashboardSummary = {
+    count: 42,
+    success: true,
+    headline: 'Total de cadastros',
+    message: 'Cadastrados buscados com sucesso!',
   }
+
+  return parseDashboardSummary(dashboardSummary)
+}
