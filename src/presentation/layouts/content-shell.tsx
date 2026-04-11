@@ -3,6 +3,8 @@
 import { DotPattern } from '@shadcn/dot-pattern'
 import { LightRays } from '@shadcn/light-rays'
 import { ScrollArea } from '@ui/scroll-area'
+import { SiteFooter } from '@layouts/site-footer'
+import { SiteHeader } from '@layouts/site-header'
 import { cn } from '@utils/cn'
 import { useRef } from 'react'
 
@@ -14,7 +16,7 @@ export function ContentShell({ children }: Readonly<ContentShellProps>) {
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <main className="flex h-screen flex-col">
+    <main className="flex min-h-screen flex-col">
       <figure>
         <LightRays
           isStatic
@@ -33,18 +35,15 @@ export function ContentShell({ children }: Readonly<ContentShellProps>) {
         />
       </figure>
 
-      {/* <NavigationMenuHeader className="z-50" /> */}
+      <SiteHeader />
 
-      <section className="mb-8 h-full overflow-hidden p-8 pb-0">
-        {/* <SectionPages className="relative mx-auto h-full max-w-7xl rounded-md border bg-cover p-0"> */}
-        {/* <ScrollContextProvider value={scrollRef}> */}
+      <section className="mb-8 flex-1 overflow-hidden p-8 pb-0">
         <ScrollArea ref={scrollRef} type="scroll" className="h-full">
           {children}
-          {/* <Footer /> */}
         </ScrollArea>
-        {/* </ScrollContextProvider> */}
-        {/* </SectionPages> */}
       </section>
+
+      <SiteFooter />
     </main>
   )
 }

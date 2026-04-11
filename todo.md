@@ -6,21 +6,14 @@
 - [ ] Ensure consistent naming (`*.action.ts`)
 - [ ] Enforce input/output validation via Zod
 - [ ] Handle errors in a standardized way
-- [ ] Review examples: `create-phone.action.ts`, `fetch-customers.action.ts`,
-      `validate-phone.action.ts`
+- [ ] server-action -> service -> http -> app/api
+- [ ] Review example: `create-phone.action.ts`, `create-phone.service.ts`
 
-## 2. UI Structure (Navigation & Footer)
-
-- [ ] Implement a reusable navigation menu component
-- [ ] Implement a reusable footer component
-- [ ] Ensure responsiveness and accessibility (a11y)
-- [ ] Integrate with routing and layout system
-
-## 3. Chatbot
+## 2. Chatbot
 
 - [ ] Create a postgres for chatbot history
 
-## 4. Storybook, Design System & Documentation
+## 3. Storybook, Design System & Documentation
 
 - [ ] Remove all docs from docs folder and all git branches/commits/history and
       generate new ones
