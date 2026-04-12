@@ -2,11 +2,6 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@core/constants'
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
-type GetMessagesProps<T extends Record<string, string>> = {
-  locale: Locale
-  messages: Record<Locale, T>
-}
-
 export type DefaultMessages = {
   'nav.items': string
   'nav.signOut': string
@@ -29,26 +24,59 @@ export const DefaultMessages: Record<Locale, DefaultMessages> = {
   },
 }
 
-function isLocale(value: string) {
-  return SUPPORTED_LOCALES.toString().includes(value)
+function isSupportedLocale(value: string): value is Locale {
+  return SUPPORTED_LOCALES.includes(value as Locale)
 }
 
+/**
+ * Resolves a locale from a string (cookie, param, etc.).
+ * Falls back to DEFAULT_LOCALE if invalid or missing.
+ */
 export function resolveLocale(value: string | undefined): Locale {
-  const IsLocale = value ? isLocale(value) : false
-
-  if (IsLocale) return value as Locale
+  if (value && isSupportedLocale(value)) {
+    return value
+  }
   return DEFAULT_LOCALE
 }
 
+/**
+ * Helper to get messages for a specific locale (generic for any message shape).
+ */
 export function getLocalMessages<T extends Record<string, string>>({
   locale,
   messages,
-}: GetMessagesProps<T>) {
+}: {
+  locale: Locale
+  messages: Record<Locale, T>
+}): T {
   return messages[locale]
 }
 
+/**
+ * Generates static params for dynamic [locale] routes.
+ */
 export function generateStaticParams() {
-  return SUPPORTED_LOCALES.map((locale) => ({
-    locale,
-  }))
+  return SUPPORTED_LOCALES.map((locale) => ({ locale }))
+}
+
+/**
+ * Checks if a pathname already contains a supported locale prefix.
+ */
+export function hasLocalePrefix(pathname: string): boolean {
+  return SUPPORTED_LOCALES.some(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
+  )
+}
+
+/**
+ * Extracts the locale from a pathname that has a prefix.
+ * Returns undefined if no valid locale prefix is found.
+ */
+export function getLocaleFromPathname(pathname: string): Locale | undefined {
+  const segments = pathname.split('/').filter(Boolean)
+  const firstSegment = segments[0]
+  if (firstSegment && isSupportedLocale(firstSegment)) {
+    return firstSegment
+  }
+  return undefined
 }
