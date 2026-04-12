@@ -14,6 +14,12 @@ export type LayoutMessages = {
   'footer.privacy': string
 
   'header.slogan': string
+
+  'notFound.emptyHeader': string
+  'notFound.emptyTitle': string
+  'notFound.emptyDescription': string
+  'notFound.backToHome': string
+  'notFound.error404': string
 }
 
 export const LayoutMessages: Record<Locale, LayoutMessages> = {
@@ -30,6 +36,13 @@ export const LayoutMessages: Record<Locale, LayoutMessages> = {
     'footer.privacy': 'Privacy',
 
     'header.slogan': 'Fast, accessible route navigation',
+
+    'notFound.emptyHeader': '404',
+    'notFound.emptyTitle': 'Page not found',
+    'notFound.emptyDescription':
+      'Looks like the page you are looking for has been moved or deleted.',
+    'notFound.backToHome': 'Back to home',
+    'notFound.error404': 'Error 404 — Page drifted into the void 🌌',
   },
   pt: {
     'nav.home': 'Início',
@@ -43,6 +56,13 @@ export const LayoutMessages: Record<Locale, LayoutMessages> = {
     'footer.privacy': 'Privacidade',
 
     'header.slogan': 'Navegação rápida e acessível',
+
+    'notFound.emptyHeader': '404',
+    'notFound.emptyTitle': 'Página não encontrada',
+    'notFound.emptyDescription':
+      'Parece que a página que você procura se perdeu no caminho...',
+    'notFound.backToHome': 'Voltar para o início',
+    'notFound.error404': 'Erro 404 — Página foi arrastada para o vazio 🌌',
   },
 }
 

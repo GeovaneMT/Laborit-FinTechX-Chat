@@ -1,13 +1,8 @@
 import type { Metadata } from 'next'
 
-import { geistMono, geistSans } from '@styles/fonts'
-
 import { NotFound } from '@/presentation/layouts/not-found'
 
 import { getLocalMessages, LayoutMessages, resolveLocale } from '@/infra/i18n'
-import { Providers } from '@/infra/providers'
-
-import '@styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'Página não encontrada',
@@ -29,7 +24,7 @@ interface NotFoundProps {
   }>
 }
 
-export default async function GlobalNotFound({ params }: NotFoundProps) {
+export default async function NotFoundPage({ params }: NotFoundProps) {
   const { locale: localeParam } = await params
 
   const locale = resolveLocale(localeParam)
@@ -37,16 +32,5 @@ export default async function GlobalNotFound({ params }: NotFoundProps) {
     locale,
     messages: LayoutMessages,
   })
-
-  return (
-    <html lang="pt-BR" data-scroll-behavior="smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-background antialiased transition-all duration-200 ease-in-out`}
-      >
-        <Providers>
-          <NotFound messages={messages} />
-        </Providers>
-      </body>
-    </html>
-  )
+  return <NotFound messages={messages} />
 }
