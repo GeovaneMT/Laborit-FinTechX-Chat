@@ -5,6 +5,8 @@ import type { OnboardingMessages } from '@features/onboarding/i18n'
 import { Button } from '@ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 
+import { paths } from '@/core/utils/paths'
+
 type OnboardingScreenProps = {
   messages: OnboardingMessages
 }
@@ -27,7 +29,7 @@ export function OnboardingScreen({ messages }: OnboardingScreenProps) {
               <li>{messages['onboarding.bullet3']}</li>
             </ul>
           </div>
-          <Link href="/chat" className="block">
+          <Link href={paths.chat} className="block">
             <Button className="w-full">{messages['onboarding.button']}</Button>
           </Link>
         </CardContent>

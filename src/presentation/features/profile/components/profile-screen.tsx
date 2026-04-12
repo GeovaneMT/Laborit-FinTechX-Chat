@@ -9,6 +9,8 @@ import { LoadingMessage } from '@/presentation/ui/loading-message'
 import { Button } from '@ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 
+import { paths } from '@/core/utils/paths'
+
 type ProfileScreenProps = {
   messages: ProfileMessages
 }
@@ -44,7 +46,7 @@ export function ProfileScreen({ messages }: ProfileScreenProps) {
             </label>
             <p>{profile.email}</p>
           </div>
-          <Link href="/edit-information">
+          <Link href={paths.editInformation}>
             <Button onClick={() => submitForm({})} variant="outline">
               {messages['profile.editInformation']}
             </Button>

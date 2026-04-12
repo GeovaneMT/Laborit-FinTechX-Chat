@@ -11,11 +11,17 @@ import { SiteHeader } from '@layouts/site-header'
 
 import { ScrollArea } from '@ui/scroll-area'
 
+import type { LayoutMessages } from '@/infra/i18n'
+
 interface ContentShellProps {
   children: React.ReactNode
+  messages: LayoutMessages
 }
 
-export function ContentShell({ children }: Readonly<ContentShellProps>) {
+export function ContentShell({
+  messages,
+  children,
+}: Readonly<ContentShellProps>) {
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
   return (
@@ -38,7 +44,7 @@ export function ContentShell({ children }: Readonly<ContentShellProps>) {
         />
       </figure>
 
-      <SiteHeader />
+      <SiteHeader messages={messages} />
 
       <section className="mb-8 flex-1 overflow-hidden p-8 pb-0">
         <ScrollArea ref={scrollRef} type="scroll" className="h-full">
@@ -46,7 +52,7 @@ export function ContentShell({ children }: Readonly<ContentShellProps>) {
         </ScrollArea>
       </section>
 
-      <SiteFooter />
+      <SiteFooter messages={messages} />
     </main>
   )
 }

@@ -11,6 +11,8 @@ import { ArrowLeft } from 'lucide-react'
 
 import { Button } from '@ui/button'
 
+import { paths } from '@/core/utils/paths'
+
 export const NotFound = () => (
   <div className="relative flex min-h-[70vh] flex-col items-center justify-center pb-12 text-center">
     <div className="from-background via-background to-muted/30 pointer-events-none absolute inset-0 -z-10 bg-linear-to-b opacity-60" />
@@ -35,7 +37,7 @@ export const NotFound = () => (
       </EmptyHeader>
 
       <EmptyContent className="pt-6">
-        <Link href="/">
+        <Link href={paths.home}>
           <Button size="lg" className="gap-2 text-base">
             <div className="flex items-center justify-center gap-2">
               <ArrowLeft className="h-4 w-4" />

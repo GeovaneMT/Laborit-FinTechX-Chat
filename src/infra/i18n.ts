@@ -2,25 +2,47 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@core/constants'
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
-export type DefaultMessages = {
-  'nav.items': string
-  'nav.signOut': string
-  'nav.settings': string
+export type LayoutMessages = {
+  'nav.home': string
+  'nav.chat': string
+  'nav.profile': string
   'nav.dashboard': string
+
+  'footer.copyright': string
+  'footer.home': string
+  'footer.terms': string
+  'footer.privacy': string
+
+  'header.slogan': string
 }
 
-export const DefaultMessages: Record<Locale, DefaultMessages> = {
+export const LayoutMessages: Record<Locale, LayoutMessages> = {
   en: {
-    'nav.items': 'Items',
-    'nav.signOut': 'Sign out',
-    'nav.settings': 'Settings',
+    'nav.home': 'Home',
+    'nav.chat': 'Chat',
+    'nav.profile': 'Profile',
     'nav.dashboard': 'Dashboard',
+
+    'footer.copyright':
+      'Built with accessibility and responsive design in mind.',
+    'footer.home': 'Home',
+    'footer.terms': 'Terms',
+    'footer.privacy': 'Privacy',
+
+    'header.slogan': 'Fast, accessible route navigation',
   },
   pt: {
-    'nav.items': 'Itens',
-    'nav.signOut': 'Sair',
-    'nav.settings': 'Configurações',
+    'nav.home': 'Início',
+    'nav.chat': 'Chat',
+    'nav.profile': 'Perfil',
     'nav.dashboard': 'Painel',
+
+    'footer.copyright': 'Criado com design responsivo e acessível em mente.',
+    'footer.home': 'Início',
+    'footer.terms': 'Termos',
+    'footer.privacy': 'Privacidade',
+
+    'header.slogan': 'Navegação rápida e acessível',
   },
 }
 

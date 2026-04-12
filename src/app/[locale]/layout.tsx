@@ -10,7 +10,7 @@ import { ClientBootstrap } from '@/presentation/providers/client-bootstrap'
 import { APP_NAME } from '@core/constants'
 
 import { Providers } from '@/infra/providers'
-import { DefaultMessages, getLocalMessages, resolveLocale } from '@infra/i18n'
+import { LayoutMessages, getLocalMessages, resolveLocale } from '@infra/i18n'
 
 import '@styles/globals.css'
 
@@ -74,9 +74,9 @@ export default async function RootLayout({
   const { locale: localeParam } = await params
 
   const locale = resolveLocale(localeParam)
-  const messages = getLocalMessages<DefaultMessages>({
+  const messages = getLocalMessages<LayoutMessages>({
     locale,
-    messages: DefaultMessages,
+    messages: LayoutMessages,
   })
   const enableMsw = process.env.NEXT_PUBLIC_ENABLE_MSW === 'true'
 

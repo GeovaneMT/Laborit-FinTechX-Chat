@@ -6,6 +6,8 @@ import type { SplashMessages } from '@features/splash/i18n'
 
 import { Button } from '@ui/button'
 
+import { paths } from '@/core/utils/paths'
+
 type SplashScreenProps = {
   messages: SplashMessages
 }
@@ -22,7 +24,7 @@ export function SplashScreen({ messages }: SplashScreenProps) {
             {messages['splash.description']}
           </p>
         </div>
-        <Link href="/onboarding">
+        <Link href={paths.onboarding}>
           <Button size="lg" className="px-8">
             {messages['splash.button']}
           </Button>

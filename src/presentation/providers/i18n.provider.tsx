@@ -1,10 +1,10 @@
 'use client'
 
-import type { ReactNode} from 'react';
+import type { ReactNode } from 'react'
 import { createContext, useContext } from 'react'
 
 import {
-  DefaultMessages,
+  LayoutMessages,
   getLocalMessages,
   type Locale,
   resolveLocale,
@@ -16,7 +16,7 @@ interface I18nContextType<TMessages extends Record<string, string>> {
   t: (key: keyof TMessages) => string
 }
 
-const I18nContext = createContext<I18nContextType<DefaultMessages> | null>(null)
+const I18nContext = createContext<I18nContextType<LayoutMessages> | null>(null)
 
 interface I18nProviderProps {
   children: ReactNode
@@ -25,9 +25,9 @@ interface I18nProviderProps {
 
 export function I18nProvider({ children, locale }: I18nProviderProps) {
   const resolvedLocale = resolveLocale(locale)
-  const messages = getLocalMessages<DefaultMessages>({
+  const messages = getLocalMessages<LayoutMessages>({
     locale: resolvedLocale,
-    messages: DefaultMessages,
+    messages: LayoutMessages,
   })
 
   const t = (key: keyof typeof messages) => messages[key] || key

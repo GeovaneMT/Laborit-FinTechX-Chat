@@ -1,36 +1,42 @@
 import Link from 'next/link'
 
+import { paths } from '@/core/utils/paths'
 import { APP_NAME } from '@core/constants'
 
-export function SiteFooter() {
+import type { LayoutMessages } from '@/infra/i18n'
+
+interface SiteFooterProps {
+  messages: LayoutMessages
+}
+
+export function SiteFooter({ messages }: SiteFooterProps) {
   const year = new Date().getFullYear()
 
   return (
     <footer className="border-border bg-background/90 text-muted-foreground border-t px-4 py-6 text-sm">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between">
         <p className="leading-relaxed">
-          © {year} {APP_NAME}. Built with accessibility and responsive design in
-          mind.
+          © {year} {APP_NAME}. {messages['footer.copyright']}
         </p>
 
         <div className="text-muted-foreground flex flex-wrap items-center justify-center gap-3 text-xs">
           <Link
-            href="/"
+            href={paths.home}
             className="hover:text-foreground focus-visible:ring-ring rounded-md px-2 py-1 focus-visible:ring-2 focus-visible:outline-none"
           >
-            Home
+            {messages['footer.home']}
           </Link>
           <Link
             href="/#"
             className="hover:text-foreground focus-visible:ring-ring rounded-md px-2 py-1 focus-visible:ring-2 focus-visible:outline-none"
           >
-            Terms
+            {messages['footer.terms']}
           </Link>
           <Link
             href="/#"
             className="hover:text-foreground focus-visible:ring-ring rounded-md px-2 py-1 focus-visible:ring-2 focus-visible:outline-none"
           >
-            Privacy
+            {messages['footer.privacy']}
           </Link>
         </div>
       </div>
