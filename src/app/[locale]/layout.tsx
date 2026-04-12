@@ -1,16 +1,18 @@
-import { Providers } from '@/infra/providers'
-import { ClientBootstrap } from '@/presentation/providers/client-bootstrap'
-
-import { APP_NAME } from '@core/constants'
-import { DefaultMessages, getLocalMessages, resolveLocale } from '@infra/i18n'
-
-import '@styles/globals.css'
+import React, { Suspense } from 'react'
+import type { Metadata, Viewport } from 'next'
+import { JetBrains_Mono, Merriweather, Montserrat } from 'next/font/google'
 
 import { geistMono, geistSans } from '@styles/fonts'
 import { cn } from '@utils/cn'
-import type { Metadata, Viewport } from 'next'
-import { JetBrains_Mono, Merriweather, Montserrat } from 'next/font/google'
-import React, { Suspense } from 'react'
+
+import { ClientBootstrap } from '@/presentation/providers/client-bootstrap'
+
+import { APP_NAME } from '@core/constants'
+
+import { Providers } from '@/infra/providers'
+import { DefaultMessages, getLocalMessages, resolveLocale } from '@infra/i18n'
+
+import '@styles/globals.css'
 
 export { generateStaticParams } from '@infra/i18n'
 

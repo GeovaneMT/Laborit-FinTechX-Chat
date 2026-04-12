@@ -1,7 +1,8 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
+
 import { toast } from 'sonner'
 
 interface ToastWrapperProps {

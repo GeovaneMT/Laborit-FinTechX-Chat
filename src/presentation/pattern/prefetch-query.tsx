@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 import {
   dehydrate,
   HydrationBoundary,
@@ -5,7 +7,6 @@ import {
   type QueryKey,
 } from '@tanstack/react-query'
 import { queryClient } from '@tanstack/react-query/query-client'
-import type { ReactNode } from 'react'
 
 interface PrefetchQueryProps<
   TQueryFnData = unknown,

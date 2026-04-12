@@ -1,5 +1,6 @@
-import { NotFound } from '@/presentation/layouts/not-found'
 import type { Metadata } from 'next'
+
+import { NotFound } from '@/presentation/layouts/not-found'
 
 export const metadata: Metadata = {
   title: 'Página não encontrada',

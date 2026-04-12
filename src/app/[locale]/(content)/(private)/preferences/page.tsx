@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { PreferencesScreen } from '@features/preferences/components/preferences-screen'
 import { PreferencesMessages } from '@features/preferences/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 export { generateStaticParams } from '@infra/i18n'
 

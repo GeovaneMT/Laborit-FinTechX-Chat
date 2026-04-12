@@ -1,7 +1,8 @@
 'use client'
 
 import { cn } from '@utils/cn'
-import { motion, MotionStyle, Transition } from 'motion/react'
+import type { MotionStyle, Transition } from 'motion/react';
+import { motion } from 'motion/react'
 
 interface BorderBeamProps {
   size?: number

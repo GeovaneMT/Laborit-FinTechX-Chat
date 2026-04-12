@@ -1,8 +1,10 @@
 'use client'
 
-import type { SplashMessages } from '@features/splash/i18n'
-import { Button } from '@ui/button'
 import Link from 'next/link'
+
+import type { SplashMessages } from '@features/splash/i18n'
+
+import { Button } from '@ui/button'
 
 type SplashScreenProps = {
   messages: SplashMessages

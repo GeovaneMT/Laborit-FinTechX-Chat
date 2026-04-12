@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
+import { useShallow } from 'zustand/shallow'
 
 export interface Message {
   id: string
@@ -15,34 +16,63 @@ interface ChatState {
 }
 
 interface ChatActions {
-  addMessage: (message: Omit<Message, 'id' | 'timestamp'>) => void
+  addMessage: (
+    message: Omit<Message, 'id' | 'timestamp'>,
+  ) => Promise<{ message?: string; errorMessage?: string }>
   setLoading: (loading: boolean) => void
   setError: (error: string | null) => void
-  clearConversation: () => void
+  clearConversation: () => Promise<{ message?: string; errorMessage?: string }>
 }
 
 type ChatStore = ChatState & ChatActions
 
 export const useChatStore = create<ChatStore>()(
   persist(
-    (set, _get) => ({
+    (set) => ({
       messages: [],
       isLoading: false,
       error: null,
-      addMessage: (message) =>
-        set((state) => ({
-          messages: [
-            ...state.messages,
-            {
-              ...message,
-              id: crypto.randomUUID(),
-              timestamp: new Date(),
-            },
-          ],
-        })),
+
+      addMessage: async (message) => {
+        try {
+          const newMessage: Message = {
+            ...message,
+            id: crypto.randomUUID(),
+            timestamp: new Date(),
+          }
+
+          set((state) => ({
+            messages: [...state.messages, newMessage],
+          }))
+
+          return { message: 'Mensagem adicionada com sucesso' }
+        } catch (error) {
+          return {
+            errorMessage:
+              error instanceof Error
+                ? error.message
+                : 'Erro inesperado ao adicionar mensagem',
+          }
+        }
+      },
+
       setLoading: (loading) => set({ isLoading: loading }),
+
       setError: (error) => set({ error }),
-      clearConversation: () => set({ messages: [], error: null }),
+
+      clearConversation: async () => {
+        try {
+          set({ messages: [], error: null })
+          return { message: 'Conversa limpa com sucesso' }
+        } catch (error) {
+          return {
+            errorMessage:
+              error instanceof Error
+                ? error.message
+                : 'Erro inesperado ao limpar conversa',
+          }
+        }
+      },
     }),
     {
       name: 'chat-storage',
@@ -51,3 +81,24 @@ export const useChatStore = create<ChatStore>()(
     },
   ),
 )
+
+export const useMessages = () => {
+  return useChatStore(
+    useShallow((store) => ({
+      messages: store.messages,
+      addMessage: store.addMessage,
+      clearConversation: store.clearConversation,
+    })),
+  )
+}
+
+export const useChatLoading = () => {
+  return useChatStore(
+    useShallow((store) => ({
+      isLoading: store.isLoading,
+      error: store.error,
+      setLoading: store.setLoading,
+      setError: store.setError,
+    })),
+  )
+}

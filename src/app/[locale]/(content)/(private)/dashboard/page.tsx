@@ -1,18 +1,20 @@
+import { Suspense } from 'react'
+import { connection } from 'next/server'
+
+import { DashboardScreen } from '@features/dashboard/components/dashboard-screen'
+import { DashboardMessages } from '@features/dashboard/i18n'
+
+import { ClientBoundary } from '@/presentation/pattern/client-boundaries'
+import { PrefetchQuery } from '@/presentation/pattern/prefetch-query'
+
+import { LoadingMessage } from '@/presentation/ui/loading-message'
+
 import {
   dashboardQueryFn,
   type DashboardQueryKey,
 } from '@/infra/data/query-functions/dashboard/get-dashboard.query'
-import { ClientBoundary } from '@/presentation/pattern/client-boundaries'
-import { PrefetchQuery } from '@/presentation/pattern/prefetch-query'
-import { LoadingMessage } from '@/presentation/ui/loading-message'
-
 import { getLocalMessages, resolveLocale } from '@infra/i18n'
 import { queryKeyRegistry } from '@infra/query-keys'
-
-import { DashboardScreen } from '@features/dashboard/components/dashboard-screen'
-import { DashboardMessages } from '@features/dashboard/i18n'
-import { connection } from 'next/server'
-import { Suspense } from 'react'
 
 interface DashboardPageProps {
   params: Promise<{

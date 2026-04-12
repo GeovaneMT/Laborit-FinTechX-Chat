@@ -1,10 +1,12 @@
+import type { ReactNode } from 'react'
+
+import type { ColumnDef } from '@tanstack/react-table'
+import { cn } from '@utils/cn'
+
 import { dataGridVariants } from '@pattern/data-grid.variants'
 import { DataGridFooter } from '@pattern/data-grid-footer'
 import { DataGridHeader } from '@pattern/data-grid-header'
 import { DataGridTable } from '@pattern/data-grid-table'
-import type { ColumnDef } from '@tanstack/react-table'
-import { cn } from '@utils/cn'
-import type { ReactNode } from 'react'
 
 type Props<TData> = {
   title?: string

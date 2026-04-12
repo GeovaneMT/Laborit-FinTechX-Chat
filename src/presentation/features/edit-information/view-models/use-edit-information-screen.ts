@@ -1,7 +1,7 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export function useEditInformationScreen() {
   const router = useRouter()

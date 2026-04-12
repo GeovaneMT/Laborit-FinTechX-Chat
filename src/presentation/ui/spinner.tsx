@@ -1,7 +1,8 @@
 'use client'
 
-import { cn } from '@utils/cn'
 import React from 'react'
+
+import { cn } from '@utils/cn'
 
 interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number

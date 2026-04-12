@@ -1,9 +1,10 @@
 import { defineConfig, globalIgnores } from 'eslint/config'
 import nextVitals from 'eslint-config-next/core-web-vitals'
-import prettier from 'eslint-config-prettier/flat'
 import nextTs from 'eslint-config-next/typescript'
-import reactHooks from 'eslint-plugin-react-hooks'
+import prettier from 'eslint-config-prettier/flat'
 import boundaries from 'eslint-plugin-boundaries'
+import reactHooks from 'eslint-plugin-react-hooks'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImports from 'eslint-plugin-unused-imports'
 
 /** Presentation sub-zones (template: ui / pattern / features + shared folders). */
@@ -30,6 +31,7 @@ const eslintConfig = defineConfig([
     plugins: {
       boundaries,
       'unused-imports': unusedImports,
+      'simple-import-sort': simpleImportSort,
     },
     settings: {
       'boundaries/elements': [
@@ -50,6 +52,59 @@ const eslintConfig = defineConfig([
     },
     rules: {
       'react-hooks/rules-of-hooks': 'error',
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            // 1. Node.js built-ins
+            ['^node:'],
+            // 2. React and Next.js frameworks
+            ['^react', '^next'],
+            // 3. External third-party packages
+            ['^@?\\w'],
+            // 4-13. Internal aliases grouped by source (each source = separate group with blank lines)
+            // Presentation layer (top to bottom by dependency order)
+            ['^@/presentation/features|^@features'],
+            ['^@/presentation/layouts|^@layouts'],
+            ['^@/presentation/patterns|^@/presentation/pattern|^@pattern'],
+            ['^@/presentation/ui|^@ui'],
+            ['^@/presentation/schemas|^@schemas'],
+            ['^@/presentation/models|^@models'],
+            ['^@/presentation/providers|^@providers'],
+            // Domain & Infrastructure layers
+            ['^@/core/entities|^@/core/value-objects'],
+            ['^@/core|^@core'],
+            ['^@/infra|^@infra'],
+            ['^@/http|^@http'],
+            // 14. Other internal imports
+            ['^@/'],
+            // 15. Side effects
+            ['^\\u0000'],
+            // 16. Parent directory imports
+            ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+            // 17. Relative same folder imports
+            ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+            // 18. CSS/SCSS styles
+            ['^.+\\.(css|scss)$'],
+          ],
+        },
+      ],
+      'simple-import-sort/exports': 'error',
+
+      // ============================================================================
+      // TypeScript Import Rules - Enforce type import positioning
+      // ============================================================================
+
+      // Enforce consistent use of type imports (non-default exports)
+      '@typescript-eslint/consistent-type-imports': [
+        'warn',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'separate-type-imports',
+          disallowTypeAnnotations: false,
+        },
+      ],
+
       'unused-imports/no-unused-vars': [
         'warn',
         {
@@ -66,28 +121,81 @@ const eslintConfig = defineConfig([
         {
           default: 'disallow',
           rules: [
+            // ============================================
+            // Domain Layer (absolute lowest level)
+            // ============================================
             {
               from: 'core',
+              // Core (Domain) can only depend on itself
               allow: ['core'],
             },
+
+            // ============================================
+            // Infrastructure & HTTP Layer
+            // ============================================
             {
               from: 'infra',
-              allow: ['core', 'infra', 'http', ...presentationTypes],
+              // Infrastructure can depend on: core + itself
+              allow: ['core', 'infra', 'http'],
             },
             {
               from: 'http',
-              allow: ['core', 'infra', 'http', ...presentationTypes],
+              // HTTP layer can depend on: core + infra + itself
+              allow: ['core', 'infra', 'http'],
             },
+
+            // ============================================
+            // Presentation Layer
+            // ============================================
+
+            // UI Components (base, primitive level)
             {
               from: P.ui,
+              // UI can depend on: core + ui itself + patterns
+              // Should NOT depend on: features, layouts
               allow: ['core', P.ui, P.pattern],
             },
+
+            // Patterns & Structural Components
             {
               from: P.pattern,
+              // Patterns can depend on: core + infra + http + ui + patterns
+              // Should NOT depend on: features or other higher-level components
               allow: ['core', 'infra', 'http', P.ui, P.pattern],
             },
+
+            // Models & DTOs (Presentation data shaping)
+            {
+              from: P.models,
+              // Models can depend on: core + http + models
+              allow: ['core', 'http', P.models],
+            },
+
+            // Schemas (Validation schemas for presentation)
+            {
+              from: P.schemas,
+              // Schemas can depend on: core + http + schemas
+              allow: ['core', 'http', P.schemas],
+            },
+
+            // Providers & Context (Configuration)
+            {
+              from: P.providers,
+              // Providers can depend on: core + ui + providers
+              allow: ['core', P.ui, P.providers],
+            },
+
+            // Layouts (Page structure and containers)
+            {
+              from: P.layouts,
+              // Layouts can depend on: core + ui + patterns + layouts + features
+              allow: ['core', P.ui, P.pattern, P.layouts, P.features],
+            },
+
+            // Features (Domain-driven features)
             {
               from: P.features,
+              // Features can depend on everything except app-level routing
               allow: [
                 'core',
                 'infra',
@@ -101,28 +209,19 @@ const eslintConfig = defineConfig([
                 P.providers,
               ],
             },
-            {
-              from: P.layouts,
-              allow: ['core', P.ui, P.pattern, P.layouts, P.features],
-            },
-            {
-              from: P.schemas,
-              allow: ['core', 'http', P.schemas],
-            },
-            {
-              from: P.models,
-              allow: ['core', 'http', P.models],
-            },
+
+            // Styles (Isolated to styles)
             {
               from: P.styles,
               allow: [P.styles],
             },
-            {
-              from: P.providers,
-              allow: ['core', P.ui, P.providers],
-            },
+
+            // ============================================
+            // App Layer (Routing, entry points)
+            // ============================================
             {
               from: 'app',
+              // App can depend on everything
               allow: [
                 'core',
                 'infra',
@@ -132,8 +231,13 @@ const eslintConfig = defineConfig([
                 'mocks',
               ],
             },
+
+            // ============================================
+            // Mocks (Testing utilities)
+            // ============================================
             {
               from: 'mocks',
+              // Mocks can depend on: core + infra + http + other mocks
               allow: ['core', 'infra', 'http', 'mocks'],
             },
           ],

@@ -1,6 +1,7 @@
 'use client'
 
 import { useDashboardScreen } from '@features/dashboard/view-models/use-dashboard-screen'
+
 import { Alert, AlertDescription, AlertTitle } from '@ui/shadcn/alert'
 import { Badge } from '@ui/shadcn/badge'
 import { Skeleton } from '@ui/shadcn/skeleton'

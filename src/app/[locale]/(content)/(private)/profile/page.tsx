@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { ProfileScreen } from '@features/profile/components/profile-screen'
 import { ProfileMessages } from '@features/profile/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 export { generateStaticParams } from '@infra/i18n'
 

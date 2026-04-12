@@ -1,12 +1,14 @@
 'use client'
 
-import { dataGridVariants } from '@pattern/data-grid.variants'
 import {
   type ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table'
+
+import { dataGridVariants } from '@pattern/data-grid.variants'
+
 import {
   Table,
   TableBody,

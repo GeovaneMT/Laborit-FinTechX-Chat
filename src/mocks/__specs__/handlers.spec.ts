@@ -1,5 +1,4 @@
 import { handlers } from '@mocks/handlers'
-
 import { describe, expect, it } from 'vitest'
 
 describe('mocks handlers', () => {

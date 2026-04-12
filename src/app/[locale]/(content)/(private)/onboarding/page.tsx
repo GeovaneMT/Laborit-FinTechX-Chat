@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { OnboardingScreen } from '@features/onboarding/components/onboarding-screen'
 import { OnboardingMessages } from '@features/onboarding/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 export { generateStaticParams } from '@infra/i18n'
 

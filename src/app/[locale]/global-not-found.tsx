@@ -1,10 +1,12 @@
+import type { Metadata } from 'next'
+
+import { geistMono, geistSans } from '@styles/fonts'
+
+import { NotFound } from '@/presentation/layouts/not-found'
+
 import { Providers } from '@/infra/providers'
 
 import '@styles/globals.css'
-
-import { geistMono, geistSans } from '@styles/fonts'
-import { NotFound } from '@/presentation/layouts/not-found'
-import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Página não encontrada',

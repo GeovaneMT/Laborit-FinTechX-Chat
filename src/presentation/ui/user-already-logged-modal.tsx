@@ -1,8 +1,10 @@
+import { useRouter } from 'next/navigation'
+
+import { ArrowLeftIcon } from 'lucide-react'
+
 import { ErrorCard } from '@ui/error-card'
 import { TypographyH2 } from '@ui/typography/hx/h2'
 import { TypographyLarge } from '@ui/typography/sizes/large'
-import { ArrowLeftIcon } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 
 export const UserAlreadyLoggedModal = () => {
   const router = useRouter()

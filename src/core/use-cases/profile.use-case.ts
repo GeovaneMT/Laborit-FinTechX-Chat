@@ -1,7 +1,8 @@
-import { z } from 'zod/v4'
+import type { z } from 'zod/v4'
+
+import { err, ok, type Result } from '@core/contracts/result'
 import type { Profile } from '@core/entities/profile'
 import type { ProfileInput } from '@core/schemas/profile.schema'
-import { ok, err, type Result } from '@core/contracts/result'
 import {
   profileSchema,
   safeParseProfileEmail,

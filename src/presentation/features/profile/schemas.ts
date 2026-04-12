@@ -1,5 +1,5 @@
 export {
   parseProfileInput,
-  profileSchema,
   type ProfileInput as ProfileFormData,
+  profileSchema,
 } from '@core/schemas/profile.schema'

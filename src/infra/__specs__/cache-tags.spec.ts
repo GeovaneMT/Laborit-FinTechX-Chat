@@ -1,10 +1,10 @@
+import { describe, expect, it } from 'vitest'
+
 import {
   allItemTags,
   cacheTags,
   serverResourceCacheTags,
 } from '@infra/cache-tags'
-
-import { describe, expect, it } from 'vitest'
 
 describe('cacheTags', () => {
   it('builds item detail tag', () => {

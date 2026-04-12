@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 import { APP_NAME } from '@core/constants'
-import { cn } from '@utils/cn'
 
 export function SiteFooter() {
   const year = new Date().getFullYear()

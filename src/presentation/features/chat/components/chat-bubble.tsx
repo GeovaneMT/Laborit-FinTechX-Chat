@@ -1,4 +1,4 @@
-import { Message } from '@features/chat/store'
+import type { Message } from '@features/chat/store'
 
 interface ChatBubbleProps {
   message: Message

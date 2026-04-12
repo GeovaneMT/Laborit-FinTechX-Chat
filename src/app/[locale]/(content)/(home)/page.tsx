@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { HomeScreen } from '@features/home/components/home-screen'
 import { HomeMessages } from '@features/home/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 interface HomePageProps {
   params: Promise<{

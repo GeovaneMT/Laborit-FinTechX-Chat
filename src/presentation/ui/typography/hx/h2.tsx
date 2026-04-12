@@ -1,5 +1,6 @@
-import { Separator } from '@ui/separator'
 import { cn } from '@utils/cn'
+
+import { Separator } from '@ui/separator'
 
 interface TypographyH2Props extends React.ComponentProps<'h2'> {
   noSeparator?: boolean

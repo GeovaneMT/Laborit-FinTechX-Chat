@@ -1,10 +1,13 @@
 'use client'
 
-import { QueryProvider } from '@providers/query-provider'
-import { ThemeProvider } from '@providers/theme.provider'
+import type { ReactNode} from 'react';
+import { Suspense } from 'react'
+
 import { Toaster } from '@shadcn/sonner'
 import { TooltipProvider } from '@shadcn/tooltip'
-import { ReactNode, Suspense } from 'react'
+
+import { QueryProvider } from '@providers/query-provider'
+import { ThemeProvider } from '@providers/theme.provider'
 
 interface ProvidersProps {
   children: ReactNode

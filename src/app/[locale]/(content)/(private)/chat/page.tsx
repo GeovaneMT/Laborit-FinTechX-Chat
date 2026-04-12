@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { ChatScreen } from '@features/chat/components/chat-screen'
 import { ChatMessages } from '@features/chat/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 interface ChatPageProps {
   params: Promise<{

@@ -1,10 +1,10 @@
-import { queryKeyRegistry } from '@/infra/query-keys'
-
 import {
   dashboardQueryFn,
   type DashboardQueryKey,
 } from '@queryFn/dashboard/get-dashboard.query'
 import { useSuspenseQuery } from '@tanstack/react-query'
+
+import { queryKeyRegistry } from '@/infra/query-keys'
 
 export const useDashboardQuery = () => {
   return useSuspenseQuery({

@@ -1,4 +1,4 @@
-import { Locale } from '@/infra/i18n'
+import type { Locale } from '@/infra/i18n'
 
 export type HomeMessages = {
   'home.title': string

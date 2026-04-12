@@ -1,7 +1,8 @@
 'use client'
 
-import { motion } from 'motion/react'
 import { useSelectedLayoutSegments } from 'next/navigation'
+
+import { motion } from 'motion/react'
 
 interface TemplateProps {
   children: React.ReactNode

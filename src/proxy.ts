@@ -1,6 +1,7 @@
-import { DEFAULT_LOCALE, PUBLIC_FILE, SUPPORTED_LOCALES } from '@core/constants'
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server'
 
-import { NextRequest, NextResponse } from 'next/server'
+import { DEFAULT_LOCALE, PUBLIC_FILE, SUPPORTED_LOCALES } from '@core/constants'
 
 export const config = {
   matcher: [

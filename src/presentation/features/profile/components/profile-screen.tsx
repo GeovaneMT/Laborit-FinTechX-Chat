@@ -1,11 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+
 import type { ProfileMessages } from '@features/profile/i18n'
+import { useProfileViewModel } from '@features/profile/view-models/profile.view-model'
+
+import { LoadingMessage } from '@/presentation/ui/loading-message'
 import { Button } from '@ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
-import { useProfileViewModel } from '@features/profile/view-models/profile.view-model'
-import { LoadingMessage } from '@/presentation/ui/loading-message'
 
 type ProfileScreenProps = {
   messages: ProfileMessages

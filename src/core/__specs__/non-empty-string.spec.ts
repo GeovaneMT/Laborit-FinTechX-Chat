@@ -1,6 +1,6 @@
-import { isNonEmptyString } from '@/core/utils/non-empty-string'
-
 import { describe, expect, it } from 'vitest'
+
+import { isNonEmptyString } from '@/core/utils/non-empty-string'
 
 describe('isNonEmptyString', () => {
   it('accepts non-empty strings', () => {

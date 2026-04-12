@@ -1,13 +1,14 @@
 'use client'
 
+import type { ReactNode} from 'react';
+import { createContext, useContext } from 'react'
+
 import {
   DefaultMessages,
   getLocalMessages,
   type Locale,
   resolveLocale,
 } from '@infra/i18n'
-
-import { createContext, ReactNode, useContext } from 'react'
 
 interface I18nContextType<TMessages extends Record<string, string>> {
   locale: Locale

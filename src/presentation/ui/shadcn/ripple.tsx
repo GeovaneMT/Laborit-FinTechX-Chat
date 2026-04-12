@@ -1,7 +1,8 @@
 'use client'
 
-import { cn } from '@utils/cn'
 import { type ComponentPropsWithoutRef, type CSSProperties, memo } from 'react'
+
+import { cn } from '@utils/cn'
 
 interface RippleProps extends ComponentPropsWithoutRef<'div'> {
   mainCircleSize?: number

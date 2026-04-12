@@ -1,11 +1,12 @@
 'use client'
 
+import { useCallback, useRef } from 'react'
+import { flushSync } from 'react-dom'
+import { useTheme } from 'next-themes'
+
 import { cn } from '@utils/cn'
 import { Moon, Sun } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useTheme } from 'next-themes'
-import { useCallback, useRef } from 'react'
-import { flushSync } from 'react-dom'
 
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'button'> {
   duration?: number

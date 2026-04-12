@@ -2,6 +2,7 @@
 
 import type { EditInformationMessages } from '@features/edit-information/i18n'
 import { useEditInformationScreen } from '@features/edit-information/view-models/use-edit-information-screen'
+
 import { Button } from '@ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 import { Input } from '@ui/shadcn/input'

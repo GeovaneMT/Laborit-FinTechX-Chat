@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { EditInformationScreen } from '@features/edit-information/components/edit-information-screen'
 import { EditInformationMessages } from '@features/edit-information/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 export { generateStaticParams } from '@infra/i18n'
 

@@ -1,6 +1,7 @@
 import { z } from 'zod/v4'
-import { itemIdSchema } from '@core/value-objects/item-id'
+
 import type { Item } from '@core/entities/item'
+import { itemIdSchema } from '@core/value-objects/item-id'
 
 export const itemSchema = z.object({
   id: itemIdSchema,

@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { SplashScreen } from '@features/splash/components/splash-screen'
 import { SplashMessages } from '@features/splash/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 interface SplashPageProps {
   params: Promise<{

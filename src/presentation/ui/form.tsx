@@ -1,12 +1,5 @@
 'use client'
 
-import * as LabelPrimitive from '@radix-ui/react-label'
-import { Slot } from '@radix-ui/react-slot'
-import { Label } from '@shadcn/label'
-import { Separator } from '@ui/separator'
-import { TypographySmall } from '@ui/typography/sizes/small'
-import { cn } from '@utils/cn'
-import { AnimatePresence, HTMLMotionProps, motion } from 'motion/react'
 import * as React from 'react'
 import {
   Controller,
@@ -16,6 +9,16 @@ import {
   FormProvider,
   useFormContext,
 } from 'react-hook-form'
+
+import type * as LabelPrimitive from '@radix-ui/react-label'
+import { Slot } from '@radix-ui/react-slot'
+import { Label } from '@shadcn/label'
+import { cn } from '@utils/cn'
+import type { HTMLMotionProps} from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react'
+
+import { Separator } from '@ui/separator'
+import { TypographySmall } from '@ui/typography/sizes/small'
 
 const Form = FormProvider
 

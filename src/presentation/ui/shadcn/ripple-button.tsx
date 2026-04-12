@@ -1,7 +1,9 @@
 'use client'
 
+import type { MouseEvent} from 'react';
+import React, { useEffect, useState } from 'react'
+
 import { cn } from '@utils/cn'
-import React, { MouseEvent, useEffect, useState } from 'react'
 
 interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   rippleColor?: string

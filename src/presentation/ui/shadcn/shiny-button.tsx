@@ -1,8 +1,9 @@
 'use client'
 
+import React from 'react'
+
 import { cn } from '@utils/cn'
 import { motion, type MotionProps } from 'motion/react'
-import React from 'react'
 
 const animationProps: MotionProps = {
   initial: { '--x': '100%', scale: 0.8 },

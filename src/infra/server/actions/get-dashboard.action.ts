@@ -2,6 +2,7 @@
 
 import { right } from '@core/either'
 import { parseDashboardSummary } from '@core/schemas/dashboard.schema'
+
 import type { ServerActionResult } from '@/infra/server/types/server.types'
 import { wrapServerActionResult } from '@infra/server/actions/common/action-factory'
 

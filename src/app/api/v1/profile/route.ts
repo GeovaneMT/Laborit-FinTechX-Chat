@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
-import { getFirstZodErrorMessage } from '@core/validation/zod-errors'
 import { safeParseProfileInput } from '@core/schemas/profile.schema'
+import { getFirstZodErrorMessage } from '@core/validation/zod-errors'
 
 export async function GET() {
   return NextResponse.json({

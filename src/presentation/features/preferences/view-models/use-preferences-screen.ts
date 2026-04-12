@@ -1,29 +1,31 @@
 'use client'
 
-import type { Locale } from '@infra/i18n'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { useState } from 'react'
+
+import type { Locale } from '@infra/i18n'
+import { useLocalePreference } from '@infra/stores/preferences-store'
 
 export function usePreferencesScreen(_locale: Locale) {
   const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const { theme, setTheme } = useTheme()
-
-  const [selectedLocale, setSelectedLocale] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const cookieValue = document.cookie
-        .split('; ')
-        .find((cookie) => cookie.startsWith('locale='))
-        ?.split('=')[1]
-      return (cookieValue as Locale) || _locale
-    }
-    return _locale
-  })
+  const { locale: selectedLocale, setLocale } = useLocalePreference()
 
   const changeLanguage = (value: string) => {
-    setSelectedLocale(value as Locale)
-    document.cookie = `locale=${value}; Path=/; Max-Age=${60 * 60 * 24 * 365}`
-    router.refresh()
+    const locale = value as Locale
+    setLocale(locale)
+
+    const segments = pathname.split('/')
+    if (segments.length > 1 && segments[1]) {
+      segments[1] = locale
+    }
+
+    const search = searchParams?.toString()
+    const nextPath = `${segments.join('/')}${search ? `?${search}` : ''}`
+
+    router.push(nextPath)
   }
 
   const isDark = theme === 'dark'

@@ -1,5 +1,8 @@
 'use client'
 
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useTheme } from 'next-themes'
+
 import { cn } from '@utils/cn'
 import {
   motion,
@@ -7,8 +10,6 @@ import {
   useMotionValue,
   useSpring,
 } from 'motion/react'
-import { useTheme } from 'next-themes'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 interface MagicCardBaseProps {
   children?: React.ReactNode

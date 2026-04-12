@@ -1,4 +1,5 @@
 import { z } from 'zod/v4'
+
 import type { DashboardSummary } from '@core/entities/dashboard-summary'
 
 export const dashboardSummarySchema = z.object({

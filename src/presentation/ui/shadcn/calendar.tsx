@@ -1,12 +1,5 @@
 'use client'
 
-import { Button, buttonVariants } from '@shadcn/button'
-import { cn } from '@utils/cn'
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from 'lucide-react'
 import * as React from 'react'
 import {
   type DayButton,
@@ -14,6 +7,14 @@ import {
   getDefaultClassNames,
   type Locale,
 } from 'react-day-picker'
+
+import { Button, buttonVariants } from '@shadcn/button'
+import { cn } from '@utils/cn'
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from 'lucide-react'
 
 function Calendar({
   className,

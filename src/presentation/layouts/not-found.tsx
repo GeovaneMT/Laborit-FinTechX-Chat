@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import {
   Empty,
   EmptyContent,
@@ -5,9 +7,9 @@ import {
   EmptyHeader,
   EmptyTitle,
 } from '@shadcn/empty'
-import { Button } from '@ui/button'
 import { ArrowLeft } from 'lucide-react'
-import Link from 'next/link'
+
+import { Button } from '@ui/button'
 
 export const NotFound = () => (
   <div className="relative flex min-h-[70vh] flex-col items-center justify-center pb-12 text-center">

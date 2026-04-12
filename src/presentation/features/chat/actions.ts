@@ -1,11 +1,11 @@
 'use server'
 
+import OpenAI from 'openai'
+
 import {
   parseSendMessageInput,
   type SendMessageInput,
 } from '@core/schemas/chat.schema'
-
-import OpenAI from 'openai'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,

@@ -1,8 +1,9 @@
 'use client'
 
+import React, { useEffect, useId, useRef, useState } from 'react'
+
 import { cn } from '@utils/cn'
 import { motion } from 'motion/react'
-import React, { useEffect, useId, useRef, useState } from 'react'
 
 interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   width?: number

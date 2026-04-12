@@ -1,6 +1,7 @@
 'use client'
 
 import type { HealthInstructionsMessages } from '@features/health-instructions/i18n'
+
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 
 type HealthInstructionsScreenProps = {

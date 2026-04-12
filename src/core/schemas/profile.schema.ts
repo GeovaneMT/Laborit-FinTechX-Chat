@@ -1,4 +1,5 @@
 import { z } from 'zod/v4'
+
 import type { Profile } from '@core/entities/profile'
 
 export const profileSchema = z.object({

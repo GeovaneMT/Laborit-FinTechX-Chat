@@ -1,12 +1,15 @@
 'use client'
 
+import { useRef } from 'react'
+
 import { DotPattern } from '@shadcn/dot-pattern'
 import { LightRays } from '@shadcn/light-rays'
-import { ScrollArea } from '@ui/scroll-area'
+import { cn } from '@utils/cn'
+
 import { SiteFooter } from '@layouts/site-footer'
 import { SiteHeader } from '@layouts/site-header'
-import { cn } from '@utils/cn'
-import { useRef } from 'react'
+
+import { ScrollArea } from '@ui/scroll-area'
 
 interface ContentShellProps {
   children: React.ReactNode

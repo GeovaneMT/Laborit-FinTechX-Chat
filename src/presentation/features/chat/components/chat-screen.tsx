@@ -1,11 +1,13 @@
 'use client'
 
+import { Trash2 } from 'lucide-react'
+
 import { ChatContainer } from '@features/chat/components/chat-container'
 import { ChatInput } from '@features/chat/components/chat-input'
 import type { ChatMessages } from '@features/chat/i18n'
 import { useChatScreen } from '@features/chat/use-chat-screen'
+
 import { Button } from '@ui/button'
-import { Trash2 } from 'lucide-react'
 
 type ChatScreenProps = {
   messages: ChatMessages

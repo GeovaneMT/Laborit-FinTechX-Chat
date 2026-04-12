@@ -1,7 +1,9 @@
+import Link from 'next/link'
+
 import type { OnboardingMessages } from '@features/onboarding/i18n'
+
 import { Button } from '@ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
-import Link from 'next/link'
 
 type OnboardingScreenProps = {
   messages: OnboardingMessages

@@ -1,7 +1,8 @@
 'use client'
 
-import { ErrorCard } from '@ui/error-card'
 import { useEffect } from 'react'
+
+import { ErrorCard } from '@ui/error-card'
 
 interface GlobalErrorProps {
   error: Error & { digest?: string }

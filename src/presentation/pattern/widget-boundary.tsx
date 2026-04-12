@@ -1,8 +1,9 @@
 'use client'
 
-import { Alert, AlertDescription, AlertTitle } from '@ui/shadcn/alert'
 import type { ReactNode } from 'react'
 import { Component, type ErrorInfo } from 'react'
+
+import { Alert, AlertDescription, AlertTitle } from '@ui/shadcn/alert'
 
 type Props = {
   children: ReactNode

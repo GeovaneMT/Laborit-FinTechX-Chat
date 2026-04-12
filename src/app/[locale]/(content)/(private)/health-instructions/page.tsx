@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { HealthInstructionsScreen } from '@features/health-instructions/components/health-instructions-screen'
 import { HealthInstructionsMessages } from '@features/health-instructions/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 interface HealthInstructionsPageProps {
   params: Promise<{

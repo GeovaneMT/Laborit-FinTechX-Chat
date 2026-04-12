@@ -1,7 +1,7 @@
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
-
 import { InviteScreen } from '@features/invite/components/invite-screen'
 import { InviteMessages } from '@features/invite/i18n'
+
+import { getLocalMessages, resolveLocale } from '@infra/i18n'
 
 export { generateStaticParams } from '@infra/i18n'
 

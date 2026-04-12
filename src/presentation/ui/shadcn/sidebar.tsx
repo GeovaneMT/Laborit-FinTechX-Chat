@@ -1,6 +1,7 @@
 'use client'
 
-import { useIsMobile } from '@pattern/hooks/use-mobile'
+import * as React from 'react'
+
 import { Button } from '@shadcn/button'
 import { Input } from '@shadcn/input'
 import {
@@ -12,12 +13,14 @@ import {
 } from '@shadcn/sheet'
 import { Skeleton } from '@shadcn/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@shadcn/tooltip'
-import { Separator } from '@ui/separator'
 import { cn } from '@utils/cn'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { PanelLeftIcon } from 'lucide-react'
 import { Slot } from 'radix-ui'
-import * as React from 'react'
+
+import { useIsMobile } from '@pattern/hooks/use-mobile'
+
+import { Separator } from '@ui/separator'
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state'
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7

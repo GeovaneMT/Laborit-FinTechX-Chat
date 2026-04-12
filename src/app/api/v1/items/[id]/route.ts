@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
-import { parseItemId } from '@core/value-objects/item-id'
 import { parseItem } from '@/core/schemas/item.schema'
+import { parseItemId } from '@core/value-objects/item-id'
 
 type Params = { params: Promise<{ id: string }> }
 

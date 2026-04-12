@@ -1,16 +1,10 @@
 import { sendMessageAction } from '@features/chat/actions'
-import { useChatStore } from '@features/chat/store'
+import { useChatLoading,useMessages } from '@features/chat/store'
 
 export function useChatScreen() {
-  const {
-    error,
-    messages,
-    setError,
-    isLoading,
-    addMessage,
-    setLoading,
-    clearConversation,
-  } = useChatStore()
+  const { messages, addMessage, clearConversation } = useMessages()
+
+  const { isLoading, error, setLoading, setError } = useChatLoading()
 
   const sendMessage = async (message: string) => {
     addMessage({ role: 'user', content: message })

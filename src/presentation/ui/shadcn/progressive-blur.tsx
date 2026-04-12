@@ -1,7 +1,8 @@
 'use client'
 
-import { cn } from '@utils/cn'
 import React from 'react'
+
+import { cn } from '@utils/cn'
 
 export interface ProgressiveBlurProps {
   className?: string
