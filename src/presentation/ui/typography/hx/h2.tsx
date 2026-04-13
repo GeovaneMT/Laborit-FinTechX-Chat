@@ -7,12 +7,12 @@ interface TypographyH2Props extends React.ComponentProps<'h2'> {
 }
 
 export function TypographyH2({
-  noSeparator,
+  noSeparator = true,
   className,
   ...props
 }: TypographyH2Props) {
   return (
-    <div className="mb-6 space-y-4">
+    <div className="space-y-4">
       <h2
         className={cn(
           'scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0',

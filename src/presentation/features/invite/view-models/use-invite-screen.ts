@@ -2,22 +2,34 @@
 
 import { useCallback, useState } from 'react'
 
-const INVITE_CODE = 'LABORIT2024'
+import { toast } from 'sonner'
 
-export function useInviteScreen() {
+import type { InviteMessages } from '@features/invite/i18n'
+
+const INVITE_CODE = 'BrainAiPartnerMR'
+
+export function useInviteScreen(messages: InviteMessages) {
   const [copied, setCopied] = useState(false)
-
-  const inviteCode = INVITE_CODE
+  const [inviteCode, setInviteCode] = useState(INVITE_CODE)
 
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(inviteCode)
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 2000)
-  }, [inviteCode])
+    const promise = navigator.clipboard.writeText(inviteCode)
+
+    toast.promise(promise, {
+      loading: messages['loading'],
+      success: () => {
+        setCopied(true)
+        window.setTimeout(() => setCopied(false), 2000)
+        return messages['invite.codeCopied']
+      },
+      error: () => 'Error',
+    })
+  }, [inviteCode, messages])
 
   return {
-    inviteCode,
     copied,
+    inviteCode,
     handleCopy,
+    setInviteCode,
   }
 }

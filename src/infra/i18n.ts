@@ -20,10 +20,14 @@ export type LayoutMessages = {
   'notFound.emptyDescription': string
   'notFound.backToHome': string
   'notFound.error404': string
+
+  loading: string
 }
 
 export const LayoutMessages: Record<Locale, LayoutMessages> = {
   en: {
+    loading: 'Loading...',
+
     'nav.home': 'Home',
     'nav.chat': 'Chat',
     'nav.profile': 'Profile',
@@ -45,6 +49,8 @@ export const LayoutMessages: Record<Locale, LayoutMessages> = {
     'notFound.error404': 'Error 404 — Page drifted into the void 🌌',
   },
   pt: {
+    loading: 'Carregando...',
+
     'nav.home': 'Início',
     'nav.chat': 'Chat',
     'nav.profile': 'Perfil',
@@ -66,7 +72,7 @@ export const LayoutMessages: Record<Locale, LayoutMessages> = {
   },
 }
 
-function isSupportedLocale(value: string): value is Locale {
+export function isSupportedLocale(value: string): value is Locale {
   return SUPPORTED_LOCALES.includes(value as Locale)
 }
 
@@ -121,4 +127,10 @@ export function getLocaleFromPathname(pathname: string): Locale | undefined {
     return firstSegment
   }
   return undefined
+}
+
+/** Maps a locale to a label for the language select dropdown. */
+export const LOCALES_LABELS: Record<Locale, string> = {
+  en: 'English (US)',
+  pt: 'Português (Brasil)',
 }

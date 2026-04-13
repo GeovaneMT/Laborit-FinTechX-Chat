@@ -1,38 +1,32 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 
-import { getLocaleFromPathname } from '@infra/i18n'
+import type { Locale } from '@infra/i18n'
+import { getLocaleFromPathname, resolveLocale } from '@infra/i18n'
 
-export function usePreferencesScreen() {
+export function usePreferencesScreen(locale: Locale) {
+  const { theme } = useTheme()
   const router = useRouter()
   const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const { theme, setTheme } = useTheme()
 
   const selectedLocale = getLocaleFromPathname(pathname)
 
   const changeLanguage = (nextLocale: string) => {
-    const currentLocale = getLocaleFromPathname(pathname)
+    const resolvedNextLocale = resolveLocale(nextLocale)
 
-    const nextPathname = currentLocale
-      ? pathname.replace(`/${currentLocale}`, `/${nextLocale}`)
-      : `/${nextLocale}${pathname}`
+    const nextPathname = pathname.replace(
+      `/${locale}`,
+      `/${resolvedNextLocale}`,
+    )
 
-    const search = searchParams.toString()
-    router.push(search ? `${nextPathname}?${search}` : nextPathname)
-  }
-
-  const isDark = theme === 'dark'
-
-  const toggleDarkMode = () => {
-    setTheme(isDark ? 'light' : 'dark')
+    router.push(nextPathname)
   }
 
   return {
-    isDark,
-    toggleDarkMode,
+    theme,
+    router,
     selectedLocale,
     changeLanguage,
   }

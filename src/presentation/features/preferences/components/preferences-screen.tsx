@@ -1,11 +1,20 @@
 'use client'
 
+import { ChevronLeftIcon } from 'lucide-react'
+
+import { ChangePasswordSettings } from '@features/preferences/components/change-password-settings'
+import { InviteSettings } from '@features/preferences/components/invite-settings'
+import { LanguageSettings } from '@features/preferences/components/language-settings'
+import { PaymentMethodsSettings } from '@features/preferences/components/payment-methods-settings'
+import { ThemeSettings } from '@features/preferences/components/theme-settings'
+import { UserInfoSettings } from '@features/preferences/components/user-info-settings'
 import type { PreferencesMessages } from '@features/preferences/i18n'
 import { usePreferencesScreen } from '@features/preferences/view-models/use-preferences-screen'
 
+import { Separator } from '@/presentation/ui/separator'
+import { Button } from '@/presentation/ui/shadcn/button'
+import { TypographyH2 } from '@/presentation/ui/typography/hx/h2'
 import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
-import { Label } from '@ui/shadcn/label'
-import { Switch } from '@ui/shadcn/switch'
 
 import type { Locale } from '@/infra/i18n'
 
@@ -18,61 +27,34 @@ export function PreferencesScreen({
   locale,
   messages,
 }: PreferencesScreenProps) {
-  const { isDark, toggleDarkMode, selectedLocale, changeLanguage } =
-    usePreferencesScreen(locale)
-
-  const currentLanguageLabel =
-    messages[
-      selectedLocale === 'pt'
-        ? 'preferences.languageOption.pt'
-        : 'preferences.languageOption.en'
-    ]
+  const vm = usePreferencesScreen(locale)
+  const { router, theme } = vm
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-semibold">
-        {messages['preferences.title']}
-      </h1>
-      <Card>
-        <CardHeader>
-          <CardTitle>{messages['preferences.settings']}</CardTitle>
+    <div className="h-full w-full space-y-4">
+      <Card className="h-full w-full">
+        <CardHeader className="mb-8 flex items-center">
+          <Button size="icon-lg" variant="secondary" onClick={router.back}>
+            <ChevronLeftIcon />
+          </Button>
+          <CardTitle className="flex-1">
+            <TypographyH2 className="text-center">
+              {messages['preferences.title']}
+            </TypographyH2>
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="flex items-center justify-between">
-            <Label htmlFor="dark-mode">
-              {messages['preferences.darkMode']}
-            </Label>
-            <Switch
-              id="dark-mode"
-              checked={isDark}
-              onCheckedChange={toggleDarkMode}
-            />
-          </div>
-          <div className="space-y-2">
-            <Label>{messages['preferences.notifications']}</Label>
-            <p className="text-sm text-gray-500">
-              {messages['preferences.inDevelopment']}
-            </p>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="language-select">
-              {messages['preferences.language']}
-            </Label>
-            <select
-              id="language-select"
-              value={selectedLocale}
-              onChange={(event) => changeLanguage(event.target.value)}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:focus:border-indigo-400"
-            >
-              <option value="en">
-                {messages['preferences.languageOption.en']}
-              </option>
-              <option value="pt">
-                {messages['preferences.languageOption.pt']}
-              </option>
-            </select>
-            <p className="text-sm text-gray-500">{currentLanguageLabel}</p>
-          </div>
+        <CardContent className="space-y-4">
+          <ThemeSettings theme={theme} messages={messages} />
+          <Separator />
+          <UserInfoSettings theme={theme} messages={messages} />
+          <Separator />
+          <ChangePasswordSettings theme={theme} messages={messages} />
+          <Separator />
+          <PaymentMethodsSettings theme={theme} messages={messages} />
+          <Separator />
+          <InviteSettings theme={theme} messages={messages} />
+          <Separator />
+          <LanguageSettings messages={messages} {...vm} />
         </CardContent>
       </Card>
     </div>

@@ -1,13 +1,9 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-import { PUBLIC_FILE } from '@core/constants'
+import { DEFAULT_LOCALE, PUBLIC_FILE } from '@core/constants'
 
-import {
-  getLocaleFromPathname,
-  hasLocalePrefix,
-  resolveLocale,
-} from '@infra/i18n'
+import { hasLocalePrefix } from '@infra/i18n'
 
 export const config = {
   matcher: [
@@ -28,27 +24,11 @@ export const proxy = (request: NextRequest) => {
   }
 
   if (hasLocalePrefix(pathname)) {
-    const locale = getLocaleFromPathname(pathname)!
-    const response = NextResponse.next()
-
-    const currentCookie = request.cookies.get('locale')?.value
-
-    if (currentCookie !== locale) {
-      response.cookies.set('locale', locale, {
-        path: '/',
-        maxAge: 31536000,
-        sameSite: 'lax',
-      })
-    }
-
-    return response
+    return NextResponse.next()
   }
 
-  const cookieLocale = request.cookies.get('locale')?.value
-  const locale = resolveLocale(cookieLocale)
-
   const url = request.nextUrl.clone()
-  url.pathname = `/${locale}${pathname}`
+  url.pathname = `/${DEFAULT_LOCALE}${pathname}`
 
   return NextResponse.redirect(url)
 }

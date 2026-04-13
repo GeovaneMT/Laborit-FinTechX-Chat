@@ -4,6 +4,7 @@ import { useCallback, useRef } from 'react'
 import { flushSync } from 'react-dom'
 import { useTheme } from 'next-themes'
 
+import { Button } from '@shadcn/button'
 import { cn } from '@utils/cn'
 import { Moon, Sun } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
@@ -58,7 +59,9 @@ export const AnimatedThemeToggler = ({
   }, [duration, setTheme, isDark])
 
   return (
-    <button
+    <Button
+      variant="outline"
+      size="icon-lg"
       ref={buttonRef}
       onClick={toggleTheme}
       className={cn('cursor-pointer', className)}
@@ -95,6 +98,6 @@ export const AnimatedThemeToggler = ({
         </AnimatePresence>
       </div>
       <span className="sr-only">Toggle theme</span>
-    </button>
+    </Button>
   )
 }

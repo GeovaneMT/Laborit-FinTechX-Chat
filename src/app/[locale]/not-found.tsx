@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 
 import { NotFound } from '@/presentation/layouts/not-found'
 
+import { DEFAULT_LOCALE } from '@/core/constants'
+
 import { getLocalMessages, LayoutMessages, resolveLocale } from '@/infra/i18n'
 
 export const metadata: Metadata = {
@@ -18,16 +20,8 @@ export const metadata: Metadata = {
   },
 }
 
-interface NotFoundProps {
-  params: Promise<{
-    locale: string
-  }>
-}
-
-export default async function NotFoundPage({ params }: NotFoundProps) {
-  const { locale: localeParam } = await params
-
-  const locale = resolveLocale(localeParam)
+export default async function NotFoundPage() {
+  const locale = resolveLocale(DEFAULT_LOCALE)
   const messages = getLocalMessages<LayoutMessages>({
     locale,
     messages: LayoutMessages,

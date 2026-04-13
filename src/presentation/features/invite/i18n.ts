@@ -1,6 +1,7 @@
-import type { Locale } from '@/infra/i18n'
+import { LayoutMessages, type Locale } from '@/infra/i18n'
 
 export type InviteMessages = {
+  loading: LayoutMessages['loading']
   'invite.title': string
   'invite.shareTitle': string
   'invite.description': string
@@ -9,17 +10,18 @@ export type InviteMessages = {
 
 export const InviteMessages: Record<Locale, InviteMessages> = {
   en: {
-    'invite.title': 'Invite a friend',
-    'invite.shareTitle': 'Share Laborit Chat',
-    'invite.description':
-      'Invite your friends to experience the AI assistant. Use this invitation code:',
+    'invite.title': 'Invite friends',
+    'invite.shareTitle': 'Refer A Friend',
+    'invite.description': 'Share Your Promo Code & Get $3 For Each Friend',
     'invite.codeCopied': 'Code copied!',
+    loading: LayoutMessages.en.loading,
   },
   pt: {
-    'invite.title': 'Convidar Amigo',
-    'invite.shareTitle': 'Compartilhe o Laborit Chat',
+    'invite.title': 'Convidar Amigos',
+    'invite.shareTitle': 'Convide um amigo',
     'invite.description':
-      'Convide seus amigos para experimentar o assistente de IA. Use este código de convite:',
+      'Compartilhe seu código promocional e obtenha $3 por cada amigo',
     'invite.codeCopied': 'Código copiado!',
+    loading: LayoutMessages.pt.loading,
   },
 }

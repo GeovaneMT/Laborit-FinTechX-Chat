@@ -18,7 +18,7 @@ const Template = ({ children }: TemplateProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="absolute inset-0 flex flex-col items-center justify-center p-10"
+      className="flex flex-col items-center justify-center p-10"
       transition={{ duration: 0.6, ease: 'backInOut' }}
     >
       {children}

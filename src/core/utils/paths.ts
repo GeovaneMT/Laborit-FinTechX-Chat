@@ -6,6 +6,7 @@ export const paths = {
   dashboard: '/dashboard',
   onboarding: '/onboarding',
   preferences: '/preferences',
+  changePassword: '/change-password',
   editInformation: '/edit-information',
   healthInstructions: '/health-instructions',
 } as const
