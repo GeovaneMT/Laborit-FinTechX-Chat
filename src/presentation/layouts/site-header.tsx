@@ -66,7 +66,7 @@ export function SiteHeader({ messages }: SiteHeaderProps) {
   ]
 
   return (
-    <header className="border-border bg-background/90 sticky top-0 z-40 border-b shadow-sm backdrop-blur-xl">
+    <header className="border-border bg-background/90 sticky top-0 z-40 hidden border-b shadow-sm backdrop-blur-xl sm:block">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <Link

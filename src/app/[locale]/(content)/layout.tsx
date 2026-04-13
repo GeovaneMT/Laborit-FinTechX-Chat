@@ -1,26 +1,19 @@
-import { ContentShell } from '@layouts/content-shell'
+'use client'
 
-import { LayoutMessages } from '@infra/i18n'
-import { getLocalMessages, resolveLocale } from '@infra/i18n'
+import { useParentSize } from '@/presentation/pattern/hooks/use-parent-size'
 
 interface ContentLayoutProps {
   children: React.ReactNode
-  params: Promise<{
-    locale: string
-  }>
 }
 
-export default async function ContentLayout({
-  params,
+export default function ContentLayout({
   children,
 }: Readonly<ContentLayoutProps>) {
-  const { locale: localeParam } = await params
+  const { width, height } = useParentSize()
 
-  const locale = resolveLocale(localeParam)
-  const messages = getLocalMessages<LayoutMessages>({
-    locale,
-    messages: LayoutMessages,
-  })
-
-  return <ContentShell messages={messages}>{children}</ContentShell>
+  return (
+    <div className="relative" style={{ minHeight: height, minWidth: width }}>
+      {children}
+    </div>
+  )
 }

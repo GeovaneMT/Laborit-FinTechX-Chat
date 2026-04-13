@@ -1,4 +1,6 @@
-export const APP_NAME = 'ChatApp'
+export const APP_NAME = 'BrainBox'
+
+export const APP_VERSION = '1.0'
 
 export const BRAND_NAME = 'FinTechX'
 

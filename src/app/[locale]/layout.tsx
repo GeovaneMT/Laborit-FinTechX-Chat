@@ -1,13 +1,14 @@
 import React, { Suspense } from 'react'
 import type { Metadata, Viewport } from 'next'
-import { JetBrains_Mono, Merriweather, Montserrat } from 'next/font/google'
 
-import { geistMono, geistSans } from '@styles/fonts'
+import { fontPrimary, fontSecondary } from '@styles/fonts'
 import { cn } from '@utils/cn'
+
+import { ContentShell } from '@/presentation/layouts/content-shell'
 
 import { ClientBootstrap } from '@/presentation/providers/client-bootstrap'
 
-import { APP_NAME } from '@core/constants'
+import { APP_NAME, BRAND_NAME } from '@core/constants'
 
 import { Providers } from '@/infra/providers'
 import { getLocalMessages, LayoutMessages, resolveLocale } from '@infra/i18n'
@@ -15,21 +16,6 @@ import { getLocalMessages, LayoutMessages, resolveLocale } from '@infra/i18n'
 import '@styles/globals.css'
 
 export { generateStaticParams } from '@infra/i18n'
-
-const fontSans = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
-
-const fontSerif = Merriweather({
-  subsets: ['latin'],
-  variable: '--font-serif',
-})
-
-const fontMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -39,21 +25,21 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | FinTechX-${APP_NAME}`,
-    default: `FinTechX-${APP_NAME}`,
+    template: `%s | ${APP_NAME}-${BRAND_NAME}`,
+    default: `${APP_NAME}-${BRAND_NAME}`,
   },
-  description: `FinTechX SPA ${APP_NAME}`,
+  description: `${APP_NAME}-${BRAND_NAME}`,
   openGraph: {
     title: `FinTechX-Chat`,
-    description: `FinTechX SPA ${APP_NAME}`,
+    description: `${APP_NAME}-${BRAND_NAME}`,
     type: 'website',
     locale: 'en_US',
-    siteName: `FinTechX-${APP_NAME}`,
+    siteName: `${APP_NAME}-${BRAND_NAME}`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: `FinTechX-${APP_NAME}`,
-    description: `FinTechX SPA ${APP_NAME}`,
+    title: `${APP_NAME}-${BRAND_NAME}`,
+    description: `${APP_NAME}-${BRAND_NAME}`,
   },
 }
 
@@ -84,25 +70,19 @@ export default async function RootLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={cn(
-        'font-sans',
-        fontSans.variable,
-        fontSerif.variable,
-        fontMono.variable,
-      )}
+      className={cn('font-sans', fontPrimary.variable, fontSecondary.variable)}
     >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased transition-all duration-200 ease-in-out`}
-      >
+      <body className={`antialiased transition-all duration-200 ease-in-out`}>
         <Suspense fallback={<div>Loading translations...</div>}>
           <Providers>
-            <ClientBootstrap enableMsw={enableMsw} />
             <div
               data-locale={locale}
               data-msgs={JSON.stringify(messages)}
               className="contents"
             >
-              {children}
+              <ClientBootstrap enableMsw={enableMsw}>
+                <ContentShell messages={messages}>{children}</ContentShell>
+              </ClientBootstrap>
             </div>
           </Providers>
         </Suspense>

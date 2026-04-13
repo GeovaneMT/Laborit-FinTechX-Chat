@@ -1,21 +1,34 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
+import { SplashScreen } from '@features/splash/components/splash-screen'
 
 import { initClientInstrumentation } from '@/instrumentation-client'
 
 type Props = {
   enableMsw: boolean
+  children: React.ReactNode
 }
 
-export function ClientBootstrap({ enableMsw }: Props) {
+export function ClientBootstrap({ children, enableMsw }: Props) {
+  const [ready, setReady] = useState(false)
+
   useEffect(() => {
-    initClientInstrumentation()
-    if (!enableMsw) return
-    void import('@mocks/browser').then(({ startBrowserMocks }) =>
-      startBrowserMocks(),
-    )
+    async function init() {
+      initClientInstrumentation()
+      if (enableMsw) {
+        const { startBrowserMocks } = await import('@/mocks/browser')
+        await startBrowserMocks()
+      }
+
+      setReady(true)
+    }
+
+    init()
   }, [enableMsw])
 
-  return null
+  if (!ready) return <SplashScreen />
+
+  return children
 }

@@ -1,15 +1,15 @@
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Poppins, Urbanist } from 'next/font/google'
 
-export const geistSans = Geist({
-  variable: '--font-geist-sans',
+export const fontPrimary = Poppins({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  variable: '--font-primary',
+  weight: ['300', '400', '500', '600', '700'],
   fallback: ['Helvetica', 'Arial', 'sans-serif'],
 })
 
-export const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+export const fontSecondary = Urbanist({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  variable: '--font-secondary',
+  weight: ['300', '400', '500', '600', '700'],
   fallback: ['Helvetica', 'Arial', 'sans-serif'],
 })

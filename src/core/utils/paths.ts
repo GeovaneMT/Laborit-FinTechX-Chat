@@ -1,7 +1,6 @@
 export const paths = {
   home: '/',
   chat: '/chat',
-  splash: '/splash',
   invite: '/invite',
   profile: '/profile',
   dashboard: '/dashboard',

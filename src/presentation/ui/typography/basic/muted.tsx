@@ -12,7 +12,7 @@ export function TypographyMuted({
   return (
     <p
       className={cn(
-        'text-muted-foreground text-sm',
+        'text-muted-foreground text-sm font-light',
         uppercase && 'uppercase',
         className,
       )}

@@ -1,35 +1,36 @@
 'use client'
 
-import Link from 'next/link'
+import Image from 'next/image'
 
-import type { SplashMessages } from '@features/splash/i18n'
+import { TypographyMuted } from '@/presentation/ui/typography/basic/muted'
+import { TypographyH1 } from '@/presentation/ui/typography/hx/h1'
 
-import { Button } from '@ui/button'
-
-import { paths } from '@/core/utils/paths'
+import { APP_NAME, APP_VERSION } from '@/core/constants'
+import { cn } from '@/core/utils/cn'
 
 type SplashScreenProps = {
-  messages: SplashMessages
+  className?: string
 }
 
-export function SplashScreen({ messages }: SplashScreenProps) {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="space-y-8 p-8 text-center">
-        <div className="space-y-4">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-            {messages['splash.title']}
-          </h1>
-          <p className="mx-auto max-w-md text-lg text-gray-600 dark:text-gray-300">
-            {messages['splash.description']}
-          </p>
-        </div>
-        <Link href={paths.onboarding}>
-          <Button size="lg" className="px-8">
-            {messages['splash.button']}
-          </Button>
-        </Link>
-      </div>
+export const SplashScreen = ({ className }: SplashScreenProps) => (
+  <section
+    className={cn(
+      `ointer-events-none flex h-screen flex-col p-10 select-none`,
+      className,
+    )}
+  >
+    <div className="flex-1 place-content-center place-self-center">
+      <Image
+        src="/images/logo.svg"
+        alt="Logo"
+        width={120}
+        height={120}
+        className="w-32 animate-spin"
+      />
     </div>
-  )
-}
+    <TypographyH1 className="place-self-center">{APP_NAME}</TypographyH1>
+    <TypographyMuted className="place-self-center">
+      version {APP_VERSION}
+    </TypographyMuted>
+  </section>
+)

@@ -13,7 +13,7 @@ export function SiteFooter({ messages }: SiteFooterProps) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-border bg-background/90 text-muted-foreground border-t px-4 py-6 text-sm">
+    <footer className="border-border bg-background/90 text-muted-foreground hidden border-t px-4 py-6 text-sm sm:block">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between">
         <p className="leading-relaxed">
           © {year} {APP_NAME}. {messages['footer.copyright']}

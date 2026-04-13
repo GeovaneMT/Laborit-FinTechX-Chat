@@ -51,10 +51,6 @@ export function HomeScreen({ messages }: HomeScreenProps) {
       <Button asChild>
         <Link href={paths.profile}>{messages['home.profile']}</Link>
       </Button>
-
-      <Button asChild>
-        <Link href={paths.splash}>{messages['home.splash']}</Link>
-      </Button>
     </>
   )
 }

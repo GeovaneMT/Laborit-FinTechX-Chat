@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 
-import { geistMono, geistSans } from '@styles/fonts'
+import { fontPrimary, fontSecondary } from '@styles/fonts'
 
 import { NotFound } from '@/presentation/layouts/not-found'
+
+import { cn } from '@/core/utils/cn'
 
 import { getLocalMessages, LayoutMessages, resolveLocale } from '@/infra/i18n'
 import { Providers } from '@/infra/providers'
@@ -39,9 +41,13 @@ export default async function GlobalNotFound({ params }: NotFoundProps) {
   })
 
   return (
-    <html lang="pt-BR" data-scroll-behavior="smooth">
+    <html
+      lang="pt-BR"
+      data-scroll-behavior="smooth"
+      className={cn('font-sans', fontPrimary.variable, fontSecondary.variable)}
+    >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-background antialiased transition-all duration-200 ease-in-out`}
+        className={`bg-background antialiased transition-all duration-200 ease-in-out`}
       >
         <Providers>
           <NotFound messages={messages} />
