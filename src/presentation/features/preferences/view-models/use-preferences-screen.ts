@@ -26,7 +26,6 @@ export function usePreferencesScreen(locale: Locale) {
 
   return {
     theme,
-    router,
     selectedLocale,
     changeLanguage,
   }

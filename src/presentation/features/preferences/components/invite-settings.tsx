@@ -6,9 +6,9 @@ import { ChevronRightIcon, SendIcon } from 'lucide-react'
 
 import type { PreferencesMessages } from '@features/preferences/i18n'
 
-import { Button } from '@/presentation/ui/button'
-import { TypographyMuted } from '@/presentation/ui/typography/basic/muted'
-import { Label } from '@ui/shadcn/label'
+import { Button } from '@ui/button'
+import { TypographyMuted } from '@ui/typography/basic/muted'
+import { Label } from '@shadcn/label'
 
 import { paths } from '@/core/utils/paths'
 

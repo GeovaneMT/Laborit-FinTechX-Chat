@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 
-import { TypographyMuted } from '@/presentation/ui/typography/basic/muted'
-import { TypographyH1 } from '@/presentation/ui/typography/hx/h1'
+import { TypographyMuted } from '@ui/typography/basic/muted'
+import { TypographyH1 } from '@ui/typography/hx/h1'
 
 import { APP_NAME, APP_VERSION } from '@/core/constants'
 import { cn } from '@/core/utils/cn'

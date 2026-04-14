@@ -12,10 +12,10 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/presentation/ui/shadcn/select'
-import { TypographyMuted } from '@/presentation/ui/typography/basic/muted'
-import { TypographyP } from '@/presentation/ui/typography/p'
-import { Label } from '@ui/shadcn/label'
+} from '@shadcn/select'
+import { TypographyMuted } from '@ui/typography/basic/muted'
+import { TypographyP } from '@ui/typography/p'
+import { Label } from '@shadcn/label'
 
 import { SUPPORTED_LOCALES } from '@/core/constants'
 

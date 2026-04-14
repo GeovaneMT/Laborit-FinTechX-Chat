@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 import type { InviteMessages } from '@features/invite/i18n'
 
-import { TypographyMuted } from '@/presentation/ui/typography/basic/muted'
-import { TypographyH4 } from '@/presentation/ui/typography/hx/h4'
+import { TypographyMuted } from '@ui/typography/basic/muted'
+import { TypographyH4 } from '@ui/typography/hx/h4'
 
 type InviteBannerProps = {
   messages: InviteMessages

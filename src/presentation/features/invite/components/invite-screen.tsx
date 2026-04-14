@@ -5,7 +5,7 @@ import { InviteBanner } from '@features/invite/components/invite-banner'
 import type { InviteMessages } from '@features/invite/i18n'
 import { useInviteScreen } from '@features/invite/view-models/use-invite-screen'
 
-import { TypographyH2 } from '@/presentation/ui/typography/hx/h2'
+import { TypographyH2 } from '@ui/typography/hx/h2'
 import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
 
 type InviteScreenProps = {

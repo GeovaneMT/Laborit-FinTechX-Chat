@@ -1,14 +1,19 @@
 # Next.js 16 SPA Template Reference
 
-Source adapted from [docs/instructions/SPA Prompt template - Next.js 16.md](/workspace/docs/instructions/SPA Prompt template - Next.js 16.md).
+Source adapted from [docs/instructions/SPA Prompt template - Next.js
+16.md](/workspace/docs/instructions/SPA Prompt template - Next.js 16.md).
 
 ## Purpose
 
-This reference defines the technical blueprint for generating a new Next.js 16 application with a strict frontend architecture. It must be used as an implementation reference, not as product/domain content to be copied literally.
+This reference defines the technical blueprint for generating a new Next.js 16
+application with a strict frontend architecture. It must be used as an
+implementation reference, not as product/domain content to be copied literally.
 
 ## Core Instruction
 
-Generate a new web application with an architecture that is practically identical to the template blueprint, but without copying business rules, domain names, flows, texts, or contracts from the original source.
+Generate a new web application with an architecture that is practically
+identical to the template blueprint, but without copying business rules, domain
+names, flows, texts, or contracts from the original source.
 
 Replicate only the technical blueprint:
 
@@ -25,7 +30,8 @@ Replicate only the technical blueprint:
 - tests
 - frontend MVVM + light DDD organization
 
-Use a neutral domain. Prefer names like `item`, `profile`, `dashboard`, `settings`, `feature-a`, and `feature-b`.
+Use a neutral domain. Prefer names like `item`, `profile`, `settings`,
+`feature-a`, and `feature-b`.
 
 ## Required Deliverable
 
@@ -46,10 +52,12 @@ Provide an implementation-ready project with:
 - Turbopack
 - Server Components
 - Cache Components with `cacheComponents: true`
-- `use cache`, `cacheLife`, `cacheTag`, `updateTag`, `revalidateTag`, `revalidatePath`
+- `use cache`, `cacheLife`, `cacheTag`, `updateTag`, `revalidateTag`,
+  `revalidatePath`
 - Server Actions as the main integration boundary with the backend
 - Orval for typed clients from OpenAPI
-- TanStack Query for client-side GETs with server-side prefetch + dehydration/hydration
+- TanStack Query for client-side GETs with server-side prefetch +
+  dehydration/hydration
 - TanStack Form
 - TanStack Table + TanStack Virtual
 - Zustand
@@ -68,36 +76,49 @@ Provide an implementation-ready project with:
 
 ## Architecture
 
-Organize the app into `core`, `infra`, `http`, `presentation`, and `app`, mixing light DDD on the frontend with MVVM by feature.
+Organize the app into `core`, `infra`, `http`, `presentation`, and `app`, mixing
+light DDD on the frontend with MVVM by feature.
 
-- `core/`: entities, value objects, contracts, types, pure use cases, constants, and utilities without React
-- `infra/`: auth, analytics, cookies, cache, i18n, stores, adapters, mappers, runtime integration, and framework support
-- `http/`: `http-resource`, technical routes, mutators, Orval config, generated code, and HTTP wrappers
+- `core/`: entities, value objects, contracts, types, pure use cases, constants,
+  and utilities without React
+- `infra/`: auth, analytics, cookies, cache, i18n, stores, adapters, mappers,
+  runtime integration, and framework support
+- `http/`: `http-resource`, technical routes, mutators, Orval config, generated
+  code, and HTTP wrappers
 - `presentation/`: UI, patterns, layouts, features, providers, and view models
-- `app/`: App Router, route groups, layouts, pages, loading, error, not-found, and final composition
+- `app/`: App Router, route groups, layouts, pages, loading, error, not-found,
+  and final composition
 - `mocks/`: MSW for dev and tests
 
 ## MVVM + DDD
 
 - Use MVVM by feature
-- `presentation/features/*/view-models/` concentrates screen state, orchestration of queries/actions, and adaptation for UI
-- `presentation/features/*/components/` represents the View and should stay declarative
+- `presentation/features/*/view-models/` concentrates screen state,
+  orchestration of queries/actions, and adaptation for UI
+- `presentation/features/*/components/` represents the View and should stay
+  declarative
 - `core/` concentrates pure and highly testable rules
 - `infra/` implements technical details
 - `http/` concentrates transport and backend access
-- Avoid overly academic DDD; keep only abstractions that improve clarity, reuse, and testability
+- Avoid overly academic DDD; keep only abstractions that improve clarity, reuse,
+  and testability
 
 ## Dependency Rules
 
 - `core` imports only from `core`
 - `infra` imports from `core` and `infra`
 - `http` imports from `core`, `infra`, and `http`
-- `presentation/ui` imports from `presentation/ui`, UI libraries, and shared visual utilities
-- `presentation/pattern` imports from `core`, `infra`, `presentation/ui`, and `presentation/pattern`
-- `presentation/layouts` imports from `core`, `infra`, `presentation/ui`, `presentation/pattern`, and `presentation/layouts`
-- `presentation/features` imports from `core`, `infra`, `http`, `presentation/ui`, `presentation/pattern`, and `presentation/features`
+- `presentation/ui` imports from `presentation/ui`, UI libraries, and shared
+  visual utilities
+- `presentation/pattern` imports from `core`, `infra`, `presentation/ui`, and
+  `presentation/pattern`
+- `presentation/layouts` imports from `core`, `infra`, `presentation/ui`,
+  `presentation/pattern`, and `presentation/layouts`
+- `presentation/features` imports from `core`, `infra`, `http`,
+  `presentation/ui`, `presentation/pattern`, and `presentation/features`
 - `app` imports from `core`, `infra`, `http`, `presentation`, and `app`
-- `mocks` imports from `core`, `infra`, `http`, `mocks`, and `presentation/features`
+- `mocks` imports from `core`, `infra`, `http`, `mocks`, and
+  `presentation/features`
 
 Enforce this with `eslint-plugin-boundaries`.
 
@@ -110,7 +131,8 @@ Enforce this with `eslint-plugin-boundaries`.
 - avoid unnecessary casts
 - centralize query keys, query options, cache tags, and data-access helpers
 - keep `page.tsx` and `layout.tsx` thin
-- keep routes, pages, layouts, route handlers, and Server Actions thin and delegated
+- keep routes, pages, layouts, route handlers, and Server Actions thin and
+  delegated
 - `presentation/ui/` must not know the domain
 - `presentation/pattern/` must not know a specific feature
 - feature components must delegate behavior to view models
@@ -136,7 +158,8 @@ Enforce this with `eslint-plugin-boundaries`.
 
 ## Required Base Code in `core`
 
-Include an `Either` implementation in `core` with a matching unit test. Reproduce the same structural idea:
+Include an `Either` implementation in `core` with a matching unit test.
+Reproduce the same structural idea:
 
 ### `@core/either.ts`
 
@@ -223,7 +246,6 @@ src/
       register/page.tsx
     (private)/
       layout.tsx
-      dashboard/page.tsx
       settings/page.tsx
       items/page.tsx
       items/[itemId]/page.tsx
@@ -301,20 +323,6 @@ src/
       onboarding-layout.tsx
       pages/not-found-page.tsx
     features/
-      dashboard/
-        actions.ts
-        hooks.ts
-        schemas.ts
-        components/
-        view-models/
-        __specs__/
-      items/
-        actions.ts
-        hooks.ts
-        schemas.ts
-        components/
-        view-models/
-        __specs__/
       settings/
         actions.ts
         hooks.ts
@@ -343,7 +351,8 @@ Implement bootstrap in this order:
 4. hydrate TanStack Query on the client
 5. start MSW in dev when enabled
 6. start instrumentation/tracking
-7. render `app/layout.tsx` with i18n, auth, query provider/hydration, client state, and `Toaster`
+7. render `app/layout.tsx` with i18n, auth, query provider/hydration, client
+   state, and `Toaster`
 
 In `app/layout.tsx`, include:
 
@@ -356,7 +365,8 @@ In `app/layout.tsx`, include:
 - base metadata
 - devtools only in development when it makes sense
 
-Also implement `app/not-found.tsx`, `app/global-error.tsx`, and `app/loading.tsx`.
+Also implement `app/not-found.tsx`, `app/global-error.tsx`, and
+`app/loading.tsx`.
 
 ## Routing and Access
 
@@ -369,12 +379,13 @@ Rules:
 
 - routes should compose layouts and features, not concentrate business logic
 - validate access on the server before render
-- `src/proxy.ts` should optimistically control access, redirect unauthenticated users out of private routes, and optionally prevent authenticated users from accessing `/login` and `/register`
+- `src/proxy.ts` should optimistically control access, redirect unauthenticated
+  users out of private routes, and optionally prevent authenticated users from
+  accessing `/login` and `/register`
 - use typed and sanitized `searchParams` when URL state exists
 
 Include example routes:
 
-- `/dashboard`
 - `/settings`
 - `/items`
 - `/items/[itemId]`
@@ -403,7 +414,8 @@ Centralize reusable read functions. Each should make explicit:
 - when it needs to be dynamic
 - how it will be invalidated
 
-Also centralize reusable query options to avoid spreading query configuration around routes and features.
+Also centralize reusable query options to avoid spreading query configuration
+around routes and features.
 
 ### `infra/query-keys.ts`
 
@@ -411,7 +423,8 @@ Centralize query keys by technical domain and export a reusable registry.
 
 ### `infra/cache-tags.ts`
 
-Centralize cache tags by technical domain, including helpers for list, detail, and cross-cutting scopes.
+Centralize cache tags by technical domain, including helpers for list, detail,
+and cross-cutting scopes.
 
 ### `http/`
 
@@ -419,7 +432,9 @@ Centralize cache tags by technical domain, including helpers for list, detail, a
 - isolate generated code inside `http/generated/`
 - use a custom mutator when needed
 - keep ergonomic manual wrappers for use in Server Actions
-- `http/http-resource.ts` should centralize `defineApiRoute`, `defineApiRouteFn`, `httpResource<T>()`, `httpUpload<T>()`, error handling, `application/problem+json`, auth, locale, and failure normalization
+- `http/http-resource.ts` should centralize `defineApiRoute`,
+  `defineApiRouteFn`, `httpResource<T>()`, `httpUpload<T>()`, error handling,
+  `application/problem+json`, auth, locale, and failure normalization
 
 ## State
 
@@ -459,7 +474,8 @@ Build `presentation/ui/` as an internal design system:
 - variants with CVA
 - class merging with `tailwind-merge`
 - support for `data-slot`, `data-variant`, `data-size` when useful
-- manual components with `asChild` via `Slot` when they are compositional wrappers
+- manual components with `asChild` via `Slot` when they are compositional
+  wrappers
 
 Include at least:
 
@@ -485,10 +501,14 @@ Include at least:
 
 ## Pattern, Layouts, and Features
 
-- `presentation/pattern/` should concentrate the data grid, form infrastructure, visual error boundaries, friendly dialogs, and shared wrappers
-- for the data grid, include at least `data-grid.tsx`, `data-grid-header.tsx`, `data-grid-table.tsx`, `data-grid-footer.tsx`, and `data-grid.variants.tsx`
-- `presentation/layouts/` should contain `PublicLayout`, `PrivateLayout`, and `OnboardingLayout`
-- each feature should be self-contained and include `actions.ts`, `hooks.ts`, `schemas.ts`, `components/`, `view-models/`, and `__specs__/`
+- `presentation/pattern/` should concentrate the data grid, form infrastructure,
+  visual error boundaries, friendly dialogs, and shared wrappers
+- for the data grid, include at least `data-grid.tsx`, `data-grid-header.tsx`,
+  `data-grid-table.tsx`, `data-grid-footer.tsx`, and `data-grid.variants.tsx`
+- `presentation/layouts/` should contain `PublicLayout`, `PrivateLayout`, and
+  `OnboardingLayout`
+- each feature should be self-contained and include `actions.ts`, `hooks.ts`,
+  `schemas.ts`, `components/`, `view-models/`, and `__specs__/`
 - feature `actions.ts` should include GETs for prefetch/hydration and mutations
 
 ## i18n and Auth
@@ -518,7 +538,8 @@ Include:
 - unit tests for view models
 - unit tests for `infra`, `http`, hooks, and utilities
 - browser tests for `presentation/ui`
-- integration tests for routes, Server Actions, prefetch/hydration, TanStack Query, and `src/proxy.ts`
+- integration tests for routes, Server Actions, prefetch/hydration, TanStack
+  Query, and `src/proxy.ts`
 
 Scripts:
 
@@ -574,4 +595,5 @@ Generate code:
 - do not use names from the original project
 - use only neutral names and generic infrastructure
 - preserve architecture, not product
-- replace only what Next.js 16 solves better or what is incompatible in the original prompt
+- replace only what Next.js 16 solves better or what is incompatible in the
+  original prompt

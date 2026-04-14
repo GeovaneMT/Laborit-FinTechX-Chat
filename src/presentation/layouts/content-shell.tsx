@@ -5,7 +5,7 @@ import { useRef } from 'react'
 import { SiteFooter } from '@layouts/site-footer'
 import { SiteHeader } from '@layouts/site-header'
 
-import { ScrollContextProvider } from '@/presentation/pattern/contexts/scroll-virtualization-context'
+import { ScrollContextProvider } from '@pattern/contexts/scroll-virtualization-context'
 
 import { ScrollArea } from '@ui/scroll-area'
 

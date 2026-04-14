@@ -4,8 +4,8 @@ import type { Dispatch, SetStateAction } from 'react'
 
 import { CheckIcon, CopyIcon } from 'lucide-react'
 
-import { Button } from '@ui/shadcn/button'
-import { Input } from '@ui/shadcn/input'
+import { Button } from '@shadcn/button'
+import { Input } from '@shadcn/input'
 
 type CopyInputProps = {
   copied: boolean

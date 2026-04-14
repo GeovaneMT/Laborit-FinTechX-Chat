@@ -1,6 +1,6 @@
 'use client'
 
-import { useParentSize } from '@/presentation/pattern/hooks/use-parent-size'
+import { useParentSize } from '@pattern/hooks/use-parent-size'
 
 interface ContentLayoutProps {
   children: React.ReactNode

@@ -106,7 +106,6 @@ export const createResourceAction = async (
       'Resource created successfully',
       {
         revalidateTags: ['resources'],
-        revalidatePaths: ['/dashboard'],
       },
     )
   } catch (error) {
@@ -268,7 +267,6 @@ The project uses a standardized cache tag system in
 ```typescript
 export const cacheTags = {
   profile: 'tag:profile',
-  dashboard: 'tag:dashboard',
   itemsList: (scope?: string) =>
     scope ? `tag:items:list:${scope}` : 'tag:items:list',
   itemDetail: (id: string) => `tag:item:${id}`,
@@ -292,7 +290,7 @@ revalidateTags: [
 Use **paths** for full page revalidation when needed:
 
 ```typescript
-revalidatePaths: ['/dashboard', '/profile']
+revalidatePaths: ['/profile']
 ```
 
 ### When to Revalidate
@@ -404,10 +402,8 @@ All services call mock HTTP endpoints during development.
   │   └── validate/
   │       └── route.ts      GET /api/v1/phones/validate
   ├── profile/
-  │   └── route.ts          GET/POST /api/v1/profile
-  └── dashboard/
-      └── summary/
-          └── route.ts      GET /api/v1/dashboard/summary
+      └── route.ts          GET/POST /api/v1/profile
+
 ```
 
 ### Creating a Mock Route

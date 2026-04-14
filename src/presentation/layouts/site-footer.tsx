@@ -21,7 +21,7 @@ export function SiteFooter({ messages }: SiteFooterProps) {
 
         <div className="text-muted-foreground flex flex-wrap items-center justify-center gap-3 text-xs">
           <Link
-            href={paths.home}
+            href={paths.onboarding}
             className="hover:text-foreground focus-visible:ring-ring rounded-md px-2 py-1 focus-visible:ring-2 focus-visible:outline-none"
           >
             {messages['footer.home']}

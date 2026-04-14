@@ -43,8 +43,8 @@ text, or proprietary flows.
      architectural validation;
    - if auditing, highlight drift against the canonical blueprint and suggest
      incremental remediation.
-5. Keep examples and recommendations domain-neutral; prefer `dashboard`,
-   `settings`, `items`, `profile`, `feature-a`, and `feature-b`.
+5. Keep examples and recommendations domain-neutral; prefer `settings`, `items`,
+   `profile`, `feature-a`, and `feature-b`.
 
 ## Output Rules
 

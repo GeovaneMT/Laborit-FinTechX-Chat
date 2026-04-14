@@ -5,6 +5,8 @@ import type { Profile } from '@core/entities/profile'
 export const profileSchema = z.object({
   displayName: z.string().min(1, 'Display name is required'),
   email: z.email('Invalid email address'),
+  accountSecurity: z.number().min(0, 'Account security is required'),
+  avatarUrl: z.string('Invalid avatar URL'),
 })
 
 export type ProfileInput = z.infer<typeof profileSchema>
@@ -26,5 +28,7 @@ export function toProfile(input: ProfileInput): Profile {
   return {
     displayName: input.displayName.trim(),
     email: input.email.toLowerCase(),
+    accountSecurity: input.accountSecurity,
+    avatarUrl: input.avatarUrl,
   }
 }

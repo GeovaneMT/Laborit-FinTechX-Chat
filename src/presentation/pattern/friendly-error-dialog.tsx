@@ -8,7 +8,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@ui/shadcn/dialog'
+} from '@shadcn/dialog'
 
 type Props = {
   open: boolean

@@ -1,12 +1,15 @@
 'use client'
 
+import { Card, CardContent, CardHeader } from '@shadcn/card'
+
 import type { EditInformationMessages } from '@features/edit-information/i18n'
 import { useEditInformationScreen } from '@features/edit-information/view-models/use-edit-information-screen'
 
+import { CardHeaderContent } from '@pattern/card-header-content'
+
 import { Button } from '@ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
-import { Input } from '@ui/shadcn/input'
-import { Label } from '@ui/shadcn/label'
+import { Input } from '@shadcn/input'
+import { Label } from '@shadcn/label'
 
 type EditInformationScreenProps = {
   messages: EditInformationMessages
@@ -21,8 +24,10 @@ export function EditInformationScreen({
   return (
     <section className="w-full">
       <Card>
-        <CardHeader>
-          <CardTitle>{messages['editInformation.updateProfile']}</CardTitle>
+        <CardHeader className="mb-8 flex items-center">
+          <CardHeaderContent
+            title={messages['editInformation.updateProfile']}
+          />
         </CardHeader>
         <CardContent>
           <form

@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react'
 import { Component, type ErrorInfo } from 'react'
 
-import { Alert, AlertDescription, AlertTitle } from '@ui/shadcn/alert'
+import { Alert, AlertDescription, AlertTitle } from '@shadcn/alert'
 
 type Props = {
   children: ReactNode

@@ -46,12 +46,6 @@ export function SiteHeader({ messages }: SiteHeaderProps) {
     label: string
     segment: string
   }> = [
-    { href: paths.home, label: messages['nav.home'], segment: paths.home },
-    {
-      href: paths.dashboard,
-      label: messages['nav.dashboard'],
-      segment: paths.dashboard,
-    },
     { href: paths.chat, label: messages['nav.chat'], segment: paths.chat },
     {
       href: paths.profile,
@@ -70,7 +64,7 @@ export function SiteHeader({ messages }: SiteHeaderProps) {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <Link
-            href={paths.home}
+            href={paths.onboarding}
             className="text-foreground text-lg font-semibold"
           >
             {BRAND_NAME}

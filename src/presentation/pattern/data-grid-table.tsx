@@ -16,7 +16,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@ui/shadcn/table'
+} from '@shadcn/table'
 
 type Props<TData> = {
   data: TData[]

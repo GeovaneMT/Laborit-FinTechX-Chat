@@ -4,9 +4,9 @@ import { SunMoonIcon } from 'lucide-react'
 
 import type { PreferencesMessages } from '@features/preferences/i18n'
 
-import { AnimatedThemeToggler } from '@/presentation/ui/magicui/animated-theme-toggler'
-import { TypographyMuted } from '@/presentation/ui/typography/basic/muted'
-import { Label } from '@ui/shadcn/label'
+import { AnimatedThemeToggler } from '@ui/magicui/animated-theme-toggler'
+import { TypographyMuted } from '@ui/typography/basic/muted'
+import { Label } from '@shadcn/label'
 
 type ThemeSettingsProps = {
   theme: string | undefined

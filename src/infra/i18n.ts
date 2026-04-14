@@ -3,10 +3,8 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@core/constants'
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 export type LayoutMessages = {
-  'nav.home': string
   'nav.chat': string
   'nav.profile': string
-  'nav.dashboard': string
 
   'footer.copyright': string
   'footer.home': string
@@ -28,10 +26,8 @@ export const LayoutMessages: Record<Locale, LayoutMessages> = {
   en: {
     loading: 'Loading...',
 
-    'nav.home': 'Home',
     'nav.chat': 'Chat',
     'nav.profile': 'Profile',
-    'nav.dashboard': 'Dashboard',
 
     'footer.copyright':
       'Built with accessibility and responsive design in mind.',
@@ -51,10 +47,8 @@ export const LayoutMessages: Record<Locale, LayoutMessages> = {
   pt: {
     loading: 'Carregando...',
 
-    'nav.home': 'Início',
     'nav.chat': 'Chat',
     'nav.profile': 'Perfil',
-    'nav.dashboard': 'Painel',
 
     'footer.copyright': 'Criado com design responsivo e acessível em mente.',
     'footer.home': 'Início',

@@ -43,7 +43,7 @@ export const NotFound = ({ messages }: NotFoundProps) => (
       </EmptyHeader>
 
       <EmptyContent className="pt-6">
-        <Link href={paths.home}>
+        <Link href={paths.onboarding}>
           <Button size="lg" className="gap-2 text-base">
             <div className="flex items-center justify-center gap-2">
               <ArrowLeft className="h-4 w-4" />

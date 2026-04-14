@@ -1,48 +1,69 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { Card, CardContent, CardHeader } from '@shadcn/card'
+import { Separator } from '@shadcn/separator'
 
-import { ChevronLeftIcon } from 'lucide-react'
-
+import { AccountPreferences } from '@features/profile/components/account-preferences'
+import { AccountSecurity } from '@features/profile/components/account-scurity'
+import { BottomNav } from '@features/profile/components/bottom-nav'
+import { CustomerSupport } from '@features/profile/components/customer-support'
+import { Logout } from '@features/profile/components/logout'
+import { ProfilePresentation } from '@features/profile/components/profile-presentation'
 import type { ProfileMessages } from '@features/profile/i18n'
 import { useProfileViewModel } from '@features/profile/view-models/profile.view-model'
 
-import { LoadingMessage } from '@/presentation/ui/loading-message'
-import { TypographyH2 } from '@/presentation/ui/typography/hx/h2'
-import { Button } from '@ui/shadcn/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
+import { CardHeaderContent } from '@pattern/card-header-content'
+
+import { ErrorCard } from '@ui/error-card'
+import { LoadingMessage } from '@ui/loading-message'
 
 type ProfileScreenProps = {
   messages: ProfileMessages
 }
 
 export function ProfileScreen({ messages }: ProfileScreenProps) {
-  const router = useRouter()
-  const { profile, isLoading } = useProfileViewModel()
+  const vm = useProfileViewModel(messages)
+
+  const { profile, isLoading, error, logoutAction } = vm
 
   if (isLoading) {
     return <LoadingMessage />
   }
 
+  if (error) {
+    return (
+      <ErrorCard
+        title="Ocorreu um erro ao carregar os dados:"
+        message={error.message}
+      />
+    )
+  }
+
   if (!profile) {
-    throw new Error('Profile data is required')
+    throw new Error('Profile data is required.')
   }
 
   return (
     <section className="w-full">
       <Card className="w-full">
         <CardHeader className="mb-8 flex items-center">
-          <Button size="icon-lg" variant="secondary" onClick={router.back}>
-            <ChevronLeftIcon />
-          </Button>
-          <CardTitle className="flex-1">
-            <TypographyH2 className="text-center">
-              {messages['profile.title']}
-            </TypographyH2>
-          </CardTitle>
+          <CardHeaderContent title={messages['profile.title']} />
         </CardHeader>
-        <CardContent></CardContent>
+        <CardContent className="place-items-center space-y-16">
+          <ProfilePresentation profile={profile} />
+          <Separator />
+          <div className="w-full space-y-4">
+            <AccountPreferences messages={messages} />
+            <Separator />
+            <AccountSecurity messages={messages} {...vm} />
+            <Separator />
+            <CustomerSupport messages={messages} />
+            <Separator />
+            <Logout messages={messages} onLogout={logoutAction} />
+          </div>
+        </CardContent>
       </Card>
+      <BottomNav />
     </section>
   )
 }

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Send } from 'lucide-react'
 
 import { Button } from '@ui/button'
-import { Textarea } from '@ui/shadcn/textarea'
+import { Textarea } from '@shadcn/textarea'
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void

@@ -3,8 +3,8 @@ import { TabsContent } from '@shadcn/tabs'
 
 import type { OnboardingMessages } from '@features/onboarding/i18n'
 
-import { TypographyMuted } from '@/presentation/ui/typography/basic/muted'
-import { TypographyH1 } from '@/presentation/ui/typography/hx/h1'
+import { TypographyMuted } from '@ui/typography/basic/muted'
+import { TypographyH1 } from '@ui/typography/hx/h1'
 
 type OnboardingTab2Props = {
   messages: OnboardingMessages

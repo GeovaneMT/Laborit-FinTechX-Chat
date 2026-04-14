@@ -64,9 +64,9 @@ const eslintConfig = defineConfig([
             ['^@?\\w'],
             // 4-13. Internal aliases grouped by source (each source = separate group with blank lines)
             // Presentation layer (top to bottom by dependency order)
-            ['^@/presentation/features|^@features'],
+            ['^@features|^@features'],
             ['^@/presentation/layouts|^@layouts'],
-            ['^@/presentation/patterns|^@/presentation/pattern|^@pattern'],
+            ['^@patterns|^@pattern|^@pattern'],
             ['^@/presentation/ui|^@ui'],
             ['^@/presentation/schemas|^@schemas'],
             ['^@/presentation/models|^@models'],
