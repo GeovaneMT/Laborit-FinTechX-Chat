@@ -7,7 +7,6 @@ import { InviteSettings } from '@features/preferences/components/invite-settings
 import { LanguageSettings } from '@features/preferences/components/language-settings'
 import { PaymentMethodsSettings } from '@features/preferences/components/payment-methods-settings'
 import { ThemeSettings } from '@features/preferences/components/theme-settings'
-import { UserInfoSettings } from '@features/preferences/components/user-info-settings'
 import type { PreferencesMessages } from '@features/preferences/i18n'
 import { usePreferencesScreen } from '@features/preferences/view-models/use-preferences-screen'
 
@@ -16,6 +15,8 @@ import { CardHeaderContent } from '@pattern/card-header-content'
 import { Separator } from '@ui/separator'
 
 import type { Locale } from '@/infra/i18n'
+
+import { EditInfoSettings } from '@/presentation/features/preferences/components/edit-info-settings'
 
 type PreferencesScreenProps = {
   locale: Locale
@@ -38,7 +39,7 @@ export function PreferencesScreen({
         <CardContent className="space-y-4">
           <ThemeSettings theme={theme} messages={messages} />
           <Separator />
-          <UserInfoSettings theme={theme} messages={messages} />
+          <EditInfoSettings theme={theme} messages={messages} />
           <Separator />
           <ChangePasswordSettings theme={theme} messages={messages} />
           <Separator />

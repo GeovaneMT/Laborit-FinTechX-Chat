@@ -6,30 +6,32 @@ import { safeParseProfileInput } from '@core/schemas/profile.schema'
 import type { ServerActionResult } from '@/infra/server/types/server.types'
 import { wrapServerActionResult } from '@infra/server/actions/common/action-factory'
 
-import type { ProfileDto } from '@/http/generated/models'
-import { getMe } from '@/http/services/get-me.service'
+import type { ProfileDto, UpdateProfileDto } from '@/http/generated/models'
+import { updateProfile } from '@/http/services/update-profile.service'
 
-export const getMeAction = async (): Promise<
-  ServerActionResult<ProfileDto>
-> => {
-  const reply = await getMe()
+export const UpdateProfileAction = async (
+  profile: UpdateProfileDto,
+): Promise<ServerActionResult<ProfileDto>> => {
+  const reply = await updateProfile(profile)
 
   if (reply.isLeft()) {
     const { errorMessage } = reply.value
     throw new Error(errorMessage)
   }
 
-  const { value: profile } = reply
+  const updatedProfile = reply.value
 
-  const { data, error, success } = safeParseProfileInput(profile)
+  const { data, error } = safeParseProfileInput(updatedProfile)
+
   if (error) {
     throw new Error(error.message)
   }
-  if (!success || !data) {
+
+  if (!data) {
     throw new Error('Invalid profile data')
   }
 
-  return await wrapServerActionResult(right(data), {
+  return wrapServerActionResult(right(data), {
     revalidateTags: ['profile'],
   })
 }

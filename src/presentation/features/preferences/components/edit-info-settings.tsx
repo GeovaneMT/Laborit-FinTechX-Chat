@@ -12,14 +12,14 @@ import { TypographyMuted } from '@ui/typography/basic/muted'
 
 import { paths } from '@/core/utils/paths'
 
-type UserInfoSettingsProps = {
+type EditInfoSettingsProps = {
   theme: string | undefined
   messages: PreferencesMessages
 }
 
-export function UserInfoSettings({ theme, messages }: UserInfoSettingsProps) {
+export function EditInfoSettings({ theme, messages }: EditInfoSettingsProps) {
   return (
-    <Link href={paths.profile} className="flex items-center space-x-4">
+    <Link href={paths.editInformation} className="flex items-center space-x-4">
       <UserIcon fill={theme === 'dark' ? 'white' : 'black'} size={32} />
       <div className="space-y-1">
         <Label htmlFor="dark-mode">{messages['preferences.accountInfo']}</Label>

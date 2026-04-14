@@ -25,6 +25,7 @@
     "test:unit": "vitest run src/core src/infra src/http src/presentation/features"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accessible-icon": "^1.1.8",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-checkbox": "^1.1.4",

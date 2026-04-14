@@ -4,3 +4,8 @@ export type ProfileDto = {
   accountSecurity: number
   avatarUrl: string
 }
+
+export type UpdateProfileDto = {
+  email: string
+  displayName: string
+}
