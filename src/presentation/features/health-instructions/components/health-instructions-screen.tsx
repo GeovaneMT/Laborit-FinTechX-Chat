@@ -2,7 +2,7 @@
 
 import type { HealthInstructionsMessages } from '@features/health-instructions/i18n'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
 
 type HealthInstructionsScreenProps = {
   messages: HealthInstructionsMessages

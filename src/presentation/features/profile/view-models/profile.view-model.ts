@@ -1,11 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { useProfileForm } from '@features/profile/hooks'
-
 import { queryKeyRegistry } from '@infra/query-keys'
 
 export function useProfileViewModel() {
-  const { submitForm, isSubmitting } = useProfileForm()
   const { data: profile, isLoading } = useQuery({
     queryKey: queryKeyRegistry.profile.current,
     queryFn: async () => {
@@ -16,7 +13,5 @@ export function useProfileViewModel() {
   return {
     profile,
     isLoading,
-    submitForm,
-    isSubmitting,
   }
 }

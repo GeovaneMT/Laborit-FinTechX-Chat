@@ -1,5 +1,6 @@
 'use client'
 
+import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
 import { ChevronLeftIcon } from 'lucide-react'
 
 import { ChangePasswordSettings } from '@features/preferences/components/change-password-settings'
@@ -14,7 +15,6 @@ import { usePreferencesScreen } from '@features/preferences/view-models/use-pref
 import { Separator } from '@/presentation/ui/separator'
 import { Button } from '@/presentation/ui/shadcn/button'
 import { TypographyH2 } from '@/presentation/ui/typography/hx/h2'
-import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
 
 import type { Locale } from '@/infra/i18n'
 
@@ -31,8 +31,8 @@ export function PreferencesScreen({
   const { router, theme } = vm
 
   return (
-    <div className="h-full w-full space-y-4">
-      <Card className="h-full w-full">
+    <section className="w-full">
+      <Card className="w-full">
         <CardHeader className="mb-8 flex items-center">
           <Button size="icon-lg" variant="secondary" onClick={router.back}>
             <ChevronLeftIcon />
@@ -57,6 +57,6 @@ export function PreferencesScreen({
           <LanguageSettings messages={messages} {...vm} />
         </CardContent>
       </Card>
-    </div>
+    </section>
   )
 }

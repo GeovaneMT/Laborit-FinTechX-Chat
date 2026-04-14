@@ -4,7 +4,7 @@ import type { EditInformationMessages } from '@features/edit-information/i18n'
 import { useEditInformationScreen } from '@features/edit-information/view-models/use-edit-information-screen'
 
 import { Button } from '@ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@ui/shadcn/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
 import { Input } from '@ui/shadcn/input'
 import { Label } from '@ui/shadcn/label'
 
@@ -19,10 +19,7 @@ export function EditInformationScreen({
     useEditInformationScreen()
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-semibold">
-        {messages['editInformation.title']}
-      </h1>
+    <section className="w-full">
       <Card>
         <CardHeader>
           <CardTitle>{messages['editInformation.updateProfile']}</CardTitle>
@@ -68,6 +65,6 @@ export function EditInformationScreen({
           </form>
         </CardContent>
       </Card>
-    </div>
+    </section>
   )
 }
