@@ -14,7 +14,7 @@ export const config = {
   ],
 }
 
-export function middleware(request: NextRequest) {
+export function Proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   if (
