@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-import { DEFAULT_LOCALE, PUBLIC_FILE } from '@core/constants'
+import { PUBLIC_FILE } from '@core/constants'
 
 import { hasLocalePrefix } from '@infra/i18n'
 
@@ -14,10 +14,9 @@ export const config = {
   ],
 }
 
-export const proxy = (request: NextRequest) => {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // skip internal + static files
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
@@ -26,19 +25,22 @@ export const proxy = (request: NextRequest) => {
     return NextResponse.next()
   }
 
-  const isOnboardingRoute = pathname.includes(ONBOARDING_PATH)
-
-  if (!isOnboardingRoute) {
-    const url = request.nextUrl.clone()
-
-    const hasLocale = hasLocalePrefix(pathname)
-
-    url.pathname = hasLocale
-      ? `/${DEFAULT_LOCALE}${ONBOARDING_PATH}`
-      : ONBOARDING_PATH
-
-    return NextResponse.redirect(url)
+  if (pathname.includes(ONBOARDING_PATH)) {
+    return NextResponse.next()
   }
 
-  return NextResponse.next()
+  const url = request.nextUrl.clone()
+
+  const segments = pathname.split('/')
+  const maybeLocale = segments[1]
+  const hasLocale = hasLocalePrefix(pathname)
+
+  /**
+   * Build target path preserving locale when present
+   */
+  url.pathname = hasLocale
+    ? `/${maybeLocale}${ONBOARDING_PATH}`
+    : ONBOARDING_PATH
+
+  return NextResponse.redirect(url)
 }
