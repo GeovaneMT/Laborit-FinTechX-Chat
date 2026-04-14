@@ -4,6 +4,8 @@ import { useSelectedLayoutSegments } from 'next/navigation'
 
 import { motion } from 'motion/react'
 
+import { useParentSize } from '@/presentation/pattern/hooks/use-parent-size'
+
 interface TemplateProps {
   children: React.ReactNode
 }
@@ -11,6 +13,8 @@ interface TemplateProps {
 const Template = ({ children }: TemplateProps) => {
   const segments = useSelectedLayoutSegments()
   const pathname = '/' + segments.join('/')
+
+  const { width, height } = useParentSize()
 
   return (
     <motion.div
@@ -20,6 +24,7 @@ const Template = ({ children }: TemplateProps) => {
       exit={{ opacity: 0 }}
       className="flex flex-col items-center justify-center p-10"
       transition={{ duration: 0.6, ease: 'backInOut' }}
+      style={{ minHeight: height, minWidth: width }}
     >
       {children}
     </motion.div>

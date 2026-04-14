@@ -10,9 +10,13 @@ import { TypographyH2 } from '@ui/typography/hx/h2'
 
 type CardHeaderContentProps = {
   title: string
+  rightButton?: React.ReactNode
 }
 
-export function CardHeaderContent({ title }: CardHeaderContentProps) {
+export function CardHeaderContent({
+  title,
+  rightButton,
+}: CardHeaderContentProps) {
   const router = useRouter()
 
   return (
@@ -21,13 +25,14 @@ export function CardHeaderContent({ title }: CardHeaderContentProps) {
         size="icon-lg"
         variant="secondary"
         onClick={router.back}
-        className="botom-0 absolute top-0 left-0"
+        className="absolute top-0 bottom-0 left-0"
       >
         <ChevronLeftIcon />
       </Button>
       <CardTitle className="flex-1">
         <TypographyH2 className="text-center">{title}</TypographyH2>
       </CardTitle>
+      <div className="absolute top-0 right-0 bottom-0">{rightButton}</div>
     </div>
   )
 }
