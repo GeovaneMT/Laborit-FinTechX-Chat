@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Textarea } from '@shadcn/textarea'
 import { Send } from 'lucide-react'
 
-import { Button } from '@ui/button'
+import { Button } from '@ui/shadcn/button'
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void
@@ -22,7 +22,7 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 border-t p-4">
+    <form onSubmit={handleSubmit} className="flex h-full gap-2 border-t p-4">
       <Textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
@@ -37,8 +37,12 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
           }
         }}
       />
-      <Button type="submit" disabled={disabled || !message.trim()}>
-        <Send className="h-4 w-4" />
+      <Button
+        className="h-16 w-16"
+        type="submit"
+        disabled={disabled || !message.trim()}
+      >
+        <Send />
       </Button>
     </form>
   )

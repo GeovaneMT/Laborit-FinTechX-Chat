@@ -7,6 +7,18 @@ interface ChatBubbleProps {
 export function ChatBubble({ message }: ChatBubbleProps) {
   const isUser = message.role === 'user'
 
+  const getFormattedTime = () => {
+    const timestamp =
+      message.timestamp instanceof Date
+        ? message.timestamp
+        : new Date(message.timestamp)
+
+    return timestamp.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+  }
+
   return (
     <div className={`mb-4 flex ${isUser ? 'justify-end' : 'justify-start'}`}>
       <div
@@ -17,12 +29,7 @@ export function ChatBubble({ message }: ChatBubbleProps) {
         }`}
       >
         <p className="text-sm">{message.content}</p>
-        <p className="mt-1 text-xs opacity-70">
-          {message.timestamp.toLocaleTimeString('pt-BR', {
-            hour: '2-digit',
-            minute: '2-digit',
-          })}
-        </p>
+        <p className="mt-1 text-xs opacity-70">{getFormattedTime()}</p>
       </div>
     </div>
   )

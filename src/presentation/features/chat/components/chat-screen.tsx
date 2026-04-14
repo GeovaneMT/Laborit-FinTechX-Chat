@@ -6,6 +6,7 @@ import { ChatContainer } from '@features/chat/components/chat-container'
 import { ChatInput } from '@features/chat/components/chat-input'
 import type { ChatMessages } from '@features/chat/i18n'
 
+import { TypographyP } from '@/presentation/ui/typography/p'
 import { Button } from '@ui/button'
 
 import { useChatScreen } from '@/presentation/features/chat/view-models/use-chat-screen'
@@ -24,7 +25,7 @@ export function ChatScreen({ messages }: ChatScreenProps) {
   } = useChatScreen()
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full w-full flex-col">
       <div className="flex items-center justify-between border-b p-4">
         <h1 className="text-lg font-semibold">{messages['chat.title']}</h1>
         <Button
@@ -33,8 +34,10 @@ export function ChatScreen({ messages }: ChatScreenProps) {
           onClick={clearConversation}
           disabled={chatMessages.length === 0}
         >
-          <Trash2 className="mr-2 h-4 w-4" />
-          {messages['chat.clearConversation']}
+          <div className="flex items-center justify-center space-x-4">
+            <Trash2 className="mr-2 h-4 w-4" />
+            <TypographyP>{messages['chat.clearConversation']}</TypographyP>
+          </div>
         </Button>
       </div>
 

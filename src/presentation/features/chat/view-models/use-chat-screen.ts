@@ -1,5 +1,5 @@
 import { sendMessageAction } from '@features/chat/actions'
-import { useChatLoading,useMessages } from '@features/chat/store'
+import { useChatLoading, useMessages } from '@features/chat/store'
 
 export function useChatScreen() {
   const { messages, addMessage, clearConversation } = useMessages()
@@ -15,16 +15,17 @@ export function useChatScreen() {
     try {
       const result = await sendMessageAction({ message })
 
+      if (!result.success) {
+        setError(result.error ?? 'Erro desconhecido. Tente novamente.')
+        return
+      }
+
       if (!result.response) {
         setError('Resposta vazia do servidor.')
         return
       }
 
-      if (result.success) {
-        addMessage({ role: 'assistant', content: result.response })
-      } else {
-        setError(result.error ?? 'Erro desconhecido. Tente novamente.')
-      }
+      addMessage({ role: 'assistant', content: result.response })
     } catch (err) {
       console.error('Erro ao enviar mensagem:', err)
       setError('Erro inesperado. Tente novamente.')
