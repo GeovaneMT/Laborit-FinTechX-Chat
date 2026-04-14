@@ -5,6 +5,8 @@ import { DEFAULT_LOCALE, PUBLIC_FILE } from '@core/constants'
 
 import { hasLocalePrefix } from '@infra/i18n'
 
+const ONBOARDING_PATH = '/onboarding'
+
 export const config = {
   matcher: [
     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
@@ -12,9 +14,10 @@ export const config = {
   ],
 }
 
-export const proxy = (request: NextRequest) => {
+export const middleware = (request: NextRequest) => {
   const { pathname } = request.nextUrl
 
+  // skip internal + static files
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
@@ -23,12 +26,19 @@ export const proxy = (request: NextRequest) => {
     return NextResponse.next()
   }
 
-  if (hasLocalePrefix(pathname)) {
-    return NextResponse.next()
+  const isOnboardingRoute = pathname.includes(ONBOARDING_PATH)
+
+  if (!isOnboardingRoute) {
+    const url = request.nextUrl.clone()
+
+    const hasLocale = hasLocalePrefix(pathname)
+
+    url.pathname = hasLocale
+      ? `/${DEFAULT_LOCALE}${ONBOARDING_PATH}`
+      : ONBOARDING_PATH
+
+    return NextResponse.redirect(url)
   }
 
-  const url = request.nextUrl.clone()
-  url.pathname = `/${DEFAULT_LOCALE}${pathname}`
-
-  return NextResponse.redirect(url)
+  return NextResponse.next()
 }
