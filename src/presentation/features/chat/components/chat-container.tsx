@@ -2,6 +2,7 @@ import { Alert, AlertDescription } from '@shadcn/alert'
 import { Skeleton } from '@shadcn/skeleton'
 
 import { ChatBubble } from '@features/chat/components/chat-bubble'
+import { ChatFallback } from '@features/chat/components/chat-fallback'
 import type { Message } from '@features/chat/store'
 
 interface ChatContainerProps {
@@ -17,6 +18,8 @@ export function ChatContainer({
 }: ChatContainerProps) {
   return (
     <div className="flex-1 space-y-4 overflow-y-auto p-4">
+      {messages.length === 0 && !isLoading && !error && <ChatFallback />}
+
       {messages.map((message) => (
         <ChatBubble key={message.id} message={message} />
       ))}
@@ -34,12 +37,6 @@ export function ChatContainer({
         <Alert variant="destructive">
           <AlertDescription>{error}</AlertDescription>
         </Alert>
-      )}
-
-      {messages.length === 0 && !isLoading && (
-        <div className="text-muted-foreground py-8 text-center">
-          <p>Comece uma conversa enviando uma mensagem.</p>
-        </div>
       )}
     </div>
   )
