@@ -4,7 +4,6 @@ import OpenAI from 'openai'
 
 import { buildFintechxContext } from '@core/constants/fintechx-knowledge'
 
-export const runtime = 'nodejs'
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' })
 
 interface ChatMessage {
