@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import { Card, CardContent, CardHeader } from '@shadcn/card'
 import { Trash2 } from 'lucide-react'
 
@@ -9,6 +11,8 @@ import type { ChatMessages } from '@features/chat/i18n'
 
 import { Button } from '@ui/button'
 import { TypographyP } from '@ui/typography/p'
+
+import { paths } from '@/core/utils/paths'
 
 import { useChatScreen } from '@/presentation/features/chat/view-models/use-chat-screen'
 import { CardHeaderContent } from '@/presentation/pattern/card-header-content'
@@ -39,19 +43,29 @@ export function ChatScreen({ messages }: ChatScreenProps) {
           <CardHeaderContent
             title={messages['chat.title']}
             rightButton={
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={clearConversation}
-                disabled={chatMessages.length === 0}
-              >
-                <div className="flex items-center justify-center space-x-4">
-                  <Trash2 className="mr-2 h-4 w-4" />
-                  <TypographyP>
-                    {messages['chat.clearConversation']}
-                  </TypographyP>
-                </div>
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={clearConversation}
+                  disabled={chatMessages.length === 0}
+                >
+                  <div className="flex items-center justify-center space-x-2">
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    <TypographyP>
+                      {messages['chat.clearConversation']}
+                    </TypographyP>
+                  </div>
+                </Button>
+
+                <Button variant="outline" size="sm">
+                  <div className="flex items-center justify-center space-x-2">
+                    <Link href={paths.preferences}>
+                      <TypographyP>...</TypographyP>
+                    </Link>
+                  </div>
+                </Button>
+              </div>
             }
           />
         </CardHeader>

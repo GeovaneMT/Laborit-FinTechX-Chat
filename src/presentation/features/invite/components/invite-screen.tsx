@@ -1,13 +1,13 @@
 'use client'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
+import { Card, CardContent, CardHeader } from '@shadcn/card'
 
 import { CopyInput } from '@features/invite/components/copy-input'
 import { InviteBanner } from '@features/invite/components/invite-banner'
 import type { InviteMessages } from '@features/invite/i18n'
 import { useInviteScreen } from '@features/invite/view-models/use-invite-screen'
 
-import { TypographyH2 } from '@ui/typography/hx/h2'
+import { CardHeaderContent } from '@/presentation/pattern/card-header-content'
 
 type InviteScreenProps = {
   messages: InviteMessages
@@ -20,9 +20,7 @@ export function InviteScreen({ messages }: InviteScreenProps) {
     <section className="w-full">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>
-            <TypographyH2>{messages['invite.title']}</TypographyH2>
-          </CardTitle>
+          <CardHeaderContent title={messages['invite.title']} />
         </CardHeader>
         <CardContent className="space-y-20">
           <InviteBanner messages={messages} />

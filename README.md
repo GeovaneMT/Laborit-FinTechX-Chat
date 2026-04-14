@@ -1,14 +1,21 @@
 # Laborit Chat - Assistente de IA
 
-Aplicação frontend em Next.js 16 para um chat inteligente alinhado ao desafio técnico da Laborit. Implementa as 8 rotas obrigatórias: Splash, Onboarding, Chat, Profile, Edit Information, Health Instructions, Invite Your Friend, e Preferences.
+Aplicação frontend em Next.js 16 para um chat inteligente alinhado ao desafio
+técnico da Laborit. Implementa as 8 rotas obrigatórias: Splash, Onboarding,
+Chat, Profile, Edit Information, Health Instructions, Invite Your Friend, e
+Preferences.
 
 ## Visão Geral
 
-Este projeto transforma um template Next.js em uma aplicação de chat com assistente de IA, mantendo a arquitetura MVVM em camadas (`core`, `infra`, `http`, `presentation`, `app`, `mocks`). O chat integra com OpenAI GPT-4o via Server Actions, com histórico de sessão mantido localmente.
+Este projeto transforma um template Next.js em uma aplicação de chat com
+assistente de IA, mantendo a arquitetura MVVM em camadas (`core`, `infra`,
+`http`, `presentation`, `app`, `mocks`). O chat integra com OpenAI GPT-4o via
+Server Actions, com histórico de sessão mantido localmente.
 
 ### Funcionalidades Principais
 
-- **Chat Inteligente**: Envio de mensagens, resposta da IA, histórico de sessão, botão para limpar conversa.
+- **Chat Inteligente**: Envio de mensagens, resposta da IA, histórico de sessão,
+  botão para limpar conversa.
 - **Rotas Completas**: Navegação entre todas as 8 telas obrigatórias.
 - **Tema Light/Dark**: Toggle funcional com persistência local.
 - **Mocks e Simulações**: Perfil e outras funcionalidades simuladas para MVP.
@@ -17,7 +24,28 @@ Este projeto transforma um template Next.js em uma aplicação de chat com assis
 
 ### Limitações do Assistente
 
-O assistente de IA é configurado para ser útil em questões gerais, mas explicitamente não assume papel médico. Inclui disclaimers sobre limites e orienta consulta a profissionais qualificados.
+O assistente de IA é configurado para ser útil em questões gerais, mas
+explicitamente não assume papel médico. Inclui disclaimers sobre limites e
+orienta consulta a profissionais qualificados.
+
+## 📚 Documentação
+
+Para documentação completa, design system, componentes, padrões e guias de
+contribuição, consulte:
+
+**[✨ Documentação v2](./docs-v2/README.md)** — Modern documentation hub with:
+
+- [Getting Started](./docs-v2/dev-setup.md) — Setup & development commands
+- [Design System](./docs-v2/design-system/) — Colors, typography, spacing,
+  accessibility
+- [Component Library](./docs-v2/component-docs/) — 80+ UI components documented
+- [Architecture](./docs-v2/architecture/) — System design & patterns
+- [Best Practices](./docs-v2/best-practices.md) — Code standards & guidelines
+- [Contribution Guide](./docs-v2/contribution-guide.md) — How to contribute
+- [API Documentation](./docs-v2/api/) — HTTP client & integration
+- [Complete SITEMAP](./docs-v2/SITEMAP.md) — Full documentation index
+
+**[📖 Original Documentation](./docs/)** — Original documentation (v1)
 
 ## Scripts
 
@@ -49,16 +77,21 @@ REVALIDATE_SECRET=your-secret-here
 NEXT_PUBLIC_ENABLE_MSW=true
 ```
 
-**Nota**: Sem `OPENAI_API_KEY`, o chat não funcionará. Obtenha uma chave em [OpenAI Platform](https://platform.openai.com/).
+**Nota**: Sem `OPENAI_API_KEY`, o chat não funcionará. Obtenha uma chave em
+[OpenAI Platform](https://platform.openai.com/).
 
 ## Arquitetura
 
 O projeto segue uma arquitetura em camadas rigorosa:
 
-- **`src/core`** — Domínio puro: tipos, objetos de valor, mapeadores, casos de uso.
-- **`src/infra`** — Infraestrutura: autenticação, cache, chaves de query, queries compartilhadas, i18n, stores.
-- **`src/http`** — Integração API: configuração Orval, cliente gerado, recursos HTTP.
-- **`src/presentation`** — UI: componentes agnósticos, padrões (formulários, grid), layouts, features MVVM.
+- **`src/core`** — Domínio puro: tipos, objetos de valor, mapeadores, casos de
+  uso.
+- **`src/infra`** — Infraestrutura: autenticação, cache, chaves de query,
+  queries compartilhadas, i18n, stores.
+- **`src/http`** — Integração API: configuração Orval, cliente gerado, recursos
+  HTTP.
+- **`src/presentation`** — UI: componentes agnósticos, padrões (formulários,
+  grid), layouts, features MVVM.
 - **`src/app`** — Rotas finas: layouts, handlers, wiring de Server Actions.
 - **`src/mocks`** — MSW para testes e desenvolvimento.
 
@@ -69,7 +102,8 @@ Dependências entre camadas são enforçadas por `eslint-plugin-boundaries`.
 - **LLM**: OpenAI GPT-4o para equilíbrio entre capacidade e custo.
 - **Histórico**: Mantido em sessão (sessionStorage), perdido ao fechar aba.
 - **Persistência**: MSW mocks para perfil; dados em memória para MVP.
-- **Internacionalização**: Português (pt-BR) apenas; i18n plumbing pronto para expansão.
+- **Internacionalização**: Português (pt-BR) apenas; i18n plumbing pronto para
+  expansão.
 - **Tema**: Light/dark com persistência local; toggle em Preferences.
 - **Formulários**: TanStack Form com Zod para validação.
 - **Estado**: Zustand para chat store; TanStack Query para server state.
@@ -80,7 +114,8 @@ Dependências entre camadas são enforçadas por `eslint-plugin-boundaries`.
 - **Backend Real**: Não implementado; perfil e chat usam mocks/simulações.
 - **Histórico Persistente**: Apenas sessão; futuro: localStorage ou backend.
 - **Autenticação**: Demo mode (hashEmail); não real para MVP.
-- **Testes**: Infraestrutura pronta, mas cobertura mínima (foco em chat e rotas críticas).
+- **Testes**: Infraestrutura pronta, mas cobertura mínima (foco em chat e rotas
+  críticas).
 - **Performance**: Sem otimização avançada; focado em funcionalidade.
 - **Acessibilidade**: Básica; pode ser expandida.
 
@@ -94,7 +129,8 @@ Dependências entre camadas são enforçadas por `eslint-plugin-boundaries`.
 
 ### Configuração de Produção
 
-- Certifique-se de `cacheComponents: false` em `next.config.ts` (veja comentários no arquivo).
+- Certifique-se de `cacheComponents: false` em `next.config.ts` (veja
+  comentários no arquivo).
 - Monitore uso da API OpenAI para custos.
 
 ## Desenvolvimento
@@ -102,6 +138,7 @@ Dependências entre camadas são enforçadas por `eslint-plugin-boundaries`.
 ### Estrutura de Features
 
 Cada feature segue MVVM:
+
 ```
 src/presentation/features/{feature}/
 ├── actions.ts          # Server Actions
