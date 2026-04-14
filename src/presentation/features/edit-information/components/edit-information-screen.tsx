@@ -1,6 +1,8 @@
 'use client'
 
 import { Card, CardContent, CardHeader } from '@shadcn/card'
+import { Input } from '@shadcn/input'
+import { Label } from '@shadcn/label'
 
 import type { EditInformationMessages } from '@features/edit-information/i18n'
 import { useEditInformationScreen } from '@features/edit-information/view-models/use-edit-information-screen'
@@ -8,8 +10,6 @@ import { useEditInformationScreen } from '@features/edit-information/view-models
 import { CardHeaderContent } from '@pattern/card-header-content'
 
 import { Button } from '@ui/button'
-import { Input } from '@shadcn/input'
-import { Label } from '@shadcn/label'
 
 type EditInformationScreenProps = {
   messages: EditInformationMessages

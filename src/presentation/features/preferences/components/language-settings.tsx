@@ -1,9 +1,6 @@
 'use client'
 
-import { LanguagesIcon } from 'lucide-react'
-
-import type { PreferencesMessages } from '@features/preferences/i18n'
-
+import { Label } from '@shadcn/label'
 import {
   Select,
   SelectContent,
@@ -13,9 +10,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@shadcn/select'
+import { LanguagesIcon } from 'lucide-react'
+
+import type { PreferencesMessages } from '@features/preferences/i18n'
+
 import { TypographyMuted } from '@ui/typography/basic/muted'
 import { TypographyP } from '@ui/typography/p'
-import { Label } from '@shadcn/label'
 
 import { SUPPORTED_LOCALES } from '@/core/constants'
 

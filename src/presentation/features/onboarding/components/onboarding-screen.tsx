@@ -3,18 +3,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Button } from '@shadcn/button'
 import { Card, CardContent, CardHeader } from '@shadcn/card'
 import { Tabs, TabsList, TabsTrigger } from '@shadcn/tabs'
 import { ArrowLeft, ArrowRight, CircleIcon } from 'lucide-react'
 
-import { useOnboardingScreen } from '@features/onboarding/view-models/use-onboard-screen'
 import { OnboardingTab1 } from '@features/onboarding/components/onboarding-tab-1'
 import { OnboardingTab2 } from '@features/onboarding/components/onboarding-tab-2'
 import { OnboardingTab3 } from '@features/onboarding/components/onboarding-tab-3'
 import type { OnboardingMessages } from '@features/onboarding/i18n'
+import { useOnboardingScreen } from '@features/onboarding/view-models/use-onboard-screen'
 
 import { Separator } from '@ui/separator'
-import { Button } from '@shadcn/button'
 
 import { paths } from '@/core/utils/paths'
 

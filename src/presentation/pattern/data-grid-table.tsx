@@ -1,15 +1,6 @@
 'use client'
 
 import {
-  type ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from '@tanstack/react-table'
-
-import { dataGridVariants } from '@pattern/data-grid.variants'
-
-import {
   Table,
   TableBody,
   TableCell,
@@ -17,6 +8,14 @@ import {
   TableHeader,
   TableRow,
 } from '@shadcn/table'
+import {
+  type ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
+
+import { dataGridVariants } from '@pattern/data-grid.variants'
 
 type Props<TData> = {
   data: TData[]

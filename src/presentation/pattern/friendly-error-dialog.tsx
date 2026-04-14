@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from '@ui/button'
 import {
   Dialog,
   DialogContent,
@@ -9,6 +8,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@shadcn/dialog'
+
+import { Button } from '@ui/button'
 
 type Props = {
   open: boolean

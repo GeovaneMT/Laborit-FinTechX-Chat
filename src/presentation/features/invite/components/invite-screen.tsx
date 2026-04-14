@@ -1,12 +1,13 @@
 'use client'
 
+import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
+
 import { CopyInput } from '@features/invite/components/copy-input'
 import { InviteBanner } from '@features/invite/components/invite-banner'
 import type { InviteMessages } from '@features/invite/i18n'
 import { useInviteScreen } from '@features/invite/view-models/use-invite-screen'
 
 import { TypographyH2 } from '@ui/typography/hx/h2'
-import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
 
 type InviteScreenProps = {
   messages: InviteMessages

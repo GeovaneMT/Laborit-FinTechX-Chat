@@ -2,13 +2,13 @@
 
 import Link from 'next/link'
 
+import { Label } from '@shadcn/label'
 import { ChevronRightIcon, UserIcon } from 'lucide-react'
 
 import type { PreferencesMessages } from '@features/preferences/i18n'
 
 import { Button } from '@ui/button'
 import { TypographyMuted } from '@ui/typography/basic/muted'
-import { Label } from '@shadcn/label'
 
 import { paths } from '@/core/utils/paths'
 

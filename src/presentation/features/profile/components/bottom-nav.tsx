@@ -18,7 +18,7 @@ export function BottomNav() {
   const navLinks = [
     { href: paths.onboarding, icon: HomeIcon },
     { href: paths.chat, icon: LayoutGridIcon },
-    { href: paths.history, icon: ClockIcon },
+    { href: paths.chatHistory, icon: ClockIcon },
     { href: paths.profile, icon: UserIcon },
   ]
 

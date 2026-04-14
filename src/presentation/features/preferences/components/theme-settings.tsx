@@ -1,12 +1,12 @@
 'use client'
 
+import { Label } from '@shadcn/label'
 import { SunMoonIcon } from 'lucide-react'
 
 import type { PreferencesMessages } from '@features/preferences/i18n'
 
 import { AnimatedThemeToggler } from '@ui/magicui/animated-theme-toggler'
 import { TypographyMuted } from '@ui/typography/basic/muted'
-import { Label } from '@shadcn/label'
 
 type ThemeSettingsProps = {
   theme: string | undefined

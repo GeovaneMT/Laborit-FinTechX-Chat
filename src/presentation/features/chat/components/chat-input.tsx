@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
+import { Textarea } from '@shadcn/textarea'
 import { Send } from 'lucide-react'
 
 import { Button } from '@ui/button'
-import { Textarea } from '@shadcn/textarea'
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void

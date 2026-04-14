@@ -2,9 +2,9 @@
 
 import type { ReactNode } from 'react'
 
-import { GenericFormContext } from '@pattern/form.contexts'
-
 import { Label } from '@shadcn/label'
+
+import { GenericFormContext } from '@pattern/form.contexts'
 
 import { createId } from '@core/ids'
 

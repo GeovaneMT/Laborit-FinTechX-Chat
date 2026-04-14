@@ -1,8 +1,8 @@
 'use client'
 
-import type { HealthInstructionsMessages } from '@features/health-instructions/i18n'
-
 import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/card'
+
+import type { HealthInstructionsMessages } from '@features/health-instructions/i18n'
 
 type HealthInstructionsScreenProps = {
   messages: HealthInstructionsMessages

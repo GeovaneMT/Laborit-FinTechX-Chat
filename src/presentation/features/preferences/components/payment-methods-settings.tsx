@@ -2,13 +2,13 @@
 
 import Link from 'next/link'
 
+import { Label } from '@shadcn/label'
 import { ChevronRightIcon, WalletMinimalIcon } from 'lucide-react'
 
 import type { PreferencesMessages } from '@features/preferences/i18n'
 
 import { Button } from '@ui/button'
 import { TypographyMuted } from '@ui/typography/basic/muted'
-import { Label } from '@shadcn/label'
 
 import { paths } from '@/core/utils/paths'
 
@@ -22,7 +22,7 @@ export function PaymentMethodsSettings({
   messages,
 }: PaymentMethodsSettingsProps) {
   return (
-    <Link href={paths.profile} className="flex items-center space-x-4">
+    <Link href={paths.paymentMethods} className="flex items-center space-x-4">
       <WalletMinimalIcon
         fill={theme === 'dark' ? 'white' : 'black'}
         size={32}

@@ -2,11 +2,11 @@
 
 import { useRouter } from 'next/navigation'
 
+import { Button } from '@shadcn/button'
 import { CardTitle } from '@shadcn/card'
 import { ChevronLeftIcon } from 'lucide-react'
 
 import { TypographyH2 } from '@ui/typography/hx/h2'
-import { Button } from '@shadcn/button'
 
 type CardHeaderContentProps = {
   title: string
