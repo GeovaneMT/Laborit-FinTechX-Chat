@@ -14,7 +14,7 @@ export const config = {
   ],
 }
 
-export const middleware = (request: NextRequest) => {
+export const proxy = (request: NextRequest) => {
   const { pathname } = request.nextUrl
 
   // skip internal + static files
