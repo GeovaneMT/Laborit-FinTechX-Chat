@@ -1,11 +1,9 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-import { PUBLIC_FILE } from '@core/constants'
+import { DEFAULT_LOCALE, PUBLIC_FILE } from '@core/constants'
 
 import { hasLocalePrefix } from '@infra/i18n'
-
-const ONBOARDING_PATH = '/onboarding'
 
 export const config = {
   matcher: [
@@ -14,8 +12,20 @@ export const config = {
   ],
 }
 
-export function Proxy(request: NextRequest) {
+export const proxy = (request: NextRequest) => {
   const { pathname } = request.nextUrl
+
+  if (pathname === '/') {
+    const url = request.nextUrl.clone()
+    url.pathname = '/onboarding'
+    return NextResponse.redirect(url)
+  }
+
+  if (hasLocalePrefix(pathname) && pathname.split('/').length === 2) {
+    const url = request.nextUrl.clone()
+    url.pathname = `${pathname}/onboarding`
+    return NextResponse.redirect(url)
+  }
 
   if (
     pathname.startsWith('/_next') ||
@@ -25,22 +35,12 @@ export function Proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
-  if (pathname.includes(ONBOARDING_PATH)) {
+  if (hasLocalePrefix(pathname)) {
     return NextResponse.next()
   }
 
   const url = request.nextUrl.clone()
-
-  const segments = pathname.split('/')
-  const maybeLocale = segments[1]
-  const hasLocale = hasLocalePrefix(pathname)
-
-  /**
-   * Build target path preserving locale when present
-   */
-  url.pathname = hasLocale
-    ? `/${maybeLocale}${ONBOARDING_PATH}`
-    : ONBOARDING_PATH
+  url.pathname = `/${DEFAULT_LOCALE}${pathname}`
 
   return NextResponse.redirect(url)
 }
