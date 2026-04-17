@@ -15,22 +15,22 @@ utilities.
 
 ## Component List
 
-| Component       | Purpose                       | Documentation                    |
-| --------------- | ----------------------------- | -------------------------------- |
-| **Button**      | Primary action element        | [Button](./button.md)            |
-| **Card**        | Container for grouped content | [Card](./card.md)                |
-| **Form**        | Form wrapper and structure    | [Form](./form.md)                |
-| **Input**       | Text input field              | [Input](./input.md)              |
-| **Label**       | Form field labels             | [Label](./label.md)              |
-| **Textarea**    | Multi-line text input         | [Textarea](./textarea.md)        |
-| **ErrorCard**   | Error state display           | [ErrorCard](./error-card.md)     |
-| **LoadingCard** | Loading state display         | [LoadingCard](./loading-card.md) |
-| **Spinner**     | Loading indicator             | [Spinner](./spinner.md)          |
-| **Separator**   | Visual divider                | [Separator](./separator.md)      |
-| **ScrollArea**  | Scrollable container          | [ScrollArea](./scroll-area.md)   |
-| **SheetLayout** | Side sheet layout             | [SheetLayout](./sheet-layout.md) |
-| **Logo**        | Laborit logo component        | [Logo](./logo.md)                |
-| **Badge**       | Small label/tag element       | [Badge](./badge.md)              |
+| Component       | Purpose                       | Documentation                    | Status      |
+| --------------- | ----------------------------- | -------------------------------- | ----------- |
+| **Button**      | Primary action element        | [Button](./button.md)            | ✅ Complete |
+| **Form**        | Form wrapper and structure    | [Form](./form.md)                | ✅ Complete |
+| **Card**        | Container for grouped content | ← shadcn                         | ✅ Complete |
+| **Input**       | Text input field              | ← shadcn                         | ✅ Complete |
+| **Label**       | Form field labels             | [Label](./label.md)              | 📋 Planned  |
+| **Textarea**    | Multi-line text input         | [Textarea](./textarea.md)        | 📋 Planned  |
+| **ErrorCard**   | Error state display           | [ErrorCard](./error-card.md)     | 📋 Planned  |
+| **LoadingCard** | Loading state display         | [LoadingCard](./loading-card.md) | 📋 Planned  |
+| **Spinner**     | Loading indicator             | [Spinner](./spinner.md)          | 📋 Planned  |
+| **Separator**   | Visual divider                | [Separator](./separator.md)      | 📋 Planned  |
+| **ScrollArea**  | Scrollable container          | [ScrollArea](./scroll-area.md)   | 📋 Planned  |
+| **SheetLayout** | Side sheet layout             | [SheetLayout](./sheet-layout.md) | 📋 Planned  |
+| **Logo**        | Laborit logo component        | [Logo](./logo.md)                | 📋 Planned  |
+| **Badge**       | Small label/tag element       | [Badge](./badge.md)              | 📋 Planned  |
 
 ## Quick Start
 
@@ -185,7 +185,6 @@ All base components support dark mode automatically:
 import { Input } from '@/presentation/ui/input'
 import { Label } from '@/presentation/ui/label'
 import { Button } from '@/presentation/ui/button'
-
 ;<div className="space-y-4">
   <div>
     <Label htmlFor="email">Email</Label>
@@ -204,7 +203,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/presentation/ui/card'
-
 ;<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
   {items.map((item) => (
     <Card key={item.id}>

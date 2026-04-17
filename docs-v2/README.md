@@ -7,7 +7,7 @@ modern documentation system!
 
 **New to Laborit?** Start here:
 
-- [Getting Started](./getting-started.md) — Project setup and first steps
+- [Getting Started](./dev-setup.md) — Project setup and first steps
 - [Architecture Overview](./architecture/) — System design and structure
 
 **Looking for guidance?**
@@ -27,6 +27,8 @@ modern documentation system!
 **Quick Links:**
 
 - [SITEMAP](./SITEMAP.md) — Complete documentation index
+- [Completion Report](./COMPLETION_REPORT.md) — v2 Refactor status & metrics
+- [Contribution Guide](./contribution-guide.md) — How to contribute
 - [Storybook](../../.storybook/) — Visual component showcase
 
 ---
