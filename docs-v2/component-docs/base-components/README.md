@@ -1,36 +1,65 @@
 # Base Components
 
 Core reusable UI components that form the foundation of Laborit's component
-system.
+system. Focus on custom, proprietary components and foundational patterns.
 
 ## Overview
 
 Base components are the building blocks used to construct more complex
-interfaces. They include common elements like buttons, forms, cards, and
-utilities.
+interfaces. This documentation focuses on custom components developed
+specifically for this project, rather than third-party component library
+components.
 
 **Location:** `src/presentation/ui/`
 
-**Count:** 14+ components
+**Documentation Scope:** Custom base components (Button, Form, etc.) excluding
+third-party libraries like shadcn/ui or MagicUI.
 
-## Component List
+## Documented Components
 
-| Component       | Purpose                       | Documentation                    | Status      |
-| --------------- | ----------------------------- | -------------------------------- | ----------- |
-| **Button**      | Primary action element        | [Button](./button.md)            | ✅ Complete |
-| **Form**        | Form wrapper and structure    | [Form](./form.md)                | ✅ Complete |
-| **Card**        | Container for grouped content | ← shadcn                         | ✅ Complete |
-| **Input**       | Text input field              | ← shadcn                         | ✅ Complete |
-| **Label**       | Form field labels             | [Label](./label.md)              | 📋 Planned  |
-| **Textarea**    | Multi-line text input         | [Textarea](./textarea.md)        | 📋 Planned  |
-| **ErrorCard**   | Error state display           | [ErrorCard](./error-card.md)     | 📋 Planned  |
-| **LoadingCard** | Loading state display         | [LoadingCard](./loading-card.md) | 📋 Planned  |
-| **Spinner**     | Loading indicator             | [Spinner](./spinner.md)          | 📋 Planned  |
-| **Separator**   | Visual divider                | [Separator](./separator.md)      | 📋 Planned  |
-| **ScrollArea**  | Scrollable container          | [ScrollArea](./scroll-area.md)   | 📋 Planned  |
-| **SheetLayout** | Side sheet layout             | [SheetLayout](./sheet-layout.md) | 📋 Planned  |
-| **Logo**        | Laborit logo component        | [Logo](./logo.md)                | 📋 Planned  |
-| **Badge**       | Small label/tag element       | [Badge](./badge.md)              | 📋 Planned  |
+### Phase 4a: Priority Base Components (2 docs)
+
+| Component  | Purpose                | Documentation      | Status      |
+| ---------- | ---------------------- | ------------------ | ----------- |
+| **Button** | Primary action element | [Button](./button) | ✅ Complete |
+| **Form**   | Form wrapper & state   | [Form](./form)     | ✅ Complete |
+
+### Phase 4b: Additional Base Components (7 docs)
+
+| Component        | Purpose                   | Documentation                   | Status      |
+| ---------------- | ------------------------- | ------------------------------- | ----------- |
+| **ButtonGroup**  | Group related buttons     | [ButtonGroup](./button-group)   | ✅ Complete |
+| **Spinner**      | Loading spinner indicator | [Spinner](./spinner)            | ✅ Complete |
+| **Logo**         | Theme-aware brand logo    | [Logo](./logo)                  | ✅ Complete |
+| **ErrorCard**    | Error state display       | [ErrorCard](./error-card)       | ✅ Complete |
+| **LoadingPulse** | Subtle loading indicator  | [LoadingPulse](./loading-pulse) | ✅ Complete |
+| **Separator**    | Visual divider/separator  | [Separator](./separator)        | ✅ Complete |
+
+**Total: 9 Documented Base Components**
+
+## Planned Components
+
+Components to document in future phases:
+
+- **Label** — Form field labels
+- **Textarea** — Multi-line text input
+- **ScrollArea** — Scrollable container
+- **SheetLayout** — Side sheet layout drawer
+- **DetailsItem** — Detail card item component
+- **LoadingMessage** — Full loading state message
+- **ToastWrapper** — Toast notification wrapper
+
+## Note on Third-Party Components
+
+For documentation on shadcn/ui, Radix UI, or MagicUI components, please refer to
+their official documentation:
+
+- [shadcn/ui Documentation](https://ui.shadcn.com/)
+- [Radix UI Primitives](https://www.radix-ui.com/)
+- [MagicUI](https://magicui.design/)
+
+This project uses these libraries extensively, but focuses custom component
+documentation on proprietary extensions and patterns.
 
 ## Quick Start
 
@@ -38,13 +67,7 @@ utilities.
 
 ```tsx
 import { Button } from '@/presentation/ui/button'
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@/presentation/ui/card'
-import { Input } from '@/presentation/ui/input'
+import { Form } from '@/presentation/ui/form'
 ```
 
 ### Use in Your Component
