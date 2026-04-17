@@ -22,7 +22,11 @@
     "test:browser": "vitest run src/presentation/ui",
     "test:integration": "vitest run --config ./vitest.config.e2e.ts",
     "test:integration:watch": "vitest --config ./vitest.config.e2e.ts",
-    "test:unit": "vitest run src/core src/infra src/http src/presentation/features"
+    "test:unit": "vitest run src/core src/infra src/http src/presentation/features",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "storybook:test": "test-storybook",
+    "storybook:test:a11y": "test-storybook --tag a11y"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -1,52 +1,513 @@
 # Storybook Setup
 
-Visual component development and documentation environment.
+**Phase 5:** Visual component development and documentation environment.
+
+Storybook provides an isolated development environment for building, testing,
+and documenting UI components in isolation from the main application.
 
 ## Overview
 
-Storybook provides an isolated development environment for building and
-documenting UI components. It allows:
+Storybook allows:
 
-- Visual component testing
-- Interactive component exploration
-- Component documentation & examples
-- Accessibility testing
-- Responsive design verification
+- ✅ **Visual Development** — Build components in isolation
+- ✅ **Interactive Exploration** — Test props and states interactively
+- ✅ **Documentation** — Auto-generate component docs from code
+- ✅ **Accessibility Testing** — Check WCAG compliance and keyboard navigation
+- ✅ **Responsive Design** — Test components at multiple viewports
+- ✅ **Visual Regression** — Catch unintended visual changes
+- ✅ **Design System** — Share components across teams
 
-## Installation
+## Quick Start
 
-Storybook is already configured for this project. To get started:
+### Start Storybook
 
 ```bash
-# Start Storybook development server
+# Start development server
 pnpm storybook
 
-# Open browser to http://localhost:6006
+# Open in browser
+# http://localhost:6006
+```
+
+### Build for Production
+
+```bash
+# Create static build
+pnpm build-storybook
+
+# Output in storybook-static/
 ```
 
 ## Project Integration
 
 ### Configuration Files
 
-- **`.storybook/main.ts`** — Storybook configuration
-- **`.storybook/preview.ts`** — Global settings, decorators, parameters
-- **`.storybook/manager.ts`** — Manager UI customization (optional)
+| File                        | Purpose                                           |
+| --------------------------- | ------------------------------------------------- |
+| **`.storybook/main.ts`**    | Storybook configuration, stories location, addons |
+| **`.storybook/preview.ts`** | Global settings, decorators, viewports, themes    |
+| **`.storybook/manager.ts`** | Manager UI customization (optional)               |
 
-### Story Files
+### Story File Location
 
-Stories are located near components with `.stories.tsx` extension:
+Stories are colocated with components using `.stories.tsx` extension:
 
 ```
 src/presentation/ui/button/
-├── button.tsx           # Component
-├── button.types.ts      # Types
-├── button.module.css    # Styles
-├── button.stories.tsx   # ← Story for Storybook
+├── button.tsx              # Component
+├── button.types.ts         # Types
+├── button.module.css       # Styles
+├── button.stories.tsx      # ← Story file
 └── __tests__/
-    └── button.test.tsx
+    └── button.test.tsx     # Tests
+```
+
+Or in the component root:
+
+```
+src/presentation/ui/
+├── button.tsx
+├── button.stories.tsx      # ← Story colocated
+├── spinner.tsx
+└── spinner.stories.tsx
 ```
 
 ## Writing Stories
+
+### Basic Story Template
+
+```typescript
+import type { Meta, StoryObj } from '@storybook/react'
+import { Button } from './button'
+
+const meta = {
+  title: 'Base Components/Button',      // Category/Component name
+  component: Button,                     // Component to document
+  parameters: {
+    layout: 'centered',                  // Center story in canvas
+  },
+  tags: ['autodocs'],                    // Auto-generate docs
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['default', 'primary'],
+      description: 'Visual style variant',
+    },
+    onClick: {
+      control: false,                    // Hide in controls
+    },
+  },
+} satisfies Meta<typeof Button>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+// Basic story
+export const Default: Story = {
+  args: {
+    children: 'Click me',
+  },
+}
+
+// Story with interaction
+export const Interactive: Story = {
+  args: { children: 'Clickable' },
+  render: (args) => (
+    <Button {...args} onClick={() => alert('Clicked!')} />
+  ),
+}
+```
+
+### Story Categories
+
+Organize stories by folder in `title`:
+
+```typescript
+// Renders under "Base Components" > "Button"
+title: 'Base Components/Button'
+
+// Renders under "Forms" > "Input"
+title: 'Forms/Input'
+
+// Multiple levels
+title: 'UI/Feedback/Alert'
+```
+
+### Docstring & ArgTypes
+
+Auto-generate documentation from prop comments:
+
+```typescript
+interface ButtonProps {
+  /**
+   * Visual style variant.
+   * @default "default"
+   */
+  variant?: 'default' | 'primary'
+
+  /**
+   * Button size.
+   * @default "md"
+   */
+  size?: 'sm' | 'md' | 'lg'
+}
+```
+
+Configure controls in `argTypes`:
+
+```typescript
+argTypes: {
+  variant: {
+    control: 'select',
+    options: ['default', 'primary'],
+  },
+  disabled: {
+    control: 'boolean',
+  },
+  count: {
+    control: { type: 'number', min: 0, max: 100 },
+  },
+}
+```
+
+### Common Patterns
+
+#### Usage Example
+
+```typescript
+export const WithIcon: Story = {
+  render: () => (
+    <Button variant="primary">
+      <PlusIcon /> Add Item
+    </Button>
+  ),
+}
+```
+
+#### Multiple Variants
+
+```typescript
+export const AllVariants: Story = {
+  render: () => (
+    <div className="flex gap-4">
+      <Button variant="default">Default</Button>
+      <Button variant="primary">Primary</Button>
+      <Button variant="outline">Outline</Button>
+    </div>
+  ),
+}
+```
+
+#### Responsive Preview
+
+```typescript
+export const Responsive: Story = {
+  args: { children: 'Responsive Button' },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+  },
+}
+```
+
+#### Dark Mode
+
+```typescript
+export const DarkMode: Story = {
+  args: { children: 'Dark Button' },
+  parameters: {
+    isDark: true,
+  },
+}
+```
+
+#### Loading State
+
+```typescript
+export const Loading: Story = {
+  render: (args) => {
+    const [isLoading, setIsLoading] = React.useState(false)
+    return (
+      <Button
+        {...args}
+        onClick={() => setIsLoading(true)}
+        disabled={isLoading}
+      >
+        {isLoading ? 'Loading...' : 'Submit'}
+      </Button>
+    )
+  },
+}
+```
+
+## Addons
+
+### Essential Addons
+
+| Addon            | Purpose                           |
+| ---------------- | --------------------------------- |
+| **Essentials**   | Controls, Actions, Docs, Viewport |
+| **A11y**         | Accessibility testing (WCAG)      |
+| **Viewport**     | Responsive design testing         |
+| **Interactions** | Component interaction testing     |
+
+### Using Addons
+
+#### Controls Tab
+
+Interactively change props:
+
+- Select dropdown, text, number, checkbox inputs
+- See component re-render in real-time
+- Inspect generated code
+
+#### Docs Tab
+
+Auto-generates documentation from:
+
+- JSDoc comments
+- ArgTypes configuration
+- Story examples
+- Source code
+
+#### A11y Tab
+
+Check accessibility compliance:
+
+- WCAG contrast ratios
+- ARIA attributes
+- Keyboard navigation
+- Screen reader compatibility
+
+#### Interactions Tab
+
+Test user interactions:
+
+- Click buttons
+- Fill forms
+- Verify output
+- Record interactions
+
+## Dark Mode Support
+
+### Configure Theme Decorator
+
+In `.storybook/preview.ts`:
+
+```typescript
+decorators: [
+  (Story, context) => {
+    const isDark = context.parameters.isDark ?? false
+    if (isDark) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    return Story()
+  },
+]
+```
+
+### Use in Stories
+
+```typescript
+export const DarkVariant: Story = {
+  parameters: {
+    isDark: true,
+  },
+}
+```
+
+## Viewports & Responsive Testing
+
+Configure custom viewports:
+
+```typescript
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+
+export const viewports = {
+  // Standard viewports included
+  ...INITIAL_VIEWPORTS,
+
+  // Custom viewports
+  tablet: {
+    name: 'Tablet',
+    styles: {
+      width: '768px',
+      height: '1024px',
+    },
+  },
+}
+```
+
+Test stories at viewport:
+
+```typescript
+export const MobileView: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'iphone12',
+    },
+  },
+}
+```
+
+## Accessibility Testing
+
+### Run A11y Checks
+
+1. Open story in Storybook
+2. Click "Accessibility" tab
+3. Review violations and best practices
+
+### Test via CLI
+
+```bash
+# Check accessibility in all stories
+pnpm storybook:test:a11y
+```
+
+### Common Issues
+
+- **Color Contrast** — Ensure text/background have sufficient contrast
+- **Alt Text** — Provide `alt` for images
+- **ARIA Labels** — Label interactive elements
+- **Keyboard Navigation** — Test with keyboard only
+
+## Best Practices
+
+### 1. One Component Per Story File
+
+Keep stories focused:
+
+```
+button.stories.tsx      # Only Button component
+spinner.stories.tsx     # Only Spinner component
+```
+
+### 2. Test All States
+
+```typescript
+export const Default: Story = {
+  /* ... */
+}
+export const Disabled: Story = {
+  /* ... */
+}
+export const Loading: Story = {
+  /* ... */
+}
+export const Error: Story = {
+  /* ... */
+}
+```
+
+### 3. Use Descriptive Names
+
+```typescript
+// ✅ Good
+export const LargeButtonWithIcon: Story = {
+  /* ... */
+}
+
+// ❌ Avoid
+export const Example2: Story = {
+  /* ... */
+}
+```
+
+### 4. Document Props
+
+```typescript
+argTypes: {
+  size: {
+    control: 'select',
+    options: ['sm', 'md', 'lg'],
+    description: 'Button size variant',  // ← Add descriptions
+    table: {
+      defaultValue: { summary: 'md' },
+      type: { summary: 'string' },
+    },
+  },
+}
+```
+
+### 5. Avoid Over-mocking
+
+Let Storybook wire up real props and callbacks when possible.
+
+### 6. Test Real Use Cases
+
+Stories should reflect actual usage patterns, not just showcase props.
+
+## Base Component Stories
+
+Example stories are provided for:
+
+- **Button** (`src/presentation/ui/button.stories.tsx`)
+- **Spinner** (`src/presentation/ui/spinner.stories.tsx`)
+
+Use these as templates for documenting other components.
+
+## Publishing Storybook
+
+### Deploy Static Build
+
+```bash
+# Build Storybook
+pnpm build-storybook
+
+# Deploy storybook-static/ to static host:
+# Vercel, Netlify, GitHub Pages, etc.
+```
+
+### Link from Documentation
+
+Add to main `docs-v2/README.md`:
+
+```markdown
+## Component Playground
+
+Explore components interactively: → [Storybook](https://storybook.example.com)
+```
+
+## Troubleshooting
+
+### Stories Not Appearing
+
+Check `.storybook/main.ts` stories glob pattern:
+
+```typescript
+stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)']
+```
+
+### Path Aliases Not Working
+
+Verify webpack config in `.storybook/main.ts`:
+
+```typescript
+webpackFinal: async (config) => {
+  config.resolve?.alias = {
+    // ... your aliases
+  }
+  return config
+}
+```
+
+### Tailwind Not Applied
+
+Ensure Tailwind CSS is imported in `.storybook/preview.ts`:
+
+```typescript
+// This happens automatically with @storybook/nextjs
+```
+
+## Related Documentation
+
+- [Storybook Official Docs](https://storybook.js.org/)
+- [Component Documentation](../docs-v2/component-docs/)
+- [Base Components](../docs-v2/component-docs/base-components/)
 
 ### Basic Story
 

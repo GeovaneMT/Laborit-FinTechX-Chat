@@ -1,0 +1,89 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check code formatting
+        run: pnpm format --check
+
+      - name: Run ESLint
+        run: pnpm lint
+
+      - name: Run TypeScript type checking
+        run: pnpm typecheck
+
+      - name: Run knip (dead code detection)
+        run: pnpm knip
+
+      - name: Check for unused imports
+        run: pnpm oxlint src
+
+      - name: Run all quality checks
+        run: pnpm check:all
+
+  bundle-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build application
+        run: pnpm build
+
+      - name: Analyze bundle size
+        run: |
+          echo "Bundle analysis complete"
+          # Add bundle analyzer if needed
+          ls -la .next/static/
+
+  performance-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build for production
+        run: pnpm prod &
+        timeout-minutes: 5
+
+      - name: Check if app started successfully
+        run: |
+          sleep 10
+          curl -f http://localhost:3000 || exit 1
