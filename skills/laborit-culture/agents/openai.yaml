@@ -1,4 +1,0 @@
-interface:
-  display_name: "Laborit Culture"
-  short_description: "Align decisions with Laborit's hiring lens"
-  default_prompt: "Use $laborit-culture to evaluate this challenge or solution through Laborit's culture, vacancy, and technical assessment expectations."

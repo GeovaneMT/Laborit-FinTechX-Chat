@@ -43,9 +43,12 @@ contribuição, consulte:
 - [Best Practices](./docs-v2/best-practices.md) — Code standards & guidelines
 - [Contribution Guide](./docs-v2/contribution-guide.md) — How to contribute
 - [API Documentation](./docs-v2/api/) — HTTP client & integration
+- [CI/CD Setup](./docs-v2/ci-cd-setup.md) — Deployment automation
 - [Complete SITEMAP](./docs-v2/SITEMAP.md) — Full documentation index
 
-**[📖 Original Documentation](./docs/)** — Original documentation (v1)
+**[📖 Documentação Original](./docs/)** — Original documentation (v1) - Archived
+
+- See [Archive Notice](./docs/ARCHIVE_NOTICE.md) for migration details
 
 ## Scripts
 

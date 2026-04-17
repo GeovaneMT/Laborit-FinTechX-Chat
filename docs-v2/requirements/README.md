@@ -1,23 +1,109 @@
 # Requirements Index
 
-Quick reference to features, requirements, and user stories.
+Complete requirements documentation for the Brain Box platform, including
+functional requirements (RF), non-functional requirements (RNF), user stories,
+and prioritization frameworks.
 
 ## By Priority (MoSCoW)
 
-### Must Have
+### Must Have (Obrigatórios)
 
-- User authentication & profiles
-- AI chat with history
-- 8 core routes (Splash, Onboarding, Chat, Profile, Edit Information, Health
-  Instructions, Invite, Preferences)
-- Theme switching (light/dark)
-- Mobile-first responsive design
-- Accessibility baseline (WCAG AA)
+- As 8 rotas do desafio implementadas: `Splash`, `Onboarding`, `Chat`,
+  `Profile`, `Edit Information`, `Health Instructions`, `Invite Your Friend` e
+  `Preferences`
+- Chat com integração a um LLM por meio de Server Actions, com envio de
+  mensagem, estado de carregamento e resposta renderizada
+- Responsividade mobile-first com adaptação segura para desktop
+- Tema light/dark coerente com os assets de UI
+- Estrutura técnica alinhada ao template Next.js 16 SPA com App Router,
+  TypeScript estrito e separação por camadas
+- Feedbacks de erro, vazio e carregamento nas telas principais
+- README, instruções de execução e deploy em host gratuito
 
-### Should Have
+### Should Have (Deveriam Ter)
 
-- Persistent chat history
-- User preferences storage
+- Histórico recente da conversa na sessão
+- Sugestões de prompts e regeneração de resposta no chat
+- Edição local de perfil com validação de formulário
+- Persistência local das preferências de tema
+- Testes unitários e de integração nos fluxos principais
+- MSW para dados mockados de perfil, preferências e convite
+
+### Could Have (Poderiam Ter)
+
+- Compartilhamento ou cópia de resposta
+- Telemetria simples de eventos de navegação e uso do chat
+- Internacionalização inicial para textos estruturais
+- Animações sutis de transição entre `Splash`, `Onboarding` e `Chat`
+
+### Won't Have (Não Terão)
+
+- Autenticação real com backend produtivo
+- Processamento clínico, diagnóstico médico ou prescrição
+- Pagamentos reais, recuperação de senha real ou programa de indicação com saldo
+  financeiro de verdade
+- Persistência remota completa de histórico de chat, perfil e configurações
+
+## Risk Assessment & Constraints
+
+### Riscos Identificados
+
+- O LLM pode gerar informações incorretas ou sensíveis demais para um contexto
+  de saúde
+- As telas sugerem um produto amplo, mas o teste técnico tem tempo limitado
+- O design é mobile-first e pode perder qualidade no desktop se apenas escalado
+- Dark mode pode divergir dos assets se não houver tokens consistentes
+- A percepção de valor pode cair se o chat parecer genérico
+
+### Estratégias de Mitigação
+
+- Mostrar avisos claros em `Health Instructions` e evitar linguagem de
+  diagnóstico
+- Priorizar as 8 rotas com dados mockados fora do fluxo central do chat
+- Definir breakpoints, largura máxima e adaptação segura para desktop
+- Centralizar cores e estados visuais no design system
+- Preparar prompts, estados iniciais e microcopy alinhados ao contexto de
+  bem-estar mostrado nas telas
+
+### Constraints Técnicas
+
+- O projeto é um teste técnico frontend e deve evidenciar código, UI/UX,
+  integração com IA, documentação, testes e deploy
+- A stack alvo deve respeitar o blueprint do `nextjs-16-spa-template.md`
+- Os assets em `docs/Images/UI` são a principal referência de rotas e direção
+  visual
+- As telas de `Preferences` listam ações futuras, mas apenas fluxos com tela
+  dedicada entram como rota obrigatória do MVP
+- Recursos que exigiriam backend real devem ser simulados com Server Actions,
+  mocks ou armazenamento local
+
+## Documentation Structure
+
+### `RF/` - Requisitos Funcionais
+
+Functional requirements organized by feature area.
+
+### `RN/` - Regras de Negócio
+
+Business rules and domain logic requirements.
+
+### `RNF/` - Requisitos Não-Funcionais
+
+Quality attributes, performance, security, and operational requirements.
+
+### `user-stories/` - Histórias de Usuário
+
+User stories written in the standard format: "As a [user], I want [goal] so that
+[benefit]"
+
+## Navigation
+
+- [MoSCoW Prioritization](./MoSCoW.md) - Detailed prioritization breakdown
+- [Risks & Constraints](./risks-restrictions.md) - Complete risk assessment
+- [Functional Requirements](./RF/) - Feature specifications
+- [Business Rules](./RN/) - Domain constraints
+- [Non-Functional Requirements](./RNF/) - Quality requirements
+- [User Stories](./user-stories/) - User-centric requirements
 - Search functionality
 - Message reactions/reactions
 - Draft saving

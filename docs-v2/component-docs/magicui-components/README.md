@@ -236,8 +236,7 @@ MagicUI components maintain accessibility:
 
 ```tsx
 import { AnimatedButton } from '@/presentation/ui/magicui/animated-button'
-
-;<section className="bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-16">
+;<section className="bg-linear-to-r from-blue-600 to-purple-600 px-4 py-16">
   <div className="text-center">
     <h2 className="mb-4 text-4xl font-bold text-white">
       Ready to get started?
@@ -256,7 +255,6 @@ import { AnimatedButton } from '@/presentation/ui/magicui/animated-button'
 
 ```tsx
 import { CircularProgress } from '@/presentation/ui/magicui/circular-progress'
-
 ;<div className="flex flex-col items-center justify-center py-8">
   <CircularProgress isIndeterminate={true} aria-label="Loading content" />
   <p className="mt-4 text-slate-600">Loading...</p>
@@ -268,7 +266,6 @@ import { CircularProgress } from '@/presentation/ui/magicui/circular-progress'
 ```tsx
 import { AnimatedButton } from '@/presentation/ui/magicui/animated-button'
 import { StripedPattern } from '@/presentation/ui/magicui/striped-pattern'
-
 ;<StripedPattern className="relative flex h-96 w-full items-center justify-center">
   <div className="relative z-10 text-center text-white">
     <h1 className="mb-4 text-5xl font-bold">Welcome</h1>

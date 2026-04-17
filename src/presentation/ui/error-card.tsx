@@ -12,7 +12,7 @@ interface TipsProps {
   tips?: string[]
 }
 
-interface ErrorCardProps extends TipsProps {
+export interface ErrorCardProps extends TipsProps {
   noTips?: boolean
   title?: string
   message?: string

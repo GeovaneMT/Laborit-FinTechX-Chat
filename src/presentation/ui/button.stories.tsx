@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from './button'
+import { Button } from '@ui/button'
 import { Spinner } from '@ui/spinner'
 
 const meta = {
@@ -131,14 +131,14 @@ export const EffectShine: Story = {
 export const EffectRing: Story = {
   args: {
     children: 'Ring effect',
-    effect: 'ring',
+    effect: 'ringHover',
   },
 }
 
 export const EffectGooey: Story = {
   args: {
     children: 'Gooey effect',
-    effect: 'gooey',
+    effect: 'gooeyLeft',
   },
 }
 

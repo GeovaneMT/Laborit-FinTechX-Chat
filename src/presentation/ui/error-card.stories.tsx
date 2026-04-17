@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { AlertCircleIcon, RefreshCcwIcon, ZapOffIcon } from 'lucide-react'
+import { AlertCircleIcon, ZapOffIcon } from 'lucide-react'
 
-import { ErrorCard } from './error-card'
+import { ErrorCard } from '@ui/error-card'
 
 const meta = {
   title: 'Base Components/ErrorCard',

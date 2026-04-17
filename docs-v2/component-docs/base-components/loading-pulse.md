@@ -270,14 +270,14 @@ Wrap and override color classes:
 {
   /* Green pulse */
 }
-;<div className="[&>*]:bg-green-500">
+;<div className="*:bg-green-500">
   <LoadingPulse />
 </div>
 
 {
   /* Red pulse */
 }
-;<div className="[&>*]:bg-red-500">
+;<div className="*:bg-red-500">
   <LoadingPulse />
 </div>
 ```

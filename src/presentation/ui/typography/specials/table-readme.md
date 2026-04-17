@@ -55,13 +55,13 @@ and configure it.
 ### Import the Component
 
 ```tsx
-import { TypographyTable } from './TypographyTable'
+import { TypographyTable } from '@ui/typography/specials/TypographyTable'
 ```
 
 ### Example Usage
 
 ```tsx
-import { TypographyTable } from './TypographyTable'
+import { TypographyTable } from '@ui/typography/specials/TypographyTable'
 
 export default function App() {
   const columns = ['Name', 'Age', 'Country']

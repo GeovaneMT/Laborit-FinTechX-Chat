@@ -42,13 +42,13 @@ and configure it.
 ### Import the Component
 
 ```tsx
-import { TypographyList } from './TypographyList'
+import { TypographyList } from '@ui/typography/specials/TypographyList'
 ```
 
 ### Example Usage
 
 ```tsx
-import { TypographyList } from './TypographyList'
+import { TypographyList } from '@ui/typography/specials/TypographyList'
 
 export default function App() {
   const items = [

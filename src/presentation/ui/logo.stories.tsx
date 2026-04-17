@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Logo } from './logo'
+
+import { Logo } from '@ui/logo'
 
 const meta = {
   title: 'Base Components/Logo',

@@ -121,7 +121,7 @@ import { CheckCircleIcon, ExclamationIcon, InformationCircleIcon } from '@heroic
 
 // Success status
 <div className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded">
-  <CheckCircleIcon className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+  <CheckCircleIcon className="w-6 h-6 text-green-600 shrink-0 mt-0.5" />
   <div>
     <h4 className="font-semibold text-green-900">Success</h4>
     <p className="text-sm text-green-800">Operation completed successfully</p>
@@ -130,7 +130,7 @@ import { CheckCircleIcon, ExclamationIcon, InformationCircleIcon } from '@heroic
 
 // Warning status
 <div className="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded">
-  <ExclamationIcon className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
+  <ExclamationIcon className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
   <div>
     <h4 className="font-semibold text-amber-900">Warning</h4>
     <p className="text-sm text-amber-800">Please review before proceeding</p>
@@ -139,7 +139,7 @@ import { CheckCircleIcon, ExclamationIcon, InformationCircleIcon } from '@heroic
 
 // Info status
 <div className="flex items-start gap-3 p-4 bg-sky-50 border border-sky-200 rounded">
-  <InformationCircleIcon className="w-6 h-6 text-sky-600 flex-shrink-0 mt-0.5" />
+  <InformationCircleIcon className="w-6 h-6 text-sky-600 shrink-0 mt-0.5" />
   <div>
     <h4 className="font-semibold text-sky-900">Information</h4>
     <p className="text-sm text-sky-800">This feature requires additional setup</p>

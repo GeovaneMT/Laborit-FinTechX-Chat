@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Separator } from './separator'
+import { Separator } from '@ui/separator'
 
 const meta = {
   title: 'Base Components/Separator',

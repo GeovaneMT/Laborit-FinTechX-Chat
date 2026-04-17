@@ -1,4 +1,0 @@
-interface:
-  display_name: "Next.js 16 SPA Builder"
-  short_description: "Generate a Next.js 16 app blueprint"
-  default_prompt: "Use $nextjs-16-spa-builder to scaffold a neutral Next.js 16 application with this architecture."

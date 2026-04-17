@@ -5,7 +5,8 @@ import { Input } from '@shadcn/input'
 import type { Meta, StoryObj } from '@storybook/react'
 import { z } from 'zod'
 
-import { Button } from './button'
+import { Button } from '@ui/button'
+
 import {
   Form,
   FormControl,
@@ -287,7 +288,7 @@ export const WithHelperText: Story = {
                     />
                   </FormControl>
                   <FormDescription>
-                    We'll never share your email with anyone else.
+                    {`We'll never share your email with anyone else.`}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

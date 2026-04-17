@@ -102,7 +102,7 @@ const buttonVariants = cva(
 
 type IconPlacement = 'left' | 'right'
 
-interface ButtonProps
+export interface ButtonProps
   extends React.ComponentProps<'button'>, VariantProps<typeof buttonVariants> {
   asChild?: boolean
   icon?: React.ReactNode

@@ -4,7 +4,7 @@ import React from 'react'
 
 import { cn } from '@utils/cn'
 
-interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number
   color?: string
   className?: string

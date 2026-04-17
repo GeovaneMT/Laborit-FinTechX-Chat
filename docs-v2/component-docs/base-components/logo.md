@@ -109,7 +109,7 @@ import { Logo } from '@/presentation/ui/logo'
 
 export function LoginPage() {
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-b from-blue-50 to-white dark:from-slate-950 dark:to-slate-900">
+    <div className="flex h-screen items-center justify-center bg-linear-to-b from-blue-50 to-white dark:from-slate-950 dark:to-slate-900">
       <div className="w-full max-w-md space-y-8 text-center">
         <div className="flex justify-center">
           <Logo className="h-12" />

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from './button'
-import { ButtonGroup } from './button-group'
+import { Button } from '@ui/button'
+import { ButtonGroup } from '@ui/button-group'
 
 const meta = {
   title: 'Base Components/ButtonGroup',

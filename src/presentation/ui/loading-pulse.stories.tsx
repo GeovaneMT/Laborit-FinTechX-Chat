@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { LoadingPulse } from './loading-pulse'
+import { LoadingPulse } from '@ui/loading-pulse'
 
 const meta = {
   title: 'Base Components/LoadingPulse',

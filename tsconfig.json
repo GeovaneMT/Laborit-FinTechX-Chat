@@ -71,7 +71,7 @@
         "./src/http/*"
       ],
       "@errors/*": [
-        "./src/infra/errors/*"
+        "./src/core/errors/*"
       ],
       "@tanstack/*": [
         "./src/infra/data/tanstack/*"
