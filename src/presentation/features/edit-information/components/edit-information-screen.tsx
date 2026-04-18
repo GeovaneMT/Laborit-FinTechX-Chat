@@ -1,12 +1,11 @@
 'use client'
 
+import { UpdateProfileForm } from '@presentation/features/edit-information/components/forms/profile-update.form'
 import { Card, CardContent, CardHeader } from '@shadcn/card'
 
 import type { EditInformationMessages } from '@features/edit-information/i18n'
 
 import { CardHeaderContent } from '@pattern/card-header-content'
-
-import { UpdateProfileForm } from '@presentation/features/edit-information/components/forms/profile-update.form'
 
 type EditInformationScreenProps = {
   messages: EditInformationMessages

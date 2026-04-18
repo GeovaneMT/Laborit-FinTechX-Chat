@@ -25,6 +25,7 @@
     "test:unit": "vitest run src/core src/infra src/http src/presentation/features",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "storybook:vitest": "pnpm vitest --project=storybook",
     "storybook:test": "test-storybook",
     "storybook:test:a11y": "test-storybook --tag a11y"
   },
@@ -88,6 +89,13 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
     "@next/eslint-plugin-next": "^16.0.0",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-viewport": "^9.0.8",
+    "@storybook/addon-vitest": "^10.3.5",
+    "@storybook/nextjs-vite": "^10.3.5",
+    "@storybook/test-runner": "^0.24.3",
+    "@netlify/plugin-nextjs": "^5.15.9",
     "@tailwindcss/postcss": "^4.0.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -95,6 +103,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/browser-playwright": "4.1.4",
     "@vitest/coverage-v8": "^4.1.4",
     "eslint": "^9.18.0",
     "eslint-plugin-boundaries": "^5.4.0",
@@ -106,10 +115,16 @@
     "knip": "^6.3.1",
     "msw": "^2.7.0",
     "orval": "^7.7.0",
+    "playwright": "^1.59.1",
     "postcss": "^8.4.49",
+    "storybook": "^10.3.5",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.21.0",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.4",
+    "@chromatic-com/storybook": "^5.1.2",
+    "@storybook/addon-onboarding": "^10.3.5",
+    "vite": "^8.0.8",
+    "eslint-plugin-storybook": "^10.3.5"
   }
 }
