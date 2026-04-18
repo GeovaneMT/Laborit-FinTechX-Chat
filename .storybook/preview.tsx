@@ -1,38 +1,39 @@
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/nextjs-vite'
 import { INITIAL_VIEWPORTS } from 'storybook/viewport'
 
 import '@styles/globals.css'
 
-// Mock Next.js theme provider
-if (typeof window !== 'undefined') {
-  // Initialize theme on client side
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  if (prefersDark) {
-    document.documentElement.classList.add('dark')
-  }
-}
-
 const preview: Preview = {
   parameters: {
-    // Next.js configuration
     nextjs: {
       appDirectory: true,
     },
-
-    // Viewport sizes for responsive testing
+    controls: {
+      expanded: true,
+      sort: 'alpha',
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+    layout: 'padded',
     viewport: {
       viewports: INITIAL_VIEWPORTS,
+      defaultViewport: 'responsive',
     },
-
-    // Layout configuration
-    layout: 'centered',
-
-    // Interaction testing
-    interactions: {
-      instrument: true,
+    backgrounds: {
+      default: 'surface',
+      values: [
+        { name: 'surface', value: '#f8fafc' },
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#111827' },
+      ],
     },
-
-    // A11y testing configuration
+    options: {
+      storySort: {
+        method: 'alphabetical',
+      },
+    },
     a11y: {
       config: {
         rules: [
@@ -43,26 +44,6 @@ const preview: Preview = {
         ],
       },
     },
-
-    // Backgrounds for testing
-    backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#ffffff' },
-        { name: 'dark', value: '#1a1a1a' },
-        { name: 'gray', value: '#f5f5f5' },
-      ],
-    },
-
-    // Controls configuration
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-
-    // Default argTypes
     argTypes: {
       className: {
         control: { type: 'text' },
@@ -74,32 +55,31 @@ const preview: Preview = {
       },
     },
   },
-
-  // Global decorators
-  decorators: [
-    // Dark mode support decorator
-    (Story, context) => {
-      const isDark = context.parameters.isDark ?? false
-
-      if (isDark) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-
-      return Story()
+  globalTypes: {
+    theme: {
+      name: 'Theme',
+      description: 'Global theme for the preview canvas',
+      defaultValue: 'light',
+      toolbar: {
+        icon: 'circlehollow',
+        items: [
+          { value: 'light', title: 'Light' },
+          { value: 'dark', title: 'Dark' },
+        ],
+      },
     },
-
-    // CSS padding decorator for centering
+  },
+  decorators: [
     (Story) => (
-      <div className="p-8">
-        <Story />
+      <div className="min-h-screen bg-slate-50 px-6 py-8 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+        <div className="mx-auto max-w-6xl rounded-[32px] border border-slate-200/80 bg-white/95 p-8 shadow-[0_32px_120px_-40px_rgba(15,23,42,0.2)] backdrop-blur sm:p-10 dark:border-slate-700/60 dark:bg-slate-900/95">
+          <div className="rounded-[28px] bg-white p-6 shadow-sm ring-1 ring-slate-200/70 dark:bg-slate-950 dark:ring-slate-800/80">
+            <Story />
+          </div>
+        </div>
       </div>
     ),
   ],
-
-  // Tags for organizing and filtering stories
-  tags: ['autodocs'],
 }
 
 export default preview
